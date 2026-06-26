@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Source dataset wizard" description="Multi-step wizard to add a source dataset — pick a connector type, a connection, browse the schema, preview columns, then name and confirm." -->
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<script src="./ds-base.js"></script>
+<style>
+  html, body { margin: 0; height: 100%; }
+  body { font-family: 'Roboto', system-ui, sans-serif; }
+</style>
+</helmet>
+<div style="display:flex; align-items:center; justify-content:center; height:100vh; width:100%; padding:32px; box-sizing:border-box; background:rgba(15,23,42,0.28);">
+  <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfFlowWizard"
+    title="New source dataset"
+    step="{{ step }}"
+    total-steps="{{ 5 }}"
+    next-disabled="{{ nextDisabled }}"
+    complete-label="Create dataset"
+    on-step-change="{{ setStep }}"
+    on-cancel="{{ cancel }}"
+    on-complete="{{ complete }}"
+    style="width:760px; height:580px; max-width:100%; max-height:100%"
+    hint-size="760px,580px">
+
+    <sc-if value="{{ isType }}" hint-placeholder-val="{{ true }}">
+      <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfWizardStep" title="Choose a source" subtitle="Select the connector this dataset reads from." hint-size="100%,100%">
+        <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfOptionSelect" options="{{ typeOptions }}" value="{{ sourceType }}" on-change="{{ setSourceType }}" hint-size="100%,auto"></x-import>
+      </x-import>
+    </sc-if>
+
+    <sc-if value="{{ isConn }}" hint-placeholder-val="{{ false }}">
+      <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfWizardStep" title="Select a connection" subtitle="Pick a configured connection for this source." hint-size="100%,100%">
+        <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfConnectorList" connectors="{{ connectors }}" value="{{ connectionId }}" on-select="{{ setConnection }}" hint-size="100%,auto"></x-import>
+      </x-import>
+    </sc-if>
+
+    <sc-if value="{{ isObject }}" hint-placeholder-val="{{ false }}">
+      <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfWizardStep" title="Choose an object" subtitle="Browse the schema and select a table to read from." hint-size="100%,100%">
+        <div style="height:340px;">
+          <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfSchemaTree" title="analytics_pg" summary="PostgreSQL · public" nodes="{{ schemaNodes }}" selected-id="{{ tableId }}" on-select="{{ setTable }}" hint-size="100%,100%"></x-import>
+        </div>
+      </x-import>
+    </sc-if>
+
+    <sc-if value="{{ isColumns }}" hint-placeholder-val="{{ false }}">
+      <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfWizardStep" title="Select columns" subtitle="Review the columns this dataset will expose; cast or rename as needed." hint-size="100%,100%">
+        <div style="max-height:340px; overflow:auto;">
+          <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfPreviewGrid" columns="{{ previewCols }}" rows="{{ previewRows }}" selected-count="{{ 5 }}" total-count="{{ 8 }}" column-menu="{{ true }}" hint-size="100%,auto"></x-import>
+        </div>
+      </x-import>
+    </sc-if>
+
+    <sc-if value="{{ isReview }}" hint-placeholder-val="{{ false }}">
+      <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfWizardStep" title="Name & confirm" subtitle="Give the dataset a name and review your choices." hint-size="100%,100%">
+        <div style="display:flex; flex-direction:column; gap:20px;">
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <label style="font-size:12px; font-weight:600; color:var(--color-foreground-alt2);">Dataset name</label>
+            <input value="{{ datasetName }}" onChange="{{ setName }}" placeholder="e.g. orders_clean" style="width:100%; height:38px; padding:0 12px; box-sizing:border-box; border:1.5px solid var(--color-border); border-radius:10px; font-family:inherit; font-size:14px; font-weight:500; color:var(--color-foreground); background:var(--color-background);" />
+          </div>
+          <div style="display:flex; flex-direction:column; gap:10px; background:var(--color-background-alt1); border:1px solid var(--color-border-light); border-radius:12px; padding:16px;">
+            <div style="display:flex; justify-content:space-between; gap:16px; font-size:14px;"><span style="color:var(--color-foreground-alt3);">Source type</span><span style="font-weight:600;">{{ reviewType }}</span></div>
+            <div style="display:flex; justify-content:space-between; gap:16px; font-size:14px;"><span style="color:var(--color-foreground-alt3);">Connection</span><span style="font-weight:600;">{{ reviewConn }}</span></div>
+            <div style="display:flex; justify-content:space-between; gap:16px; font-size:14px;"><span style="color:var(--color-foreground-alt3);">Object</span><span style="font-weight:600;">{{ reviewTable }}</span></div>
+          </div>
+        </div>
+      </x-import>
+    </sc-if>
+
+  </x-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { step: 1, sourceType: 'DATABASE', connectionId: null, tableId: null, datasetName: '' };
+
+  setStep = (n) => this.setState({ step: n });
+  setSourceType = (v) => this.setState({ sourceType: v });
+  setConnection = (c) => this.setState({ connectionId: c.id });
+  setTable = (node) => { if (node && node.selectable) this.setState({ tableId: node.id, datasetName: this.state.datasetName || `${node.id}_dataset` }); };
+  setName = (e) => this.setState({ datasetName: e.target.value });
+  cancel = () => {};
+  complete = () => {};
+
+  renderVals() {
+    const s = this.state;
+    const typeOptions = [
+      { value: 'DATABASE', title: 'Database', subtitle: 'JDBC — Postgres, MySQL, SQL Server', icon: 'database' },
+      { value: 'SALESFORCE', title: 'Salesforce', subtitle: 'CRM objects via API', icon: 'cloud' },
+      { value: 'HUBSPOT', title: 'HubSpot', subtitle: 'Contacts, deals, companies', icon: 'circle-nodes' },
+      { value: 'CSV', title: 'CSV', subtitle: 'Delimited file upload', icon: 'file-csv' },
+      { value: 'EXCEL', title: 'Excel', subtitle: 'Workbook & sheet', icon: 'file-excel' },
+      { value: 'REST_API', title: 'REST API', subtitle: 'Custom HTTP endpoint', icon: 'globe' },
+    ];
+    const connectors = [
+      { id: 'pg-prod', name: 'analytics_pg (prod)', meta: 'PostgreSQL · eu-west-1', icon: 'database' },
+      { id: 'pg-stg', name: 'analytics_pg (staging)', meta: 'PostgreSQL · eu-west-1', icon: 'database' },
+      { id: 'warehouse', name: 'snowflake_warehouse', meta: 'JDBC · acme.snowflakecomputing.com', icon: 'database' },
+    ];
+    const schemaNodes = [
+      {
+        id: 'public', label: 'public', icon: 'fa-solid fa-folder', defaultExpanded: true,
+        items: [
+          { id: 'orders', label: 'orders', description: 'table · 1.4M rows', icon: 'fa-solid fa-table', selectable: true, badge: { text: '8', tone: 'info' } },
+          { id: 'customers', label: 'customers', description: 'table · 92K rows', icon: 'fa-solid fa-table', selectable: true, badge: { text: '12', tone: 'info' } },
+          { id: 'products', label: 'products', description: 'table · 3.1K rows', icon: 'fa-solid fa-table', selectable: true, badge: { text: '6', tone: 'info' } },
+          { id: 'order_items', label: 'order_items', description: 'table · 5.2M rows', icon: 'fa-solid fa-table', selectable: true, badge: { text: '5', tone: 'info' } },
+        ],
+      },
+    ];
+    const previewCols = [
+      { field: 'order_id', caption: 'order_id', type: 'number' },
+      { field: 'customer', caption: 'customer', type: 'string' },
+      { field: 'total', caption: 'total_amount', type: 'number', cast: true },
+      { field: 'created', caption: 'created_at', type: 'datetime' },
+      { field: 'paid', caption: 'is_paid', type: 'boolean' },
+    ];
+    const previewRows = [
+      { order_id: 100432, customer: 'Northwind Ltd', total: '1240.00', created: '2026-06-25 14:32', paid: 'true' },
+      { order_id: 100433, customer: 'Globex', total: '88.50', created: '2026-06-25 14:35', paid: 'false' },
+      { order_id: 100434, customer: 'Initech', total: '4019.90', created: '2026-06-25 14:41', paid: 'true' },
+    ];
+
+    const typeLabel = (typeOptions.find((t) => t.value === s.sourceType) || {}).title || '—';
+    const connLabel = (connectors.find((c) => c.id === s.connectionId) || {}).name || '—';
+
+    const nextDisabled =
+      (s.step === 1 && !s.sourceType) ||
+      (s.step === 2 && !s.connectionId) ||
+      (s.step === 3 && !s.tableId) ||
+      (s.step === 5 && !s.datasetName.trim());
+
+    return {
+      step: s.step,
+      setStep: this.setStep,
+      nextDisabled,
+      cancel: this.cancel,
+      complete: this.complete,
+      isType: s.step === 1,
+      isConn: s.step === 2,
+      isObject: s.step === 3,
+      isColumns: s.step === 4,
+      isReview: s.step === 5,
+      typeOptions,
+      sourceType: s.sourceType,
+      setSourceType: this.setSourceType,
+      connectors,
+      connectionId: s.connectionId,
+      setConnection: this.setConnection,
+      schemaNodes,
+      tableId: s.tableId,
+      setTable: this.setTable,
+      previewCols,
+      previewRows,
+      datasetName: s.datasetName,
+      setName: this.setName,
+      reviewType: typeLabel,
+      reviewConn: connLabel,
+      reviewTable: s.tableId || '—',
+    };
+  }
+}
+</script>
+</body>
+</html>

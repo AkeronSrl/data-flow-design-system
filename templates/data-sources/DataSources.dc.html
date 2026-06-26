@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Data sources" description="Data-sources / connector gallery — searchable list of configured connections plus a grid of connector types to add a new source." -->
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<script src="./ds-base.js"></script>
+<style>
+  html, body { margin: 0; height: 100%; }
+  body { font-family: 'Roboto', system-ui, sans-serif; }
+</style>
+</helmet>
+<div style="display:flex; height:100vh; width:100%; background:var(--color-background-alt1); color:var(--color-foreground);">
+  <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfSideMenu" items="{{ navItems }}" active-id="datasources" expanded="{{ true }}" hint-size="248px,100%"></x-import>
+
+  <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+    <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfHeader" title="Data sources" subtitle="Acme Analytics / Production" actions="{{ headerActions }}" hint-size="100%,64px"></x-import>
+
+    <div style="flex:1; overflow:auto; min-height:0; display:flex; flex-direction:column; gap:24px; padding:20px;">
+
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:var(--color-foreground-alt3);">Connections</span>
+          <span style="font-size:12px; color:var(--color-foreground-alt3);">{{ connCount }}</span>
+          <div style="margin-left:auto; display:inline-flex; align-items:center; gap:8px; height:34px; padding:0 12px; background:var(--color-background); border:1.5px solid var(--color-border); border-radius:10px; width:240px;">
+            <i class="fa-solid fa-magnifying-glass" style="color:var(--color-icon);" aria-hidden="true"></i>
+            <input value="{{ query }}" onChange="{{ setQuery }}" placeholder="Search connections…" style="flex:1; min-width:0; border:0; outline:none; background:transparent; font-family:inherit; font-size:14px; font-weight:500; color:var(--color-foreground);" />
+          </div>
+        </div>
+        <sc-if value="{{ hasConns }}" hint-placeholder-val="{{ true }}">
+          <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfConnectorList" connectors="{{ filteredConns }}" value="{{ selectedConn }}" on-select="{{ selectConn }}" hint-size="100%,auto"></x-import>
+        </sc-if>
+        <sc-if value="{{ noConns }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:32px; text-align:center; color:var(--color-foreground-alt3); font-size:14px;">No connections match “{{ query }}”.</div>
+        </sc-if>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <span style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:var(--color-foreground-alt3);">Add a data source</span>
+        <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfOptionSelect" options="{{ connectorTypes }}" value="{{ selectedType }}" on-change="{{ selectType }}" hint-size="100%,auto"></x-import>
+      </div>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { query: '', selectedConn: 'pg-prod', selectedType: null };
+
+  setQuery = (e) => this.setState({ query: e.target.value });
+  selectConn = (c) => this.setState({ selectedConn: c.id });
+  selectType = (v) => this.setState({ selectedType: v });
+  add = () => {};
+
+  ALL_CONNS = [
+    { id: 'pg-prod', name: 'analytics_pg (prod)', meta: 'PostgreSQL · eu-west-1 · Connected', icon: 'database' },
+    { id: 'pg-stg', name: 'analytics_pg (staging)', meta: 'PostgreSQL · eu-west-1 · Connected', icon: 'database' },
+    { id: 'sf', name: 'Salesforce — Sales Cloud', meta: 'OAuth · acme.my.salesforce.com · Connected', icon: 'cloud' },
+    { id: 'hub', name: 'HubSpot Marketing', meta: 'OAuth · token expired · Reauthorize', icon: 'circle-nodes' },
+    { id: 'sqs', name: 'orders-stream', meta: 'Amazon SQS · DLQ enabled · Connected', icon: 'diagram-project' },
+    { id: 's3', name: 'data-lake-exports', meta: 'Amazon S3 · eu-west-1 · Connected', icon: 'box-archive' },
+  ];
+
+  renderVals() {
+    const NS = window.TiaraDesignSystemNyma_96297e || {};
+    const Btn = NS.TiaraButton;
+    const q = this.state.query.trim().toLowerCase();
+    const filteredConns = this.ALL_CONNS.filter((c) => !q || String(c.name).toLowerCase().includes(q) || String(c.meta).toLowerCase().includes(q));
+
+    const headerActions = Btn
+      ? React.createElement(Btn, { size: 'sm', leftIcon: React.createElement('i', { className: 'fa-solid fa-plus' }), onClick: this.add }, 'Add connector')
+      : null;
+
+    return {
+      navItems: [
+        { section: 'Workspace' },
+        { id: 'pipelines', label: 'Pipelines', icon: 'fa-solid fa-diagram-project', children: true },
+        { id: 'datasources', label: 'Data sources', icon: 'fa-solid fa-plug' },
+        { id: 'datasets', label: 'Datasets', icon: 'fa-solid fa-table' },
+        { section: 'Operate' },
+        { id: 'executions', label: 'Executions', icon: 'fa-solid fa-play' },
+        { id: 'logs', label: 'Logs & metrics', icon: 'fa-solid fa-clock-rotate-left' },
+        { id: 'query', label: 'Query Analyzer', icon: 'fa-solid fa-magnifying-glass-chart' },
+      ],
+      headerActions,
+      query: this.state.query,
+      setQuery: this.setQuery,
+      filteredConns,
+      selectedConn: this.state.selectedConn,
+      selectConn: this.selectConn,
+      connCount: `${filteredConns.length} of ${this.ALL_CONNS.length}`,
+      hasConns: filteredConns.length > 0,
+      noConns: filteredConns.length === 0,
+      connectorTypes: [
+        { value: 'DATABASE', title: 'Database', subtitle: 'JDBC — Postgres, MySQL, SQL Server', icon: 'database' },
+        { value: 'SALESFORCE', title: 'Salesforce', subtitle: 'CRM objects via API', icon: 'cloud' },
+        { value: 'HUBSPOT', title: 'HubSpot', subtitle: 'Contacts, deals, companies', icon: 'circle-nodes' },
+        { value: 'BUSINESS_CENTRAL', title: 'MS Business Central', subtitle: 'ERP via OData', icon: 'globe' },
+        { value: 'AMAZON_SQS', title: 'Amazon SQS', subtitle: 'Streaming queue + DLQ', icon: 'diagram-project' },
+        { value: 'AMAZON_S3', title: 'Amazon S3', subtitle: 'Object storage', icon: 'box-archive' },
+        { value: 'CSV', title: 'CSV', subtitle: 'Delimited file upload', icon: 'file-csv' },
+        { value: 'REST_API', title: 'REST API', subtitle: 'Custom HTTP endpoint', icon: 'globe' },
+      ],
+      selectedType: this.state.selectedType,
+      selectType: this.selectType,
+    };
+  }
+}
+</script>
+</body>
+</html>

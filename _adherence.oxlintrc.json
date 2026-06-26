@@ -16,10 +16,12 @@
         "patterns": [
           {
             "group": [
+              "components/dataflow/**",
               "components/display/**",
               "components/feedback/**",
               "components/forms/**",
               "components/navigation/**",
+              "components/shell/**",
               "ui_kits/nyma-backoffice/**"
             ],
             "message": "Import design-system components from 'index.js', not component internals."
@@ -40,6 +42,82 @@
       {
         "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Roboto))/i]",
         "message": "Font not provided by the design system. Available: Roboto."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DfAuditStatus'] > JSXAttribute > JSXIdentifier[name!=/^(?:enabled|maxCopies|label|enabledText|disabledText|copiesLabel|key|ref|className|style|children)$/]",
+        "message": "<DfAuditStatus> doesn't accept that prop. Declared props: enabled, maxCopies, label, enabledText, disabledText, copiesLabel."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DfConnector'] > JSXAttribute > JSXIdentifier[name!=/^(?:id|name|meta|logo|icon|key|ref|className|style|children)$/]",
+        "message": "<DfConnector> doesn't accept that prop. Declared props: id, name, meta, logo, icon."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DfDataTypeChip'] > JSXAttribute > JSXIdentifier[name!=/^(?:type|label|cast|key|ref|className|style|children)$/]",
+        "message": "<DfDataTypeChip> doesn't accept that prop. Declared props: type, label, cast."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DfListItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:id|description|key|ref|className|style|children)$/]",
+        "message": "<DfListItem> doesn't accept that prop. Declared props: id, description."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DfExecutionDetail'] > JSXAttribute > JSXIdentifier[name!=/^(?:outcome|description|occurredAt|duration|user|key|ref|className|style|children)$/]",
+        "message": "<DfExecutionDetail> doesn't accept that prop. Declared props: outcome, description, occurredAt, duration, user."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DfExecutionDetail'] > JSXAttribute[name.name='outcome'] > Literal[value!=/^(?:ok|ko|warning)$/]",
+        "message": "<DfExecutionDetail> outcome must be one of 'ok' | 'ko' | 'warning'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DfExpressionWarning'] > JSXAttribute > JSXIdentifier[name!=/^(?:code|message|key|ref|className|style|children)$/]",
+        "message": "<DfExpressionWarning> doesn't accept that prop. Declared props: code, message."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DfFailMessage'] > JSXAttribute > JSXIdentifier[name!=/^(?:level|field|message|key|ref|className|style|children)$/]",
+        "message": "<DfFailMessage> doesn't accept that prop. Declared props: level, field, message."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DfFailMessage'] > JSXAttribute[name.name='level'] > Literal[value!=/^(?:error|warning|info)$/]",
+        "message": "<DfFailMessage> level must be one of 'error' | 'warning' | 'info'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DfWizardStep'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|content|key|ref|className|style|children)$/]",
+        "message": "<DfWizardStep> doesn't accept that prop. Declared props: label, content."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DfHeader'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|subtitle|lead|center|actions|key|ref|className|style|children)$/]",
+        "message": "<DfHeader> doesn't accept that prop. Declared props: title, subtitle, lead, center, actions."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DfOption'] > JSXAttribute > JSXIdentifier[name!=/^(?:value|title|subtitle|icon|key|ref|className|style|children)$/]",
+        "message": "<DfOption> doesn't accept that prop. Declared props: value, title, subtitle, icon."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DfFlowNode'] > JSXAttribute > JSXIdentifier[name!=/^(?:id|name|description|connector|type|badge|icon|level|key|ref|className|style|children)$/]",
+        "message": "<DfFlowNode> doesn't accept that prop. Declared props: id, name, description, connector, type, badge, icon, level."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DfPreviewColumn'] > JSXAttribute > JSXIdentifier[name!=/^(?:field|caption|type|cast|numeric|key|ref|className|style|children)$/]",
+        "message": "<DfPreviewColumn> doesn't accept that prop. Declared props: field, caption, type, cast, numeric."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DfSchemaBadge'] > JSXAttribute > JSXIdentifier[name!=/^(?:text|tone|key|ref|className|style|children)$/]",
+        "message": "<DfSchemaBadge> doesn't accept that prop. Declared props: text, tone."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DfSchemaBadge'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:neutral|info|success|warning|danger)$/]",
+        "message": "<DfSchemaBadge> tone must be one of 'neutral' | 'info' | 'success' | 'warning' | 'danger'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DfSideMenuItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:id|label|icon|section|children|key|ref|className|style|children)$/]",
+        "message": "<DfSideMenuItem> doesn't accept that prop. Declared props: id, label, icon, section, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DfVariable'] > JSXAttribute > JSXIdentifier[name!=/^(?:name|key|ref|className|style|children)$/]",
+        "message": "<DfVariable> doesn't accept that prop. Declared props: name."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DfWizardStep'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|subtitle|children|key|ref|className|style|children)$/]",
+        "message": "<DfWizardStep> doesn't accept that prop. Declared props: title, subtitle, children."
       },
       {
         "selector": "JSXOpeningElement[name.name='TiaraAlert'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|title|action|key|ref|className|style|children)$/]",
@@ -155,6 +233,51 @@
   ],
   "x-omelette": {
     "components": {
+      "DfAuditStatus": {
+        "replaces": []
+      },
+      "DfConnector": {
+        "replaces": []
+      },
+      "DfDataTypeChip": {
+        "replaces": []
+      },
+      "DfListItem": {
+        "replaces": []
+      },
+      "DfExecutionDetail": {
+        "replaces": []
+      },
+      "DfExpressionWarning": {
+        "replaces": []
+      },
+      "DfFailMessage": {
+        "replaces": []
+      },
+      "DfWizardStep": {
+        "replaces": []
+      },
+      "DfHeader": {
+        "replaces": []
+      },
+      "DfOption": {
+        "replaces": []
+      },
+      "DfFlowNode": {
+        "replaces": []
+      },
+      "DfPreviewColumn": {
+        "replaces": []
+      },
+      "DfSchemaBadge": {
+        "replaces": []
+      },
+      "DfSideMenuItem": {
+        "replaces": []
+      },
+      "DfVariable": {
+        "replaces": []
+      },
       "TiaraAlert": {
         "replaces": []
       },

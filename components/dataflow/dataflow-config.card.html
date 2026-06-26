@@ -1,0 +1,100 @@
+<!-- @dsCard group="Data Flow" viewport="940x920" name="Wizard & config blocks" subtitle="OptionSelect · ConnectorList · PreviewGrid · DataTypeChip · AuditStatus · WizardStep" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+  body { margin: 0; padding: 22px; background: var(--color-background-alt1); font-family: var(--font-family-sans); color: var(--color-foreground); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; max-width: 900px; }
+  .cell { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .cell--wide { grid-column: 1 / -1; }
+  .lbl { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--color-foreground-alt3); }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel">
+const {
+  DfOptionSelect, DfConnectorList, DfPreviewGrid, DfDataTypeChip, DfAuditStatus, DfWizardStep,
+} = window.TiaraDesignSystemNyma_96297e;
+
+const TYPES = [
+  { value: 'DATABASE', title: 'Database', subtitle: 'JDBC — Postgres, MySQL, SQL Server', icon: 'database' },
+  { value: 'SALESFORCE', title: 'Salesforce', subtitle: 'CRM objects via API', icon: 'cloud' },
+  { value: 'HUBSPOT', title: 'HubSpot', subtitle: 'Contacts, deals, companies', icon: 'circle-nodes' },
+  { value: 'CSV', title: 'CSV', subtitle: 'Delimited file upload', icon: 'file-csv' },
+  { value: 'EXCEL', title: 'Excel', subtitle: 'Workbook & sheet', icon: 'file-excel' },
+  { value: 'REST_API', title: 'REST API', subtitle: 'Custom HTTP endpoint', icon: 'globe' },
+];
+
+const CONNS = [
+  { id: 'pg-prod', name: 'analytics_pg (prod)', meta: 'PostgreSQL · eu-west-1', icon: 'database' },
+  { id: 'sf', name: 'Salesforce — Sales Cloud', meta: 'OAuth · acme.my.salesforce.com', icon: 'cloud' },
+  { id: 'sqs', name: 'orders-stream', meta: 'Amazon SQS · DLQ enabled', icon: 'diagram-project' },
+];
+
+const COLS = [
+  { field: 'order_id', caption: 'order_id', type: 'number' },
+  { field: 'customer', caption: 'customer', type: 'string' },
+  { field: 'total', caption: 'total_amount', type: 'number', cast: true },
+  { field: 'created', caption: 'created_at', type: 'datetime' },
+  { field: 'paid', caption: 'is_paid', type: 'boolean' },
+];
+const ROWS = [
+  { order_id: 100432, customer: 'Northwind Ltd', total: '1240.00', created: '2026-06-25 14:32', paid: 'true' },
+  { order_id: 100433, customer: 'Globex', total: '88.50', created: '2026-06-25 14:35', paid: 'false' },
+  { order_id: 100434, customer: 'Initech', total: '4019.90', created: '2026-06-25 14:41', paid: 'true' },
+];
+
+function Demo() {
+  const [type, setType] = React.useState('DATABASE');
+  const [conn, setConn] = React.useState('pg-prod');
+  return (
+    <div className="grid">
+      <div className="cell cell--wide">
+        <span className="lbl">DfWizardStep + DfOptionSelect — pick a source type</span>
+        <DfWizardStep title="Choose a source" subtitle="Select the connector this dataset reads from.">
+          <DfOptionSelect options={TYPES} value={type} onChange={setType} />
+        </DfWizardStep>
+      </div>
+
+      <div className="cell">
+        <span className="lbl">DfConnectorList — configured connections</span>
+        <DfConnectorList connectors={CONNS} value={conn} onSelect={(c) => setConn(c.id)} />
+        <div className="row" style={{ marginTop: 8 }}>
+          <DfAuditStatus enabled maxCopies={5} />
+          <DfAuditStatus enabled={false} />
+        </div>
+      </div>
+
+      <div className="cell">
+        <span className="lbl">DfDataTypeChip — column data types</span>
+        <div className="row">
+          <DfDataTypeChip type="string" />
+          <DfDataTypeChip type="number" />
+          <DfDataTypeChip type="datetime" />
+          <DfDataTypeChip type="boolean" />
+          <DfDataTypeChip type="number" cast />
+        </div>
+      </div>
+
+      <div className="cell cell--wide">
+        <span className="lbl">DfPreviewGrid — dataset preview</span>
+        <div style={{ maxHeight: 280 }}>
+          <DfPreviewGrid columns={COLS} rows={ROWS} selectedCount={5} totalCount={8} columnMenu />
+        </div>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body>
+</html>

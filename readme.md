@@ -1,6 +1,6 @@
 # Data Flow — Design System
 
-> **Last reviewed:** 2026-06-26 — rebranded from a fashion-ERP mis-read to the correct product (Data Flow, the data integration platform). Visuals inherited from the shared Tiara library remain provisional pending the Data Flow Angular front-end.
+> **Last reviewed:** 2026-06-26 — Alkyra Angular front-end received; recreated its app shell + six reusable building blocks as `Df*` React primitives (see *Components added*). Shared `Tiara*` visuals remain provisional pending validation against the live app.
 
 The design system for **Data Flow**, Akeron's **cloud-native data integration & transformation platform**. Data Flow lets teams connect to heterogeneous data sources, build visual transformation pipelines, and deliver processed data to target systems — **no code required**.
 
@@ -20,12 +20,15 @@ This design system gives a design agent the foundations (tokens, type, color, co
 - **Product documentation (source of truth for product scope, vocabulary, capabilities):** Confluence — *Data Flow — Product Documentation v1.4.0 (EN)*, space `Alkyra` (`support-akeron.atlassian.net/wiki/spaces/Alkyra/pages/1062141993`). Requires Akeron access.
 - **Visual tokens / React primitives:** `github.com/AkeronSrl/hub-next` → `packages/tiara-ds` (the shared Tiara DS: shadcn/ui + Radix + CVA + Tailwind 4; Figma "Tiara - Tarko-New"). Original `tokens.css` / `globals.css` / brand override preserved under `reference/`.
 - **Placeholder repo:** `github.com/AkeronSrl/data-flow-design-system` (now mirrors this project).
-- **Pending:** the **Data Flow front-end (Angular)** — to be supplied as a zip. This is the authoritative source for Data Flow's real screens, additional components, and any product-specific visual overrides.
+- **Received (2026-06-26):** the **Data Flow front-end (Angular)**, internal codename **Alkyra** (`alkyra-ng-components/`). The authoritative source for real screens & components; DevExtreme-based. Its reusable building blocks are now ported to the `Df*` primitives; feature screens remain to be built as templates.
+
+### Angular front-end — confirmed facts (from the `app-root` shell)
+Internal codename **Alkyra** (matches the Confluence space); component selector prefix **`alk-`**; standalone Angular components; i18n **en (default) + es**; **OAuth2/OIDC** auth; **multi-tenant**; **RabbitMQ** realtime (drives live execution monitoring); global **screen-lock** overlay; shell is **`<app-layout>`** (sidebar + topbar). *Visual tokens, the layout, and feature components were not in the shell upload — see Caveats for what's still needed.*
 
 ---
 
 ## Content Fundamentals
-**Language:** **English-first.** Akeron is an Italian company, but Data Flow is a technical data-engineering product with international connectors and an English product surface (the v1.4.0 docs are EN). Keep UI copy in English unless a localized build requires otherwise.
+**Language:** **English-first**, with **Spanish (`es`)** as the second locale. The Angular front-end (internal codename **Alkyra**, selector prefix `alk-`) ships i18n via ngx-translate with English default and a Spanish build (`browserLang?.match(/en|es/)`). Akeron is an Italian company, but Data Flow's product surface is English/Spanish — keep UI copy in English unless a localized build requires otherwise.
 
 **Voice:** technical, precise, neutral. It speaks to **data engineers, integration specialists, and analysts** — people building pipelines, not consumers. Imperative for actions (*"Add a source dataset", "Run pipeline"*), plain declaratives for states (*"No executions match these filters"*). No marketing gloss, no exclamation marks, **no emoji**, no mascots.
 
@@ -96,15 +99,23 @@ This design system gives a design agent the foundations (tokens, type, color, co
 - `styles.css` — single entry point (consumers link this); `@import`s every token + component layer.
 - `readme.md` — this guide. `SKILL.md` — portable skill wrapper.
 
-**`tokens/`** — `fonts.css` (Roboto), `primitives.css` (palette), `typography.css`, `spacing.css`, `radius-borders.css`, `shadows-motion.css`, `semantic.css` (role mapping + dark mode), `base.css` (reset + keyframes), `components.css` (component CSS layer).
+**`tokens/`** — `fonts.css` (Roboto), `primitives.css` (palette), `typography.css`, `spacing.css`, `radius-borders.css`, `shadows-motion.css`, `semantic.css` (role mapping + dark mode), `base.css` (reset + keyframes), `components.css` (shared-primitive CSS layer), `dataflow.css` (Data Flow product-component CSS layer).
 
-**`components/`** — 21 React primitives (namespace `window.TiaraDesignSystemNyma_96297e`), each with a sibling `.d.ts` + `.prompt.md`:
+**`components/`** — React primitives (namespace `window.TiaraDesignSystemNyma_96297e`), each with a sibling `.d.ts`. Two tiers: the shared **Tiara** primitives (`Tiara*`) and the **Data Flow** product components (`Df*`), recreated from the Alkyra Angular front-end.
+
+_Shared Tiara primitives:_
 - `forms/` — `TiaraButton`, `TiaraIconButton`, `TiaraInput`, `TiaraTextarea`, `TiaraCheckbox`, `TiaraRadioGroup`, `TiaraToggleSwitch`, `TiaraSelect`
 - `display/` — `TiaraBadge`, `TiaraChip`, `TiaraAvatar`, `TiaraStatCard`, `TiaraCard`, `TiaraSeparator`, `TiaraSkeleton`, `TiaraProgressBar`, `TiaraSpinner`
 - `feedback/` — `TiaraAlert`, `TiaraTooltip`
 - `navigation/` — `TiaraTabs`, `TiaraBreadcrumb`
 
-**`ui_kits/`** — ⚠️ being rebuilt. The current `nyma-backoffice/` kit reflects the **wrong product** (legacy fashion-ERP) and will be replaced with real Data Flow screens (workspaces, pipeline builder, dataset config, connector gallery, execution monitor, query analyzer) once the Angular front-end is supplied.
+_Data Flow product components_ (group "Data Flow" in the Design System tab; sourced from the Alkyra `alk-`/`akn-` Angular components):
+- `shell/` — `DfSideMenu` (dark-slate nav rail, hover-expand), `DfHeader` (+ `DfHeaderDivider`) (top bar)
+- `dataflow/` — `DfSchemaTree` (searchable schema/data-source explorer), `DfExpressionEditor` (formula/SQL field with autocomplete + lint warnings), `DfFlowWizard` (+ `DfStepper`) (multi-step wizard shell), `DfWizardStep` (titled step container), `DfOptionSelect` (dataset/connector/join type cards), `DfConnectorList` (connection picker list), `DfPipelineFlow` (visual transformation DAG), `DfExecutionLog` (execution monitor), `DfPreviewGrid` (typed dataset/query preview table), `DfDataTypeChip` (column data-type chip), `DfVariableMapping` (source→target column mapping), `DfEditableList` (inline-editable list), `DfAuditStatus` (audit-snapshot pill), `DfFailViewer` (validation/execution message list)
+
+**`ui_kits/`** — ⚠️ being rebuilt. The current `nyma-backoffice/` kit reflects the **wrong product** (legacy fashion-ERP) and will be replaced with real Data Flow screens (workspaces, pipeline builder, dataset config, connector gallery, execution monitor, query analyzer) assembled from the new `Df*` components.
+
+> **Angular front-end received (2026-06-26).** The Alkyra front-end (`alk-`/`akn-` standalone components) was supplied as `alkyra-ng-components/`. Its reusable building blocks have been recreated as the `Df*` primitives above. The feature compositions (dataset wizards under `dataset/`, pipeline components under `pipeline/`, and full `pages/`) are **not yet ported** — they should land as **templates** (`templates/<slug>/`) built on top of the `Df*` + `Tiara*` primitives, not as more low-level components.
 
 **Reusable starting points (`templates/`)** — none yet. Consuming projects now seed new designs from **templates** (`templates/<slug>/<Slug>.dc.html`) rather than the older `@startingPoint` tags. Data Flow templates (e.g. a pipeline-detail page, a connector-setup wizard, a monitoring dashboard) will be authored here once the Angular screens are reconciled.
 
@@ -116,7 +127,7 @@ This design system gives a design agent the foundations (tokens, type, color, co
 
 ## Caveats & open questions
 - **Product reframed:** the system was first built against the wrong product (a fashion ERP). Product scope, vocabulary, and copy are now corrected to Data Flow per the v1.4.0 docs.
-- **Visuals are provisional:** tokens, type, color, and the React primitives are inherited from the shared Tiara/Tarko library. **They must be validated against the Data Flow Angular front-end.** If Data Flow has its own theme/SCSS variables, those override what's here.
-- **UI kit pending:** real Data Flow screens require the Angular sources — not invented here.
-- **Components to add:** the Angular project will surface Data Flow-specific components (pipeline canvas / node, dataset config panel, connector cards, execution timeline, formula editor, data-preview grid, schema mapper). These get added as React recreations once the source arrives.
+- **Visuals are provisional:** the shared `Tiara*` tokens, type, color and primitives are inherited from the Tiara/Tarko library. The Alkyra Angular front-end is DevExtreme-based (`dx-*` widgets, `--dx-*` CSS vars); the `Df*` recreations map that behaviour onto **this** system's semantic tokens rather than copying DevExtreme styling verbatim. Validate fine details (exact paddings, the schema tree's lazy-load, the expression grammar) against the live app.
+- **Feature screens still pending:** the dataset/join/union/aggregation/subset & export wizards, pipeline (API/queue/DLQ/audit) components, and full pages (pipelines, datasources, logs, query-analyzer, workspaces) from the Angular project are **not yet ported**. Build them as `templates/<slug>/` on the `Df*` primitives.
+- **Components added (2026-06-26):** app shell (`DfSideMenu`, `DfHeader`); building blocks `DfSchemaTree`, `DfExpressionEditor`, `DfFlowWizard`/`DfWizardStep`, `DfVariableMapping`, `DfEditableList`, `DfFailViewer`; wizard/config blocks `DfOptionSelect`, `DfConnectorList`, `DfPreviewGrid`, `DfDataTypeChip`, `DfAuditStatus`; and the headline `DfPipelineFlow` (visual DAG) + `DfExecutionLog` (execution monitor). The reusable Angular building blocks are now substantially ported. Note `join-keys-mapping` is covered by `DfVariableMapping` (intentionally not duplicated).
 - **Fonts:** Roboto loads from Google Fonts CDN (the production typeface, not a substitution). Self-hosted woff2 can be wired into `tokens/fonts.css` on request.

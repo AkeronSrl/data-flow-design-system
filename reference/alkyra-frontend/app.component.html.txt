@@ -1,0 +1,6 @@
+@if (loggedIn()) {
+<ng-container>
+  <alk-screen-lock [showPane]="true" [showIndicator]="true"></alk-screen-lock>
+  <app-layout></app-layout>
+</ng-container>
+}

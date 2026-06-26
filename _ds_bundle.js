@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":3,"namespace":"TiaraDesignSystemNyma_96297e","components":[{"name":"TiaraAvatar","sourcePath":"components/display/TiaraAvatar.jsx"},{"name":"TiaraBadge","sourcePath":"components/display/TiaraBadge.jsx"},{"name":"TiaraCard","sourcePath":"components/display/TiaraCard.jsx"},{"name":"TiaraChip","sourcePath":"components/display/TiaraChip.jsx"},{"name":"TiaraProgressBar","sourcePath":"components/display/TiaraProgressBar.jsx"},{"name":"TiaraSeparator","sourcePath":"components/display/TiaraSeparator.jsx"},{"name":"TiaraSkeleton","sourcePath":"components/display/TiaraSkeleton.jsx"},{"name":"TiaraSpinner","sourcePath":"components/display/TiaraSpinner.jsx"},{"name":"TiaraStatCard","sourcePath":"components/display/TiaraStatCard.jsx"},{"name":"TiaraAlert","sourcePath":"components/feedback/TiaraAlert.jsx"},{"name":"TiaraTooltip","sourcePath":"components/feedback/TiaraTooltip.jsx"},{"name":"TiaraButton","sourcePath":"components/forms/TiaraButton.jsx"},{"name":"TiaraCheckbox","sourcePath":"components/forms/TiaraCheckbox.jsx"},{"name":"TiaraIconButton","sourcePath":"components/forms/TiaraIconButton.jsx"},{"name":"TiaraInput","sourcePath":"components/forms/TiaraInput.jsx"},{"name":"TiaraRadioGroup","sourcePath":"components/forms/TiaraRadioGroup.jsx"},{"name":"TiaraSelect","sourcePath":"components/forms/TiaraSelect.jsx"},{"name":"TiaraTextarea","sourcePath":"components/forms/TiaraTextarea.jsx"},{"name":"TiaraToggleSwitch","sourcePath":"components/forms/TiaraToggleSwitch.jsx"},{"name":"TiaraBreadcrumb","sourcePath":"components/navigation/TiaraBreadcrumb.jsx"},{"name":"TiaraTabs","sourcePath":"components/navigation/TiaraTabs.jsx"}],"sourceHashes":{"components/display/TiaraAvatar.jsx":"a64552bd421e","components/display/TiaraBadge.jsx":"6575e55b6b2f","components/display/TiaraCard.jsx":"4d648997e54e","components/display/TiaraChip.jsx":"eed62e556a3f","components/display/TiaraProgressBar.jsx":"a48d9013f062","components/display/TiaraSeparator.jsx":"4ba790d22cef","components/display/TiaraSkeleton.jsx":"bf32cdcebe78","components/display/TiaraSpinner.jsx":"10ce5f8557cb","components/display/TiaraStatCard.jsx":"acd4ba7d0d61","components/feedback/TiaraAlert.jsx":"e064ffec11ec","components/feedback/TiaraTooltip.jsx":"96c96c444917","components/forms/TiaraButton.jsx":"5e15403de70b","components/forms/TiaraCheckbox.jsx":"47ed471d8777","components/forms/TiaraIconButton.jsx":"b9dd9ef44fbd","components/forms/TiaraInput.jsx":"ffa8f6d5ef58","components/forms/TiaraRadioGroup.jsx":"c4a2d2bd32a6","components/forms/TiaraSelect.jsx":"c0bc4c86b12f","components/forms/TiaraTextarea.jsx":"80a8214ab116","components/forms/TiaraToggleSwitch.jsx":"73927e56edbf","components/navigation/TiaraBreadcrumb.jsx":"2b44084f00c1","components/navigation/TiaraTabs.jsx":"fb1abe5be93e","ui_kits/nyma-backoffice/kit-app.jsx":"d87957d9967b","ui_kits/nyma-backoffice/kit-screens.jsx":"1afdfcc95b9d","ui_kits/nyma-backoffice/kit-shell.jsx":"4708325408a3"},"inlinedExternals":[],"unexposedExports":[]} */
+/* @ds-bundle: {"format":3,"namespace":"TiaraDesignSystemNyma_96297e","components":[{"name":"DfAuditStatus","sourcePath":"components/dataflow/DfAuditStatus.jsx"},{"name":"DfConnectorList","sourcePath":"components/dataflow/DfConnectorList.jsx"},{"name":"DfDataTypeChip","sourcePath":"components/dataflow/DfDataTypeChip.jsx"},{"name":"DfEditableList","sourcePath":"components/dataflow/DfEditableList.jsx"},{"name":"DfExecutionLog","sourcePath":"components/dataflow/DfExecutionLog.jsx"},{"name":"DfExpressionEditor","sourcePath":"components/dataflow/DfExpressionEditor.jsx"},{"name":"DfFailViewer","sourcePath":"components/dataflow/DfFailViewer.jsx"},{"name":"DfStepper","sourcePath":"components/dataflow/DfFlowWizard.jsx"},{"name":"DfFlowWizard","sourcePath":"components/dataflow/DfFlowWizard.jsx"},{"name":"DfOptionSelect","sourcePath":"components/dataflow/DfOptionSelect.jsx"},{"name":"DfPipelineFlow","sourcePath":"components/dataflow/DfPipelineFlow.jsx"},{"name":"DfPreviewGrid","sourcePath":"components/dataflow/DfPreviewGrid.jsx"},{"name":"DfSchemaTree","sourcePath":"components/dataflow/DfSchemaTree.jsx"},{"name":"DfVariableMapping","sourcePath":"components/dataflow/DfVariableMapping.jsx"},{"name":"DfWizardStep","sourcePath":"components/dataflow/DfWizardStep.jsx"},{"name":"TiaraAvatar","sourcePath":"components/display/TiaraAvatar.jsx"},{"name":"TiaraBadge","sourcePath":"components/display/TiaraBadge.jsx"},{"name":"TiaraCard","sourcePath":"components/display/TiaraCard.jsx"},{"name":"TiaraChip","sourcePath":"components/display/TiaraChip.jsx"},{"name":"TiaraProgressBar","sourcePath":"components/display/TiaraProgressBar.jsx"},{"name":"TiaraSeparator","sourcePath":"components/display/TiaraSeparator.jsx"},{"name":"TiaraSkeleton","sourcePath":"components/display/TiaraSkeleton.jsx"},{"name":"TiaraSpinner","sourcePath":"components/display/TiaraSpinner.jsx"},{"name":"TiaraStatCard","sourcePath":"components/display/TiaraStatCard.jsx"},{"name":"TiaraAlert","sourcePath":"components/feedback/TiaraAlert.jsx"},{"name":"TiaraTooltip","sourcePath":"components/feedback/TiaraTooltip.jsx"},{"name":"TiaraButton","sourcePath":"components/forms/TiaraButton.jsx"},{"name":"TiaraCheckbox","sourcePath":"components/forms/TiaraCheckbox.jsx"},{"name":"TiaraIconButton","sourcePath":"components/forms/TiaraIconButton.jsx"},{"name":"TiaraInput","sourcePath":"components/forms/TiaraInput.jsx"},{"name":"TiaraRadioGroup","sourcePath":"components/forms/TiaraRadioGroup.jsx"},{"name":"TiaraSelect","sourcePath":"components/forms/TiaraSelect.jsx"},{"name":"TiaraTextarea","sourcePath":"components/forms/TiaraTextarea.jsx"},{"name":"TiaraToggleSwitch","sourcePath":"components/forms/TiaraToggleSwitch.jsx"},{"name":"TiaraBreadcrumb","sourcePath":"components/navigation/TiaraBreadcrumb.jsx"},{"name":"TiaraTabs","sourcePath":"components/navigation/TiaraTabs.jsx"},{"name":"DfHeader","sourcePath":"components/shell/DfHeader.jsx"},{"name":"DfHeaderDivider","sourcePath":"components/shell/DfHeader.jsx"},{"name":"DfSideMenu","sourcePath":"components/shell/DfSideMenu.jsx"}],"sourceHashes":{"components/dataflow/DfAuditStatus.jsx":"95c2834b9138","components/dataflow/DfConnectorList.jsx":"36c78f33dff7","components/dataflow/DfDataTypeChip.jsx":"d2993d277e72","components/dataflow/DfEditableList.jsx":"3a7255651f72","components/dataflow/DfExecutionLog.jsx":"997fcf0f11ca","components/dataflow/DfExpressionEditor.jsx":"d825e9d64c87","components/dataflow/DfFailViewer.jsx":"5e1c75ab8a94","components/dataflow/DfFlowWizard.jsx":"b3542eebc640","components/dataflow/DfOptionSelect.jsx":"3682497daf1b","components/dataflow/DfPipelineFlow.jsx":"8abe4980b326","components/dataflow/DfPreviewGrid.jsx":"9f6fe745e434","components/dataflow/DfSchemaTree.jsx":"8718a2b494a6","components/dataflow/DfVariableMapping.jsx":"0d23886f2b59","components/dataflow/DfWizardStep.jsx":"a93f3df00185","components/display/TiaraAvatar.jsx":"a64552bd421e","components/display/TiaraBadge.jsx":"6575e55b6b2f","components/display/TiaraCard.jsx":"4d648997e54e","components/display/TiaraChip.jsx":"eed62e556a3f","components/display/TiaraProgressBar.jsx":"a48d9013f062","components/display/TiaraSeparator.jsx":"4ba790d22cef","components/display/TiaraSkeleton.jsx":"bf32cdcebe78","components/display/TiaraSpinner.jsx":"10ce5f8557cb","components/display/TiaraStatCard.jsx":"acd4ba7d0d61","components/feedback/TiaraAlert.jsx":"e064ffec11ec","components/feedback/TiaraTooltip.jsx":"96c96c444917","components/forms/TiaraButton.jsx":"5e15403de70b","components/forms/TiaraCheckbox.jsx":"47ed471d8777","components/forms/TiaraIconButton.jsx":"b9dd9ef44fbd","components/forms/TiaraInput.jsx":"ffa8f6d5ef58","components/forms/TiaraRadioGroup.jsx":"c4a2d2bd32a6","components/forms/TiaraSelect.jsx":"c0bc4c86b12f","components/forms/TiaraTextarea.jsx":"80a8214ab116","components/forms/TiaraToggleSwitch.jsx":"73927e56edbf","components/navigation/TiaraBreadcrumb.jsx":"2b44084f00c1","components/navigation/TiaraTabs.jsx":"fb1abe5be93e","components/shell/DfHeader.jsx":"aa387c337550","components/shell/DfSideMenu.jsx":"d106239fc360","ui_kits/nyma-backoffice/kit-app.jsx":"d87957d9967b","ui_kits/nyma-backoffice/kit-screens.jsx":"1afdfcc95b9d","ui_kits/nyma-backoffice/kit-shell.jsx":"4708325408a3"},"inlinedExternals":[],"unexposedExports":[]} */
 
 (() => {
 
@@ -7,6 +7,1436 @@ const __ds_ns = (window.TiaraDesignSystemNyma_96297e = window.TiaraDesignSystemN
 const __ds_scope = {};
 
 (__ds_ns.__errors = __ds_ns.__errors || []);
+
+// components/dataflow/DfAuditStatus.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/**
+ * DfAuditStatus — compact pill summarising a pipeline's audit-snapshot setting
+ * (Alkyra `alk-pipeline-audit-status`). Shows an uppercase label, an
+ * enabled/disabled state pill (green when on) and, when enabled, the retained
+ * copy count.
+ */
+function DfAuditStatus({
+  enabled = false,
+  maxCopies = 1,
+  label = 'Audit',
+  enabledText = 'Enabled',
+  disabledText = 'Disabled',
+  copiesLabel = 'Copies',
+  className = '',
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    className: ['df-audit', enabled && 'df-audit--on', className].filter(Boolean).join(' ')
+  }, rest), /*#__PURE__*/React.createElement("span", {
+    className: "df-audit__label"
+  }, label), /*#__PURE__*/React.createElement("span", {
+    className: "df-audit__value"
+  }, enabled ? enabledText : disabledText), enabled && /*#__PURE__*/React.createElement("span", {
+    className: "df-audit__copies"
+  }, copiesLabel, ": ", maxCopies));
+}
+Object.assign(__ds_scope, { DfAuditStatus });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/dataflow/DfAuditStatus.jsx", error: String((e && e.message) || e) }); }
+
+// components/dataflow/DfConnectorList.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/**
+ * DfConnectorList — vertical list of selectable connector cards (Alkyra
+ * `pipeline-queue-selector` / connection list). Each row shows a logo or icon,
+ * a name and a meta line, with a coloured left accent rail that turns blue when
+ * selected. Controlled via `value` + `onSelect`, or uncontrolled via
+ * `defaultValue`.
+ */
+function DfConnectorList({
+  connectors = [],
+  value,
+  defaultValue = null,
+  onSelect,
+  className = '',
+  ...rest
+}) {
+  const controlled = value !== undefined;
+  const [internal, setInternal] = React.useState(defaultValue);
+  const current = controlled ? value : internal;
+  const pick = c => {
+    if (!controlled) setInternal(c.id);
+    onSelect?.(c);
+  };
+  return /*#__PURE__*/React.createElement("div", _extends({
+    className: ['df-conns', className].filter(Boolean).join(' '),
+    role: "listbox"
+  }, rest), connectors.map(c => {
+    const sel = current === c.id;
+    return /*#__PURE__*/React.createElement("button", {
+      type: "button",
+      key: c.id,
+      className: ['df-conn', sel && 'df-conn--selected'].filter(Boolean).join(' '),
+      role: "option",
+      "aria-selected": sel,
+      onClick: () => pick(c)
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "df-conn__ico",
+      "aria-hidden": "true"
+    }, c.logo ? /*#__PURE__*/React.createElement("img", {
+      src: c.logo,
+      alt: ""
+    }) : typeof c.icon === 'string' ? /*#__PURE__*/React.createElement("i", {
+      className: `fa-solid fa-${c.icon}`
+    }) : c.icon || /*#__PURE__*/React.createElement("i", {
+      className: "fa-solid fa-plug"
+    })), /*#__PURE__*/React.createElement("span", {
+      className: "df-conn__text"
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "df-conn__name"
+    }, c.name), c.meta && /*#__PURE__*/React.createElement("span", {
+      className: "df-conn__meta"
+    }, c.meta)), /*#__PURE__*/React.createElement("i", {
+      className: "fa-solid fa-circle-check df-conn__check",
+      "aria-hidden": "true"
+    }));
+  }));
+}
+Object.assign(__ds_scope, { DfConnectorList });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/dataflow/DfConnectorList.jsx", error: String((e && e.message) || e) }); }
+
+// components/dataflow/DfDataTypeChip.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const KNOWN = ['string', 'number', 'date', 'datetime', 'boolean'];
+
+/**
+ * DfDataTypeChip — monospace chip naming a column's data type, colour-coded by
+ * family (string / number / date / boolean), with an optional cast badge.
+ * Sourced from the Alkyra column preview-grid type chips.
+ */
+function DfDataTypeChip({
+  type = 'string',
+  label,
+  cast = false,
+  className = '',
+  ...rest
+}) {
+  const family = KNOWN.includes(type) ? type : 'string';
+  return /*#__PURE__*/React.createElement("span", _extends({
+    className: ['df-type', className].filter(Boolean).join(' ')
+  }, rest), /*#__PURE__*/React.createElement("span", {
+    className: `df-type__chip df-type__chip--${family}`
+  }, label ?? type), cast && /*#__PURE__*/React.createElement("span", {
+    className: "df-type__cast",
+    title: "Cast applied",
+    "aria-label": "Cast applied"
+  }, "C"));
+}
+Object.assign(__ds_scope, { DfDataTypeChip });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/dataflow/DfDataTypeChip.jsx", error: String((e && e.message) || e) }); }
+
+// components/dataflow/DfEditableList.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/**
+ * DfEditableList — inline-editable list (Alkyra `alk-list`).
+ *
+ * A column of rows, each an editable text field plus a row-action cluster, with
+ * an "add" button pinned to the top-right. Works controlled (pass `items` +
+ * handlers) or uncontrolled (seed with `defaultItems`).
+ */
+function DfEditableList({
+  items,
+  defaultItems = [],
+  addLabel = 'Add item',
+  rowActions = [],
+  emptyText = 'No items yet.',
+  onAdd,
+  onUpdate,
+  onDelete,
+  className = '',
+  ...rest
+}) {
+  const controlled = items != null;
+  const [internal, setInternal] = React.useState(defaultItems);
+  const rows = controlled ? items : internal;
+  const update = (id, description) => {
+    if (!controlled) setInternal(s => s.map(it => it.id === id ? {
+      ...it,
+      description
+    } : it));
+    onUpdate?.(id, description);
+  };
+  const add = () => {
+    if (!controlled) setInternal(s => [...s, {
+      id: `row-${Date.now()}`,
+      description: ''
+    }]);
+    onAdd?.();
+  };
+  const remove = id => {
+    if (!controlled) setInternal(s => s.filter(it => it.id !== id));
+    onDelete?.(id);
+  };
+  const actions = rowActions.length ? rowActions : [{
+    icon: 'fa-solid fa-trash-can',
+    label: 'Delete',
+    danger: true,
+    onClick: it => remove(it.id)
+  }];
+  return /*#__PURE__*/React.createElement("div", _extends({
+    className: ['df-list', className].filter(Boolean).join(' ')
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    className: "df-list__head"
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "tia-btn tia-btn--secondary tia-btn--sm",
+    onClick: add
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fa-solid fa-plus",
+    "aria-hidden": "true"
+  }), " ", addLabel)), rows.length === 0 ? /*#__PURE__*/React.createElement("div", {
+    className: "df-list__empty"
+  }, emptyText) : /*#__PURE__*/React.createElement("div", {
+    className: "df-list__rows"
+  }, rows.map(it => /*#__PURE__*/React.createElement("div", {
+    className: "df-list__row",
+    key: it.id
+  }, /*#__PURE__*/React.createElement("input", {
+    className: "df-list__field",
+    value: it.description,
+    placeholder: "Untitled",
+    onChange: e => update(it.id, e.target.value)
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "df-list__row-actions"
+  }, actions.map((a, i) => /*#__PURE__*/React.createElement("button", {
+    key: i,
+    type: "button",
+    className: "tia-iconbtn tia-iconbtn--sm tia-iconbtn--ghost",
+    "aria-label": a.label,
+    title: a.label,
+    style: a.danger ? {
+      color: 'var(--color-danger-600)'
+    } : undefined,
+    onClick: () => a.onClick?.(it)
+  }, typeof a.icon === 'string' ? /*#__PURE__*/React.createElement("i", {
+    className: a.icon
+  }) : a.icon)))))));
+}
+Object.assign(__ds_scope, { DfEditableList });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/dataflow/DfEditableList.jsx", error: String((e && e.message) || e) }); }
+
+// components/dataflow/DfExecutionLog.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const STATUS_ICON = {
+  succeeded: 'fa-circle-check',
+  failed: 'fa-circle-xmark',
+  warning: 'fa-circle-exclamation',
+  running: 'fa-clock'
+};
+const DETAIL_ICON = {
+  ok: 'fa-circle-check',
+  ko: 'fa-circle-xmark',
+  warning: 'fa-circle-exclamation'
+};
+function ExecRow({
+  exec,
+  expanded,
+  onToggle,
+  onOpenAudit
+}) {
+  const status = STATUS_ICON[exec.status] ? exec.status : 'running';
+  const details = exec.details || [];
+  return /*#__PURE__*/React.createElement("div", {
+    className: "df-exec__row"
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "df-exec__summary",
+    onClick: () => onToggle(exec.id),
+    "aria-expanded": expanded
+  }, /*#__PURE__*/React.createElement("span", {
+    className: `df-exec__status df-exec__status--${status}`,
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("i", {
+    className: `fa-solid ${STATUS_ICON[status]}`
+  })), /*#__PURE__*/React.createElement("span", {
+    className: "df-exec__cell"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "df-exec__cell-label"
+  }, "Pipeline"), /*#__PURE__*/React.createElement("span", {
+    className: "df-exec__cell-value df-exec__cell-value--strong",
+    title: exec.pipeline
+  }, exec.pipeline)), /*#__PURE__*/React.createElement("span", {
+    className: "df-exec__cell"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "df-exec__cell-label"
+  }, "Status"), /*#__PURE__*/React.createElement("span", {
+    className: "df-exec__cell-value",
+    title: exec.statusText
+  }, exec.statusText)), /*#__PURE__*/React.createElement("span", {
+    className: "df-exec__cell"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "df-exec__cell-label"
+  }, "Workspace"), /*#__PURE__*/React.createElement("span", {
+    className: "df-exec__cell-value"
+  }, exec.workspace)), /*#__PURE__*/React.createElement("span", {
+    className: "df-exec__cell"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "df-exec__cell-label"
+  }, "Started"), /*#__PURE__*/React.createElement("span", {
+    className: "df-exec__cell-value"
+  }, exec.startTime)), /*#__PURE__*/React.createElement("span", {
+    className: "df-exec__cell df-exec__cell--num"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "df-exec__cell-label"
+  }, "Duration"), /*#__PURE__*/React.createElement("span", {
+    className: "df-exec__cell-value"
+  }, exec.duration)), /*#__PURE__*/React.createElement("span", {
+    className: "df-exec__cell"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "df-exec__cell-label"
+  }, "User"), /*#__PURE__*/React.createElement("span", {
+    className: "df-exec__cell-value"
+  }, exec.user)), details.length > 0 ? /*#__PURE__*/React.createElement("i", {
+    className: ['fa-solid fa-chevron-right df-exec__chev', expanded && 'df-exec__chev--open'].filter(Boolean).join(' '),
+    "aria-hidden": "true"
+  }) : /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 12
+    }
+  })), expanded && details.length > 0 && /*#__PURE__*/React.createElement("div", {
+    className: "df-exec__details"
+  }, details.map((d, i) => {
+    const di = DETAIL_ICON[d.outcome] || DETAIL_ICON.ok;
+    return /*#__PURE__*/React.createElement("div", {
+      className: "df-exec__detail",
+      key: i
+    }, /*#__PURE__*/React.createElement("i", {
+      className: `fa-solid ${di} df-exec__detail-ico df-exec__detail-ico--${d.outcome || 'ok'}`,
+      "aria-hidden": "true"
+    }), /*#__PURE__*/React.createElement("span", {
+      className: "df-exec__detail-name",
+      title: d.description
+    }, d.description), /*#__PURE__*/React.createElement("span", {
+      className: "df-exec__detail-meta"
+    }, d.occurredAt), /*#__PURE__*/React.createElement("span", {
+      className: "df-exec__detail-meta df-exec__detail-meta--num"
+    }, d.duration), /*#__PURE__*/React.createElement("span", {
+      className: "df-exec__detail-meta"
+    }, d.user));
+  }), onOpenAudit && exec.hasAudit && /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      marginTop: 4
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "tia-btn tia-btn--outline-secondary tia-btn--sm",
+    onClick: () => onOpenAudit(exec)
+  }, "Open data audit"))));
+}
+
+/**
+ * DfExecutionLog — pipeline execution monitor (Alkyra `alk-logs`).
+ *
+ * A list of execution rows, each status-coded (succeeded / failed / warning /
+ * running) with pipeline, status text, workspace, start time, duration and
+ * user. Rows with step details expand to a per-step breakdown and an optional
+ * "open data audit" action. Single row open at a time by default, or
+ * `multiExpand` for several.
+ */
+function DfExecutionLog({
+  executions = [],
+  defaultExpandedId = null,
+  multiExpand = false,
+  onOpenAudit,
+  className = '',
+  ...rest
+}) {
+  const [open, setOpen] = React.useState(() => defaultExpandedId ? [defaultExpandedId] : []);
+  const toggle = id => {
+    setOpen(cur => {
+      if (multiExpand) return cur.includes(id) ? cur.filter(x => x !== id) : [...cur, id];
+      return cur.includes(id) ? [] : [id];
+    });
+  };
+  return /*#__PURE__*/React.createElement("div", _extends({
+    className: ['df-exec', className].filter(Boolean).join(' ')
+  }, rest), executions.map(exec => /*#__PURE__*/React.createElement(ExecRow, {
+    key: exec.id,
+    exec: exec,
+    expanded: open.includes(exec.id),
+    onToggle: toggle,
+    onOpenAudit: onOpenAudit
+  })));
+}
+Object.assign(__ds_scope, { DfExecutionLog });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/dataflow/DfExecutionLog.jsx", error: String((e && e.message) || e) }); }
+
+// components/dataflow/DfExpressionEditor.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const DEFAULT_FUNCTIONS = ['IF', 'COALESCE', 'ISNULL', 'CONCAT', 'UPPER', 'LOWER', 'TRIM', 'SUBSTRING', 'LENGTH', 'REPLACE', 'ROUND', 'ABS', 'CAST', 'TO_DATE', 'DATEADD', 'DATEDIFF', 'SUM', 'AVG', 'MIN', 'MAX', 'COUNT', 'NULLIF', 'CASE'];
+const TOKEN_RE = /[A-Za-z0-9_.]+$/;
+
+/** Find the partial identifier immediately before the caret. */
+function tokenAtCaret(value, caret) {
+  const before = value.slice(0, caret);
+  const m = before.match(TOKEN_RE);
+  if (!m) return {
+    text: '',
+    start: caret
+  };
+  return {
+    text: m[0],
+    start: caret - m[0].length
+  };
+}
+function buildSuggestions(value, caret, columns, functions, max) {
+  const {
+    text
+  } = tokenAtCaret(value, caret);
+  const q = text.toLowerCase();
+  const cols = columns.map(c => ({
+    label: c,
+    kind: 'column'
+  }));
+  const fns = functions.map(f => ({
+    label: f,
+    kind: 'function'
+  }));
+  const all = [...cols, ...fns];
+  const filtered = q ? all.filter(s => s.label.toLowerCase().includes(q)) : all;
+  // prefix matches first
+  filtered.sort((a, b) => {
+    const ap = a.label.toLowerCase().startsWith(q) ? 0 : 1;
+    const bp = b.label.toLowerCase().startsWith(q) ? 0 : 1;
+    return ap - bp || a.label.localeCompare(b.label);
+  });
+  return filtered.slice(0, max);
+}
+function applySuggestion(value, caret, sugg) {
+  const {
+    start
+  } = tokenAtCaret(value, caret);
+  const insert = sugg.kind === 'function' ? `${sugg.label}(` : sugg.label;
+  const next = value.slice(0, start) + insert + value.slice(caret);
+  return {
+    value: next,
+    caret: start + insert.length
+  };
+}
+function autoWarnings(value, functions) {
+  const known = new Set(functions.map(f => f.toUpperCase()));
+  const warnings = [];
+  const seen = new Set();
+  const re = /([A-Za-z_][A-Za-z0-9_]*)\s*\(/g;
+  let m;
+  while (m = re.exec(value)) {
+    const name = m[1];
+    if (!known.has(name.toUpperCase()) && !seen.has(name.toUpperCase())) {
+      seen.add(name.toUpperCase());
+      warnings.push({
+        code: 'unknown-function',
+        message: `Unknown function "${name}"`
+      });
+    }
+  }
+  return warnings;
+}
+
+/**
+ * DfExpressionEditor — formula / SQL expression field with autocomplete and
+ * inline lint warnings (Alkyra `alk-smart-expression-editor`).
+ *
+ * Type to get column + function suggestions (also opens on Ctrl+Space);
+ * ArrowUp/Down navigate, Enter/Tab apply, Esc closes. Unknown function calls
+ * surface as amber warning chips. Controlled via `value`/`onChange`, or
+ * uncontrolled via `defaultValue`.
+ */
+function DfExpressionEditor({
+  value,
+  defaultValue = '',
+  placeholder = 'Enter an expression…',
+  columns = [],
+  functions = DEFAULT_FUNCTIONS,
+  maxSuggestions = 12,
+  rows = 4,
+  validationState = 'none',
+  warnings,
+  onChange,
+  className = '',
+  ...rest
+}) {
+  const controlled = value != null;
+  const [internal, setInternal] = React.useState(defaultValue);
+  const text = controlled ? value : internal;
+  const [open, setOpen] = React.useState(false);
+  const [suggestions, setSuggestions] = React.useState([]);
+  const [active, setActive] = React.useState(0);
+  const ref = React.useRef(null);
+  const effectiveWarnings = warnings ?? autoWarnings(text, functions);
+  const setText = (next, caret) => {
+    if (!controlled) setInternal(next);
+    onChange?.(next);
+    if (caret != null) {
+      requestAnimationFrame(() => {
+        const el = ref.current;
+        if (el) {
+          el.focus();
+          el.setSelectionRange(caret, caret);
+        }
+      });
+    }
+  };
+  const refresh = (force = false) => {
+    const el = ref.current;
+    const caret = el ? el.selectionStart : text.length;
+    const next = buildSuggestions(text, caret, columns, functions, maxSuggestions);
+    setSuggestions(next);
+    setActive(0);
+    setOpen(force ? next.length > 0 : next.length > 0);
+  };
+  const choose = sugg => {
+    const el = ref.current;
+    const caret = el ? el.selectionStart : text.length;
+    const applied = applySuggestion(text, caret, sugg);
+    setText(applied.value, applied.caret);
+    setOpen(false);
+  };
+  const onKeyDown = e => {
+    if (e.ctrlKey && e.code === 'Space') {
+      e.preventDefault();
+      refresh(true);
+      return;
+    }
+    if (!open || suggestions.length === 0) return;
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setActive(a => (a + 1) % suggestions.length);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setActive(a => (a - 1 + suggestions.length) % suggestions.length);
+    } else if (e.key === 'Enter' || e.key === 'Tab') {
+      e.preventDefault();
+      choose(suggestions[active]);
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      setOpen(false);
+    }
+  };
+  return /*#__PURE__*/React.createElement("div", _extends({
+    className: ['df-expr', validationState === 'invalid' && 'df-expr--invalid', className].filter(Boolean).join(' ')
+  }, rest), /*#__PURE__*/React.createElement("textarea", {
+    ref: ref,
+    className: "df-expr__area",
+    value: text,
+    rows: rows,
+    placeholder: placeholder,
+    spellCheck: false,
+    onChange: e => {
+      setText(e.target.value);
+    },
+    onKeyUp: e => {
+      if (['ArrowDown', 'ArrowUp', 'Enter', 'Tab', 'Escape'].includes(e.key)) return;
+      if (e.ctrlKey || e.altKey || e.metaKey) return;
+      refresh();
+    },
+    onKeyDown: onKeyDown,
+    onBlur: () => setTimeout(() => setOpen(false), 120)
+  }), open && suggestions.length > 0 && /*#__PURE__*/React.createElement("div", {
+    className: "df-expr__suggest",
+    role: "listbox"
+  }, suggestions.map((s, i) => /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    key: s.kind + s.label,
+    className: ['df-expr__opt', i === active && 'df-expr__opt--active'].filter(Boolean).join(' '),
+    onMouseDown: e => e.preventDefault(),
+    onMouseEnter: () => setActive(i),
+    onClick: () => choose(s)
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "df-expr__opt-label"
+  }, s.label), /*#__PURE__*/React.createElement("span", {
+    className: "df-expr__opt-kind"
+  }, s.kind)))), effectiveWarnings.length > 0 && /*#__PURE__*/React.createElement("div", {
+    className: "df-expr__warnings"
+  }, effectiveWarnings.map((w, i) => /*#__PURE__*/React.createElement("div", {
+    className: "df-expr__warning",
+    key: i
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fa-solid fa-triangle-exclamation",
+    "aria-hidden": "true",
+    style: {
+      marginRight: 6
+    }
+  }), w.message))));
+}
+Object.assign(__ds_scope, { DfExpressionEditor });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/dataflow/DfExpressionEditor.jsx", error: String((e && e.message) || e) }); }
+
+// components/dataflow/DfFailViewer.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const ICONS = {
+  error: 'fa-solid fa-circle-xmark',
+  warning: 'fa-solid fa-triangle-exclamation',
+  info: 'fa-solid fa-circle-info'
+};
+
+/**
+ * DfFailViewer — validation / execution message list (Alkyra `akn-fail-viewer`).
+ *
+ * Stacks field-level messages, each colour-coded by level (error / warning /
+ * info) with a leading status icon, a bold field title and an explanation line.
+ * Use it for wizard validation, export pre-flight checks and execution faults.
+ */
+function DfFailViewer({
+  messages = [],
+  className = '',
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    className: ['df-fails', className].filter(Boolean).join(' '),
+    role: "list"
+  }, rest), messages.map((m, i) => {
+    const level = m.level === 'error' || m.level === 'warning' ? m.level : m.level === 'info' ? 'info' : 'error';
+    return /*#__PURE__*/React.createElement("div", {
+      className: `df-fail df-fail--${level}`,
+      role: "listitem",
+      key: i
+    }, /*#__PURE__*/React.createElement("i", {
+      className: `df-fail__ico ${ICONS[level]}`,
+      "aria-hidden": "true"
+    }), /*#__PURE__*/React.createElement("div", {
+      style: {
+        minWidth: 0
+      }
+    }, m.field && /*#__PURE__*/React.createElement("p", {
+      className: "df-fail__field"
+    }, m.field), /*#__PURE__*/React.createElement("p", {
+      className: "df-fail__msg"
+    }, m.message)));
+  }));
+}
+Object.assign(__ds_scope, { DfFailViewer });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/dataflow/DfFailViewer.jsx", error: String((e && e.message) || e) }); }
+
+// components/dataflow/DfFlowWizard.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Dot stepper used in the wizard footer. */
+function DfStepper({
+  totalSteps = 1,
+  selectedStep = 1
+}) {
+  const dots = Array.from({
+    length: Math.max(1, totalSteps)
+  }, (_, i) => i + 1);
+  return /*#__PURE__*/React.createElement("div", {
+    className: "df-stepper"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "df-stepper__label"
+  }, "Step ", selectedStep, " of ", totalSteps), /*#__PURE__*/React.createElement("div", {
+    className: "df-stepper__dots"
+  }, dots.map(n => /*#__PURE__*/React.createElement("span", {
+    key: n,
+    className: ['df-stepper__dot', n < selectedStep && 'df-stepper__dot--done', n === selectedStep && 'df-stepper__dot--current'].filter(Boolean).join(' ')
+  }))));
+}
+
+/**
+ * DfFlowWizard — multi-step flow shell (Alkyra `akn-flow-wizard`).
+ *
+ * A panel with a titled header, a scrollable body and a footer carrying the
+ * step indicator plus Back / Next / Cancel actions. Drive it declaratively with
+ * a `steps` array (it tracks the active step itself and fires `onComplete` at
+ * the end), or control it via `step` + `children`.
+ */
+function DfFlowWizard({
+  title = '',
+  steps,
+  step,
+  defaultStep = 1,
+  totalSteps,
+  showStepper = true,
+  nextLabel = 'Next',
+  backLabel = 'Back',
+  cancelLabel = 'Cancel',
+  completeLabel = 'Finish',
+  nextDisabled = false,
+  onNext,
+  onBack,
+  onCancel,
+  onComplete,
+  onStepChange,
+  children,
+  className = '',
+  style,
+  ...rest
+}) {
+  const controlled = step != null;
+  const [internal, setInternal] = React.useState(defaultStep);
+  const current = controlled ? step : internal;
+  const total = totalSteps ?? (steps ? steps.length : 1);
+  const isFirst = current <= 1;
+  const isLast = current >= total;
+  const go = next => {
+    if (!controlled) setInternal(next);
+    onStepChange?.(next);
+  };
+  const handleNext = () => {
+    onNext?.(current);
+    if (isLast) {
+      onComplete?.();
+      return;
+    }
+    go(current + 1);
+  };
+  const handleBack = () => {
+    onBack?.(current);
+    if (!isFirst) go(current - 1);
+  };
+  const body = children ?? (steps ? steps[current - 1]?.content : null);
+  const stepTitle = steps?.[current - 1]?.label;
+  return /*#__PURE__*/React.createElement("section", _extends({
+    className: ['df-wizard', className].filter(Boolean).join(' '),
+    style: {
+      width: 560,
+      height: 420,
+      ...style
+    },
+    role: "dialog",
+    "aria-label": typeof title === 'string' ? title : undefined
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    className: "df-wizard__head"
+  }, /*#__PURE__*/React.createElement("h2", {
+    className: "df-wizard__title"
+  }, title, stepTitle ? /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: 'var(--color-foreground-alt3)',
+      fontWeight: 400
+    }
+  }, " \xB7 ", stepTitle) : null), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "tia-iconbtn tia-iconbtn--sm tia-iconbtn--ghost",
+    "aria-label": "Close",
+    onClick: onCancel
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fa-solid fa-xmark"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "df-wizard__body"
+  }, body), /*#__PURE__*/React.createElement("div", {
+    className: ['df-wizard__foot', !showStepper && 'df-wizard__foot--end'].filter(Boolean).join(' ')
+  }, showStepper && /*#__PURE__*/React.createElement(DfStepper, {
+    totalSteps: total,
+    selectedStep: current
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "df-wizard__actions"
+  }, !isFirst && /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "tia-btn tia-btn--outline-secondary tia-btn--md",
+    onClick: handleBack
+  }, backLabel), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "tia-btn tia-btn--primary tia-btn--md",
+    disabled: nextDisabled,
+    onClick: handleNext
+  }, isLast ? completeLabel : nextLabel), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "tia-btn tia-btn--ghost tia-btn--md",
+    onClick: onCancel
+  }, cancelLabel))));
+}
+Object.assign(__ds_scope, { DfStepper, DfFlowWizard });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/dataflow/DfFlowWizard.jsx", error: String((e && e.message) || e) }); }
+
+// components/dataflow/DfOptionSelect.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/**
+ * DfOptionSelect — grid of selectable option cards (Alkyra
+ * `tiara-suite-option-button-selection`). Each card carries an icon, title and
+ * subtitle; used for picking a dataset type, connector type, join type or
+ * export destination. Single-select by default, or `multiple` for a set.
+ * Controlled via `value` + `onChange`, or uncontrolled via `defaultValue`.
+ */
+function DfOptionSelect({
+  options = [],
+  value,
+  defaultValue,
+  multiple = false,
+  onChange,
+  className = '',
+  ...rest
+}) {
+  const controlled = value !== undefined;
+  const [internal, setInternal] = React.useState(defaultValue !== undefined ? defaultValue : multiple ? [] : null);
+  const current = controlled ? value : internal;
+  const isSelected = v => multiple ? Array.isArray(current) && current.includes(v) : current === v;
+  const pick = v => {
+    let next;
+    if (multiple) {
+      const set = Array.isArray(current) ? current : [];
+      next = set.includes(v) ? set.filter(x => x !== v) : [...set, v];
+    } else {
+      next = current === v ? null : v;
+    }
+    if (!controlled) setInternal(next);
+    onChange?.(next);
+  };
+  return /*#__PURE__*/React.createElement("div", _extends({
+    className: ['df-options', className].filter(Boolean).join(' '),
+    role: multiple ? 'group' : 'radiogroup'
+  }, rest), options.map(opt => {
+    const sel = isSelected(opt.value);
+    return /*#__PURE__*/React.createElement("button", {
+      type: "button",
+      key: opt.value,
+      className: ['df-option', sel && 'df-option--selected'].filter(Boolean).join(' '),
+      role: multiple ? 'checkbox' : 'radio',
+      "aria-checked": sel,
+      onClick: () => pick(opt.value)
+    }, opt.icon && /*#__PURE__*/React.createElement("span", {
+      className: "df-option__ico",
+      "aria-hidden": "true"
+    }, typeof opt.icon === 'string' ? /*#__PURE__*/React.createElement("i", {
+      className: `fa-solid fa-${opt.icon}`
+    }) : opt.icon), /*#__PURE__*/React.createElement("span", {
+      className: "df-option__text"
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "df-option__title"
+    }, opt.title), opt.subtitle && /*#__PURE__*/React.createElement("span", {
+      className: "df-option__subtitle"
+    }, opt.subtitle)), /*#__PURE__*/React.createElement("i", {
+      className: "fa-solid fa-circle-check df-option__check",
+      "aria-hidden": "true"
+    }));
+  }));
+}
+Object.assign(__ds_scope, { DfOptionSelect });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/dataflow/DfOptionSelect.jsx", error: String((e && e.message) || e) }); }
+
+// components/dataflow/DfPipelineFlow.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/** Topological level for each node from connections (sources at level 0). */
+function computeLevels(nodes, connections) {
+  const incoming = new Map();
+  nodes.forEach(n => incoming.set(n.id, []));
+  connections.forEach(c => {
+    if (incoming.has(c.to)) incoming.get(c.to).push(c.from);
+  });
+  const levels = new Map();
+  const visiting = new Set();
+  const resolve = id => {
+    if (levels.has(id)) return levels.get(id);
+    if (visiting.has(id)) return 0;
+    visiting.add(id);
+    const src = incoming.get(id) || [];
+    const lvl = src.length ? Math.max(...src.map(resolve)) + 1 : 0;
+    levels.set(id, lvl);
+    visiting.delete(id);
+    return lvl;
+  };
+  nodes.forEach(n => resolve(n.id));
+  return levels;
+}
+function nodeKind(type) {
+  if (type === 'source') return 'source';
+  if (type === 'join') return 'join';
+  return 'derived';
+}
+
+/**
+ * DfPipelineFlow — the visual transformation DAG (Alkyra `alk-pipeline-flow`).
+ *
+ * Lays dataset nodes out in columns by dependency depth and draws curved SVG
+ * links between them, each carrying an operation label (join / union / subset /
+ * aggregation / transformation). Nodes are colour-ruled by role — source
+ * (blue), join (green), derived (grey) — with an icon, description and a role
+ * badge. Clicking a node fires `onSelect`; hovering a link label highlights it.
+ */
+function DfPipelineFlow({
+  title = 'Pipeline flow',
+  subtitle,
+  nodes = [],
+  connections = [],
+  selectedId,
+  onSelect,
+  actions,
+  emptyText = 'No datasets in this pipeline yet.',
+  className = '',
+  ...rest
+}) {
+  const canvasRef = React.useRef(null);
+  const nodeRefs = React.useRef({});
+  const [paths, setPaths] = React.useState([]);
+  const [hover, setHover] = React.useState(null);
+  const [size, setSize] = React.useState({
+    width: 0,
+    height: 0
+  });
+  const levels = React.useMemo(() => computeLevels(nodes, connections), [nodes, connections]);
+  const columns = React.useMemo(() => {
+    const map = new Map();
+    nodes.forEach(n => {
+      const lvl = n.level ?? levels.get(n.id) ?? 0;
+      if (!map.has(lvl)) map.set(lvl, []);
+      map.get(lvl).push(n);
+    });
+    return [...map.entries()].sort((a, b) => a[0] - b[0]).map(([level, ns]) => ({
+      level,
+      nodes: ns
+    }));
+  }, [nodes, levels]);
+  const measure = React.useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const cRect = canvas.getBoundingClientRect();
+    setSize({
+      width: canvas.scrollWidth,
+      height: canvas.scrollHeight
+    });
+    const next = [];
+    for (const c of connections) {
+      const fromEl = nodeRefs.current[c.from];
+      const toEl = nodeRefs.current[c.to];
+      if (!fromEl || !toEl) continue;
+      const f = fromEl.getBoundingClientRect();
+      const t = toEl.getBoundingClientRect();
+      const startX = f.right - cRect.left;
+      const startY = f.top + f.height / 2 - cRect.top;
+      const endX = t.left - cRect.left;
+      const endY = t.top + t.height / 2 - cRect.top;
+      const cx = startX + (endX - startX) / 2;
+      next.push({
+        id: `${c.from}-${c.to}`,
+        d: `M ${startX} ${startY} C ${cx} ${startY}, ${cx} ${endY}, ${endX} ${endY}`,
+        labelX: (startX + 6 * cx + endX) / 8,
+        labelY: (startY + endY) / 2,
+        label: c.operation
+      });
+    }
+    setPaths(next);
+  }, [connections]);
+  React.useLayoutEffect(() => {
+    measure();
+  }, [measure, columns]);
+  React.useEffect(() => {
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, [measure]);
+  return /*#__PURE__*/React.createElement("div", _extends({
+    className: ['df-flow', className].filter(Boolean).join(' ')
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    className: "df-flow__head"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", {
+    className: "df-flow__title"
+  }, title), subtitle && /*#__PURE__*/React.createElement("p", {
+    className: "df-flow__subtitle"
+  }, subtitle)), actions && /*#__PURE__*/React.createElement("div", null, actions)), /*#__PURE__*/React.createElement("div", {
+    className: "df-flow__graph"
+  }, nodes.length === 0 ? /*#__PURE__*/React.createElement("div", {
+    className: "df-flow__empty"
+  }, emptyText) : /*#__PURE__*/React.createElement("div", {
+    className: "df-flow__canvas",
+    ref: canvasRef
+  }, /*#__PURE__*/React.createElement("svg", {
+    className: "df-flow__links",
+    width: size.width,
+    height: size.height,
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("marker", {
+    id: "df-flow-arrow",
+    markerWidth: "6",
+    markerHeight: "6",
+    refX: "5",
+    refY: "3",
+    orient: "auto"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M 0 0 L 6 3 L 0 6 z",
+    className: "df-flow__arrow"
+  })), /*#__PURE__*/React.createElement("marker", {
+    id: "df-flow-arrow-hl",
+    markerWidth: "6",
+    markerHeight: "6",
+    refX: "5",
+    refY: "3",
+    orient: "auto"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M 0 0 L 6 3 L 0 6 z",
+    className: "df-flow__arrow df-flow__arrow--highlight"
+  }))), paths.map(p => /*#__PURE__*/React.createElement("path", {
+    key: p.id,
+    className: ['df-flow__link', hover === p.id && 'df-flow__link--highlight'].filter(Boolean).join(' '),
+    d: p.d,
+    markerEnd: hover === p.id ? 'url(#df-flow-arrow-hl)' : 'url(#df-flow-arrow)'
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "df-flow__labels"
+  }, paths.map(p => p.label && /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    key: p.id,
+    className: ['df-flow__label', hover === p.id && 'df-flow__label--highlight'].filter(Boolean).join(' '),
+    style: {
+      left: p.labelX,
+      top: p.labelY
+    },
+    onMouseEnter: () => setHover(p.id),
+    onMouseLeave: () => setHover(null)
+  }, p.label))), /*#__PURE__*/React.createElement("div", {
+    className: "df-flow__levels"
+  }, columns.map(col => /*#__PURE__*/React.createElement("div", {
+    className: "df-flow__col",
+    key: col.level
+  }, col.nodes.map(node => {
+    const kind = nodeKind(node.type);
+    return /*#__PURE__*/React.createElement("button", {
+      type: "button",
+      key: node.id,
+      ref: el => {
+        nodeRefs.current[node.id] = el;
+      },
+      className: ['df-flow__node', `df-flow__node--${kind}`, selectedId === node.id && 'df-flow__node--selected'].filter(Boolean).join(' '),
+      onClick: () => onSelect?.(node)
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "df-flow__node-head"
+    }, node.icon && /*#__PURE__*/React.createElement("span", {
+      className: "df-flow__node-ico",
+      "aria-hidden": "true"
+    }, typeof node.icon === 'string' && node.icon.includes('/') ? /*#__PURE__*/React.createElement("img", {
+      src: node.icon,
+      alt: ""
+    }) : typeof node.icon === 'string' ? /*#__PURE__*/React.createElement("i", {
+      className: `fa-solid fa-${node.icon}`
+    }) : node.icon), /*#__PURE__*/React.createElement("span", {
+      className: "df-flow__node-name"
+    }, node.name)), node.description && /*#__PURE__*/React.createElement("div", {
+      className: "df-flow__node-desc"
+    }, node.description), node.connector && /*#__PURE__*/React.createElement("div", {
+      className: "df-flow__node-meta"
+    }, node.connector), (node.badge || kind) && /*#__PURE__*/React.createElement("div", {
+      className: "df-flow__node-badges"
+    }, /*#__PURE__*/React.createElement("span", {
+      className: `df-flow__badge df-flow__badge--${kind}`
+    }, node.badge ?? kind)));
+  })))))));
+}
+Object.assign(__ds_scope, { DfPipelineFlow });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/dataflow/DfPipelineFlow.jsx", error: String((e && e.message) || e) }); }
+
+// components/dataflow/DfPreviewGrid.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/**
+ * DfPreviewGrid — tabular data preview for a dataset / query result (Alkyra
+ * `dataset-column-selector` preview grid). Sticky header cells show the column
+ * caption, an optional actions menu, and a data-type chip (with cast badge);
+ * the toolbar carries a selected/total counter and a slot for actions. Numeric
+ * columns right-align with tabular figures.
+ */
+function DfPreviewGrid({
+  columns = [],
+  rows = [],
+  selectedCount,
+  totalCount,
+  actions,
+  columnMenu = false,
+  loading = false,
+  emptyText = 'No rows to preview.',
+  onColumnMenu,
+  className = '',
+  ...rest
+}) {
+  const total = totalCount ?? columns.length;
+  const selected = selectedCount ?? columns.length;
+  return /*#__PURE__*/React.createElement("div", _extends({
+    className: ['df-preview', className].filter(Boolean).join(' ')
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    className: "df-preview__toolbar"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "df-preview__counter"
+  }, /*#__PURE__*/React.createElement("b", null, selected), " of ", /*#__PURE__*/React.createElement("b", null, total), " columns selected"), actions && /*#__PURE__*/React.createElement("div", {
+    className: "df-preview__actions"
+  }, actions)), /*#__PURE__*/React.createElement("div", {
+    className: "df-preview__grid",
+    "aria-busy": loading || undefined
+  }, loading ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      justifyContent: 'center',
+      padding: 32
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "tia-spinner",
+    style: {
+      width: 32,
+      height: 32
+    }
+  })) : /*#__PURE__*/React.createElement("table", {
+    className: "df-table"
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, columns.map(col => /*#__PURE__*/React.createElement("th", {
+    key: col.field
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "df-th__top"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "df-th__caption",
+    title: typeof col.caption === 'string' ? col.caption : undefined
+  }, col.caption ?? col.field), columnMenu && /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "df-th__menu",
+    "aria-label": `${col.caption ?? col.field} actions`,
+    onClick: () => onColumnMenu?.(col)
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fa-solid fa-ellipsis-vertical"
+  }))), col.type && /*#__PURE__*/React.createElement(__ds_scope.DfDataTypeChip, {
+    className: "df-th__type",
+    type: col.type,
+    cast: col.cast
+  }))))), /*#__PURE__*/React.createElement("tbody", null, rows.length === 0 ? /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", {
+    colSpan: Math.max(1, columns.length),
+    className: "df-table__muted",
+    style: {
+      textAlign: 'center',
+      padding: 24
+    }
+  }, emptyText)) : rows.map((row, ri) => /*#__PURE__*/React.createElement("tr", {
+    key: ri
+  }, columns.map(col => {
+    const v = row[col.field];
+    const numeric = col.numeric ?? col.type === 'number';
+    const empty = v == null || v === '';
+    return /*#__PURE__*/React.createElement("td", {
+      key: col.field,
+      className: numeric ? 'df-table__num' : undefined
+    }, empty ? /*#__PURE__*/React.createElement("span", {
+      className: "df-table__muted"
+    }, "\u2014") : String(v));
+  })))))));
+}
+Object.assign(__ds_scope, { DfPreviewGrid });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/dataflow/DfPreviewGrid.jsx", error: String((e && e.message) || e) }); }
+
+// components/dataflow/DfSchemaTree.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+function matchNode(node, q) {
+  return [node.label, node.description, node.searchText].filter(Boolean).join(' ').toLowerCase().includes(q);
+}
+
+/** Returns a filtered copy of the tree (matching branches forced open), or null. */
+function filterNode(node, q) {
+  const matches = matchNode(node, q);
+  const items = node.items ?? [];
+  if (items.length === 0) return matches ? node : null;
+  if (matches) return {
+    ...node,
+    __forceOpen: true
+  };
+  const children = items.map(c => filterNode(c, q)).filter(Boolean);
+  if (children.length === 0) return null;
+  return {
+    ...node,
+    items: children,
+    __forceOpen: true
+  };
+}
+function Badge({
+  badge,
+  fixed
+}) {
+  if (!badge) return null;
+  return /*#__PURE__*/React.createElement("span", {
+    className: ['df-node__badge', `df-node__badge--${badge.tone || 'neutral'}`, fixed && 'df-node__badge--fixed'].filter(Boolean).join(' ')
+  }, badge.text);
+}
+function SchemaNode({
+  node,
+  depth,
+  expanded,
+  selectedId,
+  onToggle,
+  onSelect
+}) {
+  const hasItems = node.items && node.items.length > 0 || node.hasItems;
+  const isOpen = node.__forceOpen || expanded.has(node.id);
+  const isSelected = selectedId === node.id;
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: ['df-node', node.selectable && 'df-node--selectable', isSelected && 'df-node--selected'].filter(Boolean).join(' '),
+    onClick: () => {
+      if (hasItems) onToggle(node.id);
+      if (node.selectable) onSelect(node);
+    },
+    role: "treeitem",
+    "aria-expanded": hasItems ? isOpen : undefined,
+    "aria-selected": isSelected || undefined
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "df-node__main"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: ['df-node__twisty', isOpen && 'df-node__twisty--open', !hasItems && 'df-node__twisty--leaf'].filter(Boolean).join(' ')
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fa-solid fa-chevron-right",
+    "aria-hidden": "true"
+  })), node.leadingBadge && /*#__PURE__*/React.createElement(Badge, {
+    badge: node.leadingBadge,
+    fixed: true
+  }), node.icon && /*#__PURE__*/React.createElement("i", {
+    className: `df-node__ico ${node.icon}`,
+    "aria-hidden": "true"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "df-node__text"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "df-node__label"
+  }, node.label), node.description && /*#__PURE__*/React.createElement("span", {
+    className: "df-node__desc"
+  }, node.description))), /*#__PURE__*/React.createElement("div", {
+    className: "df-node__tail"
+  }, node.loading && /*#__PURE__*/React.createElement("span", {
+    className: "tia-spinner",
+    style: {
+      width: 14,
+      height: 14
+    }
+  }), /*#__PURE__*/React.createElement(Badge, {
+    badge: node.badge
+  }))), hasItems && isOpen && /*#__PURE__*/React.createElement("div", {
+    className: "df-node__children",
+    role: "group"
+  }, (node.items ?? []).map(child => /*#__PURE__*/React.createElement(SchemaNode, {
+    key: child.id,
+    node: child,
+    depth: depth + 1,
+    expanded: expanded,
+    selectedId: selectedId,
+    onToggle: onToggle,
+    onSelect: onSelect
+  }))));
+}
+function collectDefaultOpen(nodes, set) {
+  for (const n of nodes) {
+    if (n.defaultExpanded) set.add(n.id);
+    if (n.items) collectDefaultOpen(n.items, set);
+  }
+  return set;
+}
+
+/**
+ * DfSchemaTree — searchable, expandable data-source explorer
+ * (Alkyra `alk-schema-discovery`). Renders a recursive tree of schemas /
+ * tables / columns with per-node icons, tone badges and an optional header
+ * summary. Search filters and auto-expands matching branches; rows flagged
+ * `selectable` emit `onSelect`.
+ */
+function DfSchemaTree({
+  title,
+  summary,
+  nodes = [],
+  searchable = true,
+  searchPlaceholder = 'Search schema…',
+  selectedId,
+  onSelect,
+  onToggle,
+  emptyText = 'No objects to show.',
+  noResultsText = 'No matches.',
+  className = '',
+  ...rest
+}) {
+  const [query, setQuery] = React.useState('');
+  const [expanded, setExpanded] = React.useState(() => collectDefaultOpen(nodes, new Set()));
+  const [internalSel, setInternalSel] = React.useState(null);
+  const sel = selectedId !== undefined ? selectedId : internalSel;
+  const toggle = id => {
+    setExpanded(s => {
+      const n = new Set(s);
+      n.has(id) ? n.delete(id) : n.add(id);
+      return n;
+    });
+    onToggle?.(id);
+  };
+  const select = node => {
+    if (selectedId === undefined) setInternalSel(node.id);
+    onSelect?.(node);
+  };
+  const q = query.trim().toLowerCase();
+  const visible = q ? nodes.map(n => filterNode(n, q)).filter(Boolean) : nodes;
+  return /*#__PURE__*/React.createElement("div", _extends({
+    className: ['df-schema', className].filter(Boolean).join(' ')
+  }, rest), (title || summary) && /*#__PURE__*/React.createElement("div", {
+    className: "df-schema__head"
+  }, title && /*#__PURE__*/React.createElement("span", {
+    className: "df-schema__title"
+  }, title), summary && /*#__PURE__*/React.createElement("span", {
+    className: "df-schema__summary"
+  }, summary)), searchable && /*#__PURE__*/React.createElement("div", {
+    className: "tia-input tia-input--sm"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "tia-input__icon",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fa-solid fa-magnifying-glass"
+  })), /*#__PURE__*/React.createElement("input", {
+    className: "tia-input__field",
+    value: query,
+    placeholder: searchPlaceholder,
+    onChange: e => setQuery(e.target.value)
+  }), query && /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "tia-input__icon",
+    style: {
+      border: 0,
+      background: 'transparent',
+      cursor: 'pointer',
+      padding: 0
+    },
+    "aria-label": "Clear",
+    onClick: () => setQuery('')
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fa-solid fa-xmark"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "df-schema__tree",
+    role: "tree"
+  }, visible.length === 0 ? /*#__PURE__*/React.createElement("div", {
+    className: "df-schema__state"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "df-schema__state-ico"
+  }, /*#__PURE__*/React.createElement("i", {
+    className: `fa-solid ${q ? 'fa-magnifying-glass' : 'fa-database'}`
+  })), /*#__PURE__*/React.createElement("span", null, q ? noResultsText : emptyText)) : visible.map(node => /*#__PURE__*/React.createElement(SchemaNode, {
+    key: node.id,
+    node: node,
+    depth: 0,
+    expanded: expanded,
+    selectedId: sel,
+    onToggle: toggle,
+    onSelect: select
+  }))));
+}
+Object.assign(__ds_scope, { DfSchemaTree });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/dataflow/DfSchemaTree.jsx", error: String((e && e.message) || e) }); }
+
+// components/dataflow/DfVariableMapping.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/**
+ * DfVariableMapping — maps a set of left-hand variables (e.g. source columns)
+ * onto right-hand targets (Alkyra `alk-variable-mapping`). Each row is
+ * `leftName → control`, where the control is a searchable select (default) or
+ * a free-text field when `textMode` is on. Controlled via `value` + `onChange`,
+ * or uncontrolled via `defaultValue`.
+ */
+function DfVariableMapping({
+  title = 'Variable mapping',
+  leftVariables = [],
+  rightVariables = [],
+  value,
+  defaultValue = {},
+  textMode = false,
+  allowedFor,
+  emptyText = 'No variables to map.',
+  onChange,
+  className = '',
+  ...rest
+}) {
+  const controlled = value != null;
+  const [internal, setInternal] = React.useState(defaultValue);
+  const mapping = controlled ? value : internal;
+  const set = (leftName, rightName) => {
+    const next = {
+      ...mapping,
+      [leftName]: rightName
+    };
+    if (!rightName) delete next[leftName];
+    if (!controlled) setInternal(next);
+    onChange?.(leftName, rightName, next);
+  };
+  const optionsFor = leftName => (allowedFor ? allowedFor(leftName, rightVariables) : rightVariables) || [];
+  return /*#__PURE__*/React.createElement("div", _extends({
+    className: ['df-mapping', className].filter(Boolean).join(' ')
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    className: "df-mapping__panel"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "df-mapping__head"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "df-mapping__title"
+  }, title), /*#__PURE__*/React.createElement("span", {
+    className: `df-mapping__subtitle${textMode ? ' df-mapping__subtitle--accent' : ''}`
+  }, textMode ? 'Free-text mode' : 'Select mode')), leftVariables.length === 0 ? /*#__PURE__*/React.createElement("div", {
+    className: "df-mapping__empty"
+  }, emptyText) : /*#__PURE__*/React.createElement("div", {
+    className: "df-mapping__rows"
+  }, leftVariables.map(lv => {
+    const name = typeof lv === 'string' ? lv : lv.name;
+    return /*#__PURE__*/React.createElement("div", {
+      className: "df-mapping__row",
+      key: name
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "df-mapping__left",
+      title: name
+    }, name), /*#__PURE__*/React.createElement("i", {
+      className: "fa-solid fa-arrow-right-long df-mapping__arrow",
+      "aria-hidden": "true"
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "df-mapping__control"
+    }, textMode ? /*#__PURE__*/React.createElement("div", {
+      className: "tia-input tia-input--sm"
+    }, /*#__PURE__*/React.createElement("input", {
+      className: "tia-input__field",
+      value: mapping[name] || '',
+      placeholder: "Target expression\u2026",
+      onChange: e => set(name, e.target.value)
+    })) : /*#__PURE__*/React.createElement("div", {
+      className: "tia-select"
+    }, /*#__PURE__*/React.createElement("select", {
+      value: mapping[name] || '',
+      onChange: e => set(name, e.target.value),
+      "aria-label": `Target for ${name}`
+    }, /*#__PURE__*/React.createElement("option", {
+      value: ""
+    }, "Select target\u2026"), optionsFor(name).map(rv => {
+      const rn = typeof rv === 'string' ? rv : rv.name;
+      return /*#__PURE__*/React.createElement("option", {
+        key: rn,
+        value: rn
+      }, rn);
+    })), /*#__PURE__*/React.createElement("span", {
+      className: "tia-select__chevron",
+      "aria-hidden": "true"
+    }, /*#__PURE__*/React.createElement("i", {
+      className: "fa-solid fa-chevron-down"
+    })))));
+  }))));
+}
+Object.assign(__ds_scope, { DfVariableMapping });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/dataflow/DfVariableMapping.jsx", error: String((e && e.message) || e) }); }
+
+// components/dataflow/DfWizardStep.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/**
+ * DfWizardStep — titled content container for a single wizard step (Alkyra
+ * `tiara-suite-wizard-step`). Renders a step title + subtitle header above the
+ * step body; drop it inside a DfFlowWizard step's content.
+ */
+function DfWizardStep({
+  title,
+  subtitle,
+  children,
+  className = '',
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("div", _extends({
+    className: ['df-step', className].filter(Boolean).join(' ')
+  }, rest), (title || subtitle) && /*#__PURE__*/React.createElement("div", {
+    className: "df-step__head"
+  }, title && /*#__PURE__*/React.createElement("h3", {
+    className: "df-step__title"
+  }, title), subtitle && /*#__PURE__*/React.createElement("p", {
+    className: "df-step__subtitle"
+  }, subtitle)), /*#__PURE__*/React.createElement("div", {
+    className: "df-step__body"
+  }, children));
+}
+Object.assign(__ds_scope, { DfWizardStep });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/dataflow/DfWizardStep.jsx", error: String((e && e.message) || e) }); }
 
 // components/display/TiaraAvatar.jsx
 try { (() => {
@@ -685,6 +2115,127 @@ function TiaraTabs({
 }
 Object.assign(__ds_scope, { TiaraTabs });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/TiaraTabs.jsx", error: String((e && e.message) || e) }); }
+
+// components/shell/DfHeader.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/**
+ * DfHeader — the Data Flow top bar (Alkyra `app-header`).
+ *
+ * A sticky, hairline-bordered surface that shows the current view title (and
+ * optional subtitle / breadcrumb node), a flexible center slot, and a
+ * right-aligned cluster for actions, status and the user avatar.
+ */
+function DfHeader({
+  title,
+  subtitle,
+  lead,
+  center,
+  actions,
+  className = '',
+  ...rest
+}) {
+  return /*#__PURE__*/React.createElement("header", _extends({
+    className: ['df-header', className].filter(Boolean).join(' ')
+  }, rest), lead, (title || subtitle) && /*#__PURE__*/React.createElement("div", null, title && /*#__PURE__*/React.createElement("h1", {
+    className: "df-header__title"
+  }, title), subtitle && /*#__PURE__*/React.createElement("p", {
+    className: "df-header__subtitle"
+  }, subtitle)), center && /*#__PURE__*/React.createElement("div", {
+    className: "df-header__center"
+  }, center), actions && /*#__PURE__*/React.createElement("div", {
+    className: "df-header__right"
+  }, actions));
+}
+
+/** Thin vertical divider for separating clusters of header actions. */
+function DfHeaderDivider() {
+  return /*#__PURE__*/React.createElement("span", {
+    className: "df-header__divider",
+    "aria-hidden": "true"
+  });
+}
+Object.assign(__ds_scope, { DfHeader, DfHeaderDivider });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/shell/DfHeader.jsx", error: String((e && e.message) || e) }); }
+
+// components/shell/DfSideMenu.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/**
+ * DfSideMenu — the Data Flow app-shell rail (Alkyra `akn-side-menu`).
+ *
+ * A fixed dark-slate navigation rail that collapses to an icon strip and
+ * expands on hover (or via the `expanded` prop). Renders a brand mark, a
+ * search affordance, optional section eyebrows, and a flat list of nav items
+ * with Font Awesome icons. The active item gets a blue-tinted row and a solid
+ * accent icon tile.
+ */
+function DfSideMenu({
+  brand = 'Data Flow',
+  logoIcon = /*#__PURE__*/React.createElement("i", {
+    className: "fa-solid fa-diagram-project"
+  }),
+  items = [],
+  activeId,
+  expanded,
+  defaultExpanded = false,
+  searchable = true,
+  onSelect,
+  className = '',
+  style,
+  ...rest
+}) {
+  const isControlled = expanded != null;
+  const [hovered, setHovered] = React.useState(defaultExpanded);
+  const open = isControlled ? expanded : hovered;
+  return /*#__PURE__*/React.createElement("nav", _extends({
+    className: ['df-sidemenu', open && 'df-sidemenu--expanded', className].filter(Boolean).join(' '),
+    style: style,
+    onMouseEnter: () => !isControlled && setHovered(true),
+    onMouseLeave: () => !isControlled && setHovered(false),
+    "aria-label": "Main navigation"
+  }, rest), /*#__PURE__*/React.createElement("div", {
+    className: "df-sidemenu__brand"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "df-sidemenu__logo",
+    "aria-hidden": "true"
+  }, logoIcon), /*#__PURE__*/React.createElement("span", {
+    className: "df-sidemenu__wordmark"
+  }, brand)), searchable && /*#__PURE__*/React.createElement("div", {
+    className: "df-sidemenu__search"
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fa-solid fa-magnifying-glass",
+    "aria-hidden": "true"
+  }), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    placeholder: "Search\u2026",
+    "aria-label": "Search"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "df-sidemenu__items"
+  }, items.map((it, i) => it.section ? /*#__PURE__*/React.createElement("div", {
+    className: "df-sidemenu__section",
+    key: `s-${i}`
+  }, it.section) : /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    key: it.id ?? i,
+    className: ['df-sidemenu__item', activeId === it.id && 'df-sidemenu__item--active'].filter(Boolean).join(' '),
+    onClick: () => onSelect?.(it),
+    "aria-current": activeId === it.id ? 'page' : undefined,
+    title: it.label
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "df-sidemenu__item-ico",
+    "aria-hidden": "true"
+  }, typeof it.icon === 'string' ? /*#__PURE__*/React.createElement("i", {
+    className: it.icon
+  }) : it.icon), /*#__PURE__*/React.createElement("span", {
+    className: "df-sidemenu__item-label"
+  }, it.label), it.children && /*#__PURE__*/React.createElement("i", {
+    className: "fa-solid fa-angle-right df-sidemenu__item-caret",
+    "aria-hidden": "true"
+  })))));
+}
+Object.assign(__ds_scope, { DfSideMenu });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/shell/DfSideMenu.jsx", error: String((e && e.message) || e) }); }
 
 // ui_kits/nyma-backoffice/kit-app.jsx
 try { (() => {
@@ -1914,6 +3465,36 @@ Object.assign(window, {
 });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "ui_kits/nyma-backoffice/kit-shell.jsx", error: String((e && e.message) || e) }); }
 
+__ds_ns.DfAuditStatus = __ds_scope.DfAuditStatus;
+
+__ds_ns.DfConnectorList = __ds_scope.DfConnectorList;
+
+__ds_ns.DfDataTypeChip = __ds_scope.DfDataTypeChip;
+
+__ds_ns.DfEditableList = __ds_scope.DfEditableList;
+
+__ds_ns.DfExecutionLog = __ds_scope.DfExecutionLog;
+
+__ds_ns.DfExpressionEditor = __ds_scope.DfExpressionEditor;
+
+__ds_ns.DfFailViewer = __ds_scope.DfFailViewer;
+
+__ds_ns.DfStepper = __ds_scope.DfStepper;
+
+__ds_ns.DfFlowWizard = __ds_scope.DfFlowWizard;
+
+__ds_ns.DfOptionSelect = __ds_scope.DfOptionSelect;
+
+__ds_ns.DfPipelineFlow = __ds_scope.DfPipelineFlow;
+
+__ds_ns.DfPreviewGrid = __ds_scope.DfPreviewGrid;
+
+__ds_ns.DfSchemaTree = __ds_scope.DfSchemaTree;
+
+__ds_ns.DfVariableMapping = __ds_scope.DfVariableMapping;
+
+__ds_ns.DfWizardStep = __ds_scope.DfWizardStep;
+
 __ds_ns.TiaraAvatar = __ds_scope.TiaraAvatar;
 
 __ds_ns.TiaraBadge = __ds_scope.TiaraBadge;
@@ -1955,5 +3536,11 @@ __ds_ns.TiaraToggleSwitch = __ds_scope.TiaraToggleSwitch;
 __ds_ns.TiaraBreadcrumb = __ds_scope.TiaraBreadcrumb;
 
 __ds_ns.TiaraTabs = __ds_scope.TiaraTabs;
+
+__ds_ns.DfHeader = __ds_scope.DfHeader;
+
+__ds_ns.DfHeaderDivider = __ds_scope.DfHeaderDivider;
+
+__ds_ns.DfSideMenu = __ds_scope.DfSideMenu;
 
 })();

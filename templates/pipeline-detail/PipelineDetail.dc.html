@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Pipeline detail" description="Pipeline detail screen — app shell with the visual transformation DAG, a selected-dataset panel, and the recent-executions monitor." -->
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<script src="./ds-base.js"></script>
+<style>
+  html, body { margin: 0; height: 100%; }
+  body { font-family: 'Roboto', system-ui, sans-serif; }
+</style>
+</helmet>
+<div style="display:flex; height:100vh; width:100%; background:var(--color-background-alt1); color:var(--color-foreground);">
+  <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfSideMenu" items="{{ navItems }}" active-id="pipelines" expanded="{{ true }}" hint-size="248px,100%"></x-import>
+
+  <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+    <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfHeader" title="daily_revenue_sync" subtitle="Acme Analytics / Production" actions="{{ headerActions }}" hint-size="100%,64px"></x-import>
+
+    <div style="flex:1; overflow:auto; min-height:0; display:flex; flex-direction:column; gap:20px; padding:20px;">
+      <div style="display:flex; gap:20px;">
+        <div style="flex:1; min-width:0; height:440px; display:flex;">
+          <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfPipelineFlow" title="Pipeline flow" subtitle="5 datasets · 2 sources" nodes="{{ nodes }}" connections="{{ conns }}" selected-id="{{ selectedId }}" on-select="{{ selectNode }}" style="width:100%" hint-size="100%,100%"></x-import>
+        </div>
+
+        <div style="width:300px; flex-shrink:0; display:flex; flex-direction:column; gap:16px;">
+          <div style="background:var(--panel-bg); border:1px solid var(--color-border-light); border-radius:12px; box-shadow:var(--shadow-panel); padding:16px;">
+            <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; color:var(--color-foreground-alt3);">Selected dataset</div>
+            <div style="font-size:16px; font-weight:600; margin-top:6px; color:var(--color-foreground);">{{ selectedName }}</div>
+            <div style="font-size:13px; color:var(--color-foreground-alt3); margin-top:2px;">{{ selectedDesc }}</div>
+            <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--color-border-light);">
+              <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfAuditStatus" enabled="{{ true }}" max-copies="{{ 5 }}" hint-size="auto,auto"></x-import>
+            </div>
+          </div>
+
+          <div>
+            <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:var(--color-foreground-alt3); margin-bottom:8px;">Validation</div>
+            <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfFailViewer" messages="{{ failMessages }}" hint-size="100%,auto"></x-import>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:var(--color-foreground-alt3); margin-bottom:8px;">Recent executions</div>
+        <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfExecutionLog" executions="{{ executions }}" default-expanded-id="e1" hint-size="100%,auto"></x-import>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { selectedId: 'enriched' };
+
+  selectNode = (node) => this.setState({ selectedId: node.id });
+
+  renderVals() {
+    const NS = window.TiaraDesignSystemNyma_96297e || {};
+    const Btn = NS.TiaraButton;
+
+    const navItems = [
+      { section: 'Workspace' },
+      { id: 'pipelines', label: 'Pipelines', icon: 'fa-solid fa-diagram-project', children: true },
+      { id: 'datasources', label: 'Data sources', icon: 'fa-solid fa-plug' },
+      { id: 'datasets', label: 'Datasets', icon: 'fa-solid fa-table' },
+      { section: 'Operate' },
+      { id: 'executions', label: 'Executions', icon: 'fa-solid fa-play' },
+      { id: 'logs', label: 'Logs & metrics', icon: 'fa-solid fa-clock-rotate-left' },
+      { id: 'query', label: 'Query Analyzer', icon: 'fa-solid fa-magnifying-glass-chart' },
+    ];
+
+    const nodes = [
+      { id: 'orders', name: 'orders', description: 'PostgreSQL source', connector: 'analytics_pg', type: 'source', icon: 'database' },
+      { id: 'customers', name: 'customers', description: 'Salesforce source', connector: 'Sales Cloud', type: 'source', icon: 'cloud' },
+      { id: 'enriched', name: 'orders_enriched', description: 'Joined on customer_id', type: 'join' },
+      { id: 'agg', name: 'revenue_by_region', description: 'Aggregation', type: 'derived' },
+      { id: 'subset', name: 'eu_orders', description: 'Subset · region = EU', type: 'derived' },
+    ];
+    const conns = [
+      { from: 'orders', to: 'enriched', operation: 'Inner join' },
+      { from: 'customers', to: 'enriched', operation: 'Inner join' },
+      { from: 'enriched', to: 'agg', operation: 'Aggregation' },
+      { from: 'enriched', to: 'subset', operation: 'Subset' },
+    ];
+    const sel = nodes.find((n) => n.id === this.state.selectedId) || nodes[0];
+
+    const headerActions = Btn
+      ? React.createElement('div', { style: { display: 'flex', gap: 8 } },
+          React.createElement(Btn, { size: 'sm', variant: 'secondary', leftIcon: React.createElement('i', { className: 'fa-solid fa-clock-rotate-left' }) }, 'History'),
+          React.createElement(Btn, { size: 'sm', leftIcon: React.createElement('i', { className: 'fa-solid fa-play' }) }, 'Run pipeline'),
+        )
+      : null;
+
+    const failMessages = [
+      { level: 'warning', field: 'created_at', message: 'Source timezone is implicit; target expects UTC.' },
+      { level: 'info', field: 'Schema', message: 'Cached from 2026-06-25 14:32.' },
+    ];
+
+    const executions = [
+      {
+        id: 'e1', status: 'succeeded', pipeline: 'daily_revenue_sync', statusText: 'Completed', workspace: 'Production',
+        startTime: '2026-06-25 14:32', duration: '00:04:31', user: 'data-eng', hasAudit: true,
+        details: [
+          { outcome: 'ok', description: 'Read orders (1.4M rows)', occurredAt: '14:32:01', duration: '52s', user: 'system' },
+          { outcome: 'ok', description: 'Join orders_enriched', occurredAt: '14:33:10', duration: '1m 12s', user: 'system' },
+          { outcome: 'ok', description: 'Export to S3', occurredAt: '14:35:40', duration: '2m 27s', user: 'system' },
+        ],
+      },
+      {
+        id: 'e2', status: 'warning', pipeline: 'daily_revenue_sync', statusText: 'Partially failed', workspace: 'Production',
+        startTime: '2026-06-24 14:32', duration: '00:02:58', user: 'scheduler',
+        details: [{ outcome: 'warning', description: 'Export — 12 rows rejected', occurredAt: '14:34:10', duration: '1m 02s', user: 'system' }],
+      },
+      {
+        id: 'e3', status: 'failed', pipeline: 'daily_revenue_sync', statusText: 'Failed', workspace: 'Production',
+        startTime: '2026-06-23 14:32', duration: '00:00:12', user: 'scheduler',
+        details: [{ outcome: 'ko', description: 'Source connection refused (timeout)', occurredAt: '14:32:12', duration: '12s', user: 'system' }],
+      },
+    ];
+
+    return {
+      navItems,
+      headerActions,
+      nodes,
+      conns,
+      selectedId: this.state.selectedId,
+      selectNode: this.selectNode,
+      selectedName: sel ? sel.name : '',
+      selectedDesc: sel ? (sel.description || '') : '',
+      failMessages,
+      executions,
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Query Analyzer" description="SQL exploration screen — schema browser rail, an expression/SQL editor with autocomplete, and a results grid." -->
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<script src="./ds-base.js"></script>
+<style>
+  html, body { margin: 0; height: 100%; }
+  body { font-family: 'Roboto', system-ui, sans-serif; }
+</style>
+</helmet>
+<div style="display:flex; height:100vh; width:100%; background:var(--color-background-alt1); color:var(--color-foreground);">
+  <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfSideMenu" items="{{ navItems }}" active-id="query" expanded="{{ true }}" hint-size="248px,100%"></x-import>
+
+  <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+    <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfHeader" title="Query Analyzer" subtitle="analytics_pg (prod) · public" hint-size="100%,64px"></x-import>
+
+    <div style="flex:1; display:flex; min-height:0; padding:20px; gap:20px;">
+
+      <div style="width:300px; flex-shrink:0; display:flex; flex-direction:column; background:var(--panel-bg); border:1px solid var(--color-border-light); border-radius:12px; box-shadow:var(--shadow-panel); padding:16px; min-height:0;">
+        <div style="flex:1; min-height:0; display:flex;">
+          <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfSchemaTree" title="analytics_pg" summary="PostgreSQL · public" nodes="{{ schemaNodes }}" on-select="{{ pickColumn }}" hint-size="100%,100%"></x-import>
+        </div>
+      </div>
+
+      <div style="flex:1; min-width:0; display:flex; flex-direction:column; gap:16px;">
+
+        <div style="background:var(--panel-bg); border:1px solid var(--color-border-light); border-radius:12px; box-shadow:var(--shadow-panel); padding:16px; display:flex; flex-direction:column; gap:12px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+            <span style="font-size:13px; font-weight:600; color:var(--color-foreground);">Query</span>
+            <div style="display:flex; gap:8px;">
+              <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.TiaraButton" variant="secondary" size="sm" on-click="{{ save }}" hint-size="auto,auto">Save query</x-import>
+              <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.TiaraButton" size="sm" on-click="{{ run }}" hint-size="auto,auto">Run</x-import>
+            </div>
+          </div>
+          <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfExpressionEditor" value="{{ query }}" on-change="{{ setQuery }}" columns="{{ columns }}" functions="{{ sqlKeywords }}" rows="{{ 6 }}" placeholder="SELECT … FROM …" hint-size="100%,auto"></x-import>
+        </div>
+
+        <div style="flex:1; min-height:0; display:flex; flex-direction:column; background:var(--panel-bg); border:1px solid var(--color-border-light); border-radius:12px; box-shadow:var(--shadow-panel); padding:16px;">
+          <div style="display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:12px;">
+            <span style="font-size:13px; font-weight:600; color:var(--color-foreground);">Results</span>
+            <span style="font-size:12px; color:var(--color-foreground-alt3); font-variant-numeric:tabular-nums;">{{ resultMeta }}</span>
+          </div>
+          <div style="flex:1; min-height:0; overflow:auto;">
+            <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfPreviewGrid" columns="{{ resultCols }}" rows="{{ resultRows }}" selected-count="{{ resultColCount }}" total-count="{{ resultColCount }}" hint-size="100%,auto"></x-import>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    query: 'SELECT order_id, customer_id, total_amount, created_at\nFROM orders\nWHERE total_amount > 1000\nORDER BY created_at DESC',
+  };
+
+  setQuery = (v) => this.setState({ query: v });
+  pickColumn = (node) => {
+    if (node && node.selectable && node.column) {
+      this.setState({ query: this.state.query + ', ' + node.column });
+    }
+  };
+  run = () => {};
+  save = () => {};
+
+  renderVals() {
+    const columns = ['order_id', 'customer_id', 'total_amount', 'created_at', 'is_paid', 'region'];
+    const sqlKeywords = ['SELECT', 'FROM', 'WHERE', 'GROUP BY', 'ORDER BY', 'JOIN', 'LEFT JOIN', 'INNER JOIN', 'LIMIT', 'COUNT', 'SUM', 'AVG', 'MIN', 'MAX'];
+
+    const schemaNodes = [
+      {
+        id: 'public', label: 'public', icon: 'fa-solid fa-folder', defaultExpanded: true,
+        items: [
+          {
+            id: 'orders', label: 'orders', description: 'table · 1.4M rows', icon: 'fa-solid fa-table', defaultExpanded: true, badge: { text: '6', tone: 'info' },
+            items: [
+              { id: 'c-oid', label: 'order_id', column: 'order_id', selectable: true, leadingBadge: { text: 'PK', tone: 'success' }, description: 'bigint' },
+              { id: 'c-cid', label: 'customer_id', column: 'customer_id', selectable: true, leadingBadge: { text: 'INT', tone: 'neutral' }, description: 'bigint' },
+              { id: 'c-tot', label: 'total_amount', column: 'total_amount', selectable: true, leadingBadge: { text: 'NUM', tone: 'neutral' }, description: 'numeric(12,2)' },
+              { id: 'c-at', label: 'created_at', column: 'created_at', selectable: true, leadingBadge: { text: 'TS', tone: 'warning' }, description: 'timestamptz' },
+            ],
+          },
+          { id: 'customers', label: 'customers', description: 'table · 92K rows', icon: 'fa-solid fa-table', selectable: true, badge: { text: '12', tone: 'info' }, hasItems: true, items: [] },
+          { id: 'products', label: 'products', description: 'table · 3.1K rows', icon: 'fa-solid fa-table', selectable: true, badge: { text: '6', tone: 'info' }, hasItems: true, items: [] },
+        ],
+      },
+    ];
+
+    const resultCols = [
+      { field: 'order_id', caption: 'order_id', type: 'number' },
+      { field: 'customer_id', caption: 'customer_id', type: 'number' },
+      { field: 'total_amount', caption: 'total_amount', type: 'number' },
+      { field: 'created_at', caption: 'created_at', type: 'datetime' },
+    ];
+    const resultRows = [
+      { order_id: 100434, customer_id: 5521, total_amount: '4019.90', created_at: '2026-06-25 14:41' },
+      { order_id: 100432, customer_id: 3310, total_amount: '1240.00', created_at: '2026-06-25 14:32' },
+      { order_id: 100201, customer_id: 8842, total_amount: '2870.10', created_at: '2026-06-25 11:09' },
+      { order_id: 100118, customer_id: 1207, total_amount: '1502.55', created_at: '2026-06-25 09:54' },
+    ];
+
+    return {
+      navItems: [
+        { section: 'Workspace' },
+        { id: 'pipelines', label: 'Pipelines', icon: 'fa-solid fa-diagram-project', children: true },
+        { id: 'datasources', label: 'Data sources', icon: 'fa-solid fa-plug' },
+        { id: 'datasets', label: 'Datasets', icon: 'fa-solid fa-table' },
+        { section: 'Operate' },
+        { id: 'executions', label: 'Executions', icon: 'fa-solid fa-play' },
+        { id: 'logs', label: 'Logs & metrics', icon: 'fa-solid fa-clock-rotate-left' },
+        { id: 'query', label: 'Query Analyzer', icon: 'fa-solid fa-magnifying-glass-chart' },
+      ],
+      query: this.state.query,
+      setQuery: this.setQuery,
+      columns,
+      sqlKeywords,
+      schemaNodes,
+      pickColumn: this.pickColumn,
+      run: this.run,
+      save: this.save,
+      resultCols,
+      resultRows,
+      resultColCount: resultCols.length,
+      resultMeta: '128 rows · 0.42s',
+    };
+  }
+}
+</script>
+</body>
+</html>

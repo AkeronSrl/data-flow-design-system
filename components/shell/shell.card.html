@@ -1,0 +1,64 @@
+<!-- @dsCard group="Data Flow" viewport="820x460" name="App shell" subtitle="DfSideMenu · DfHeader — the Alkyra navigation rail + top bar" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+  html, body { margin: 0; height: 100%; }
+  body { background: var(--color-background-alt1); font-family: var(--font-family-sans); color: var(--color-foreground); }
+  #root, .shell { height: 100%; }
+  .shell { display: flex; }
+  .shell__main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+  .shell__content { flex: 1; padding: 24px; display: flex; flex-direction: column; gap: 16px; overflow: auto; }
+  .hint { font-size: 12px; color: var(--color-foreground-alt3); }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel">
+const { DfSideMenu, DfHeader, DfHeaderDivider, TiaraButton, TiaraAvatar, TiaraBadge } = window.TiaraDesignSystemNyma_96297e;
+
+const NAV = [
+  { section: 'Workspace' },
+  { id: 'pipelines', label: 'Pipelines', icon: 'fa-solid fa-diagram-project', children: true },
+  { id: 'datasources', label: 'Data sources', icon: 'fa-solid fa-plug' },
+  { id: 'datasets', label: 'Datasets', icon: 'fa-solid fa-table' },
+  { section: 'Operate' },
+  { id: 'executions', label: 'Executions', icon: 'fa-solid fa-play' },
+  { id: 'logs', label: 'Logs & metrics', icon: 'fa-solid fa-clock-rotate-left' },
+  { id: 'query', label: 'Query Analyzer', icon: 'fa-solid fa-magnifying-glass-chart' },
+];
+
+function Demo() {
+  const [active, setActive] = React.useState('pipelines');
+  return (
+    <div className="shell">
+      <DfSideMenu defaultExpanded items={NAV} activeId={active} onSelect={(it) => setActive(it.id)} />
+      <div className="shell__main">
+        <DfHeader
+          title="Pipelines"
+          subtitle="Acme Analytics / Production"
+          actions={<>
+            <TiaraBadge mode="dot-word" color="green" text="3 active" />
+            <DfHeaderDivider />
+            <TiaraButton size="sm" leftIcon={<i className="fa-solid fa-plus" />}>New pipeline</TiaraButton>
+            <TiaraAvatar initials="DE" size="sm" />
+          </>}
+        />
+        <div className="shell__content">
+          <span className="hint">Hover the rail to expand it; click an item to change the active route. The header shows the current view title, status and actions.</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body>
+</html>

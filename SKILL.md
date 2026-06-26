@@ -12,7 +12,7 @@ If creating visual artifacts (mocks, prototypes, slides), copy assets out and cr
 
 Key facts to honour:
 - **Brand accent: blue `#3b82f6`**; warm-grey Fluent2 neutrals; **Roboto** typeface; **Font Awesome 6 Solid** icons (no emoji, no hand-drawn SVG icons).
-- **English-first**, technical and precise copy — sentence case, no exclamation marks, data-platform vocabulary (workspace, pipeline, dataset, connector, transformation, execution, audit).
+- **English-first**, with **Spanish (`es`)** as second locale (Angular front-end codename **Alkyra**, `alk-` prefix, ngx-translate en/es). Technical and precise copy — sentence case, no exclamation marks, data-platform vocabulary (workspace, pipeline, dataset, connector, transformation, execution, audit).
 - Map status colors to execution states: success=Succeeded, info/blue=Running, warning=Partially failed, danger=Failed/DLQ.
 - Soft radii (cards 12px), hairline borders, subtle low-contrast shadows, flat backgrounds (no gradients in product UI), quick functional motion. Dark mode is first-class via `[data-theme="dark"]`. App-shell sidebar is dark slate (`#1e293b`).
 - **Provisional visuals:** tokens/components are inherited from Akeron's shared Tiara library and should be validated against the Data Flow Angular front-end when available.

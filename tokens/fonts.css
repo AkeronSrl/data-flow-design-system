@@ -1,0 +1,8 @@
+/* ============================================================================
+ * Tiara DS — Fonts
+ * Roboto is the brand typeface. Loaded from Google Fonts (real font, not a
+ * substitution — Roboto is the production typeface used by the Nyma apps).
+ * The @import must stay first in this file.
+ * ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;900&display=swap');

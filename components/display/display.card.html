@@ -1,0 +1,63 @@
+<!-- @dsCard group="Components" viewport="700x360" name="Display" subtitle="Badge, Chip, Avatar, StatCard, Card, ProgressBar, Spinner, Skeleton, Separator" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+  body { margin: 0; padding: 22px; background: var(--color-background-alt1); font-family: var(--font-family-sans); color: var(--color-foreground); }
+  .group { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 16px; }
+  .lbl { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-foreground-alt3); width: 100%; margin-bottom: -2px; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel">
+const { TiaraBadge, TiaraChip, TiaraAvatar, TiaraStatCard, TiaraCard, TiaraProgressBar, TiaraSpinner, TiaraSkeleton, TiaraSeparator } = window.TiaraDesignSystemNyma_96297e;
+function Demo() {
+  return (
+    <div>
+      <div className="stats" style={{ marginBottom: 18 }}>
+        <TiaraStatCard label="Ordini aperti" value="248" delta="+12%" icon={<i className="fa-solid fa-box" />} />
+        <TiaraStatCard label="Da spedire" value="63" delta="-4%" icon={<i className="fa-solid fa-truck-fast" />} />
+        <TiaraStatCard label="Valore mese" value="€ 184k" delta="+8%" icon={<i className="fa-solid fa-euro-sign" />} />
+      </div>
+      <div className="group">
+        <span className="lbl">Badges & chips</span>
+        <TiaraBadge text="Confermato" color="green" />
+        <TiaraBadge text="Spedito" color="blue" />
+        <TiaraBadge text="In preparazione" type="light" color="amber" />
+        <TiaraBadge mode="dot-word" color="red" text="Annullato" />
+        <TiaraBadge mode="number" count={12} />
+        <TiaraChip label="Stato: Confermato" onRemove={() => {}} />
+        <TiaraChip label="SS26" accent />
+      </div>
+      <div className="group">
+        <span className="lbl">Avatar · progress · spinner</span>
+        <TiaraAvatar initials="MR" size="sm" />
+        <TiaraAvatar initials="AL" size="md" style={{ background: 'var(--color-badge-purple)' }} />
+        <div style={{ width: 160 }}><TiaraProgressBar value={64} /></div>
+        <TiaraSpinner />
+        <TiaraSpinner size="lg" />
+      </div>
+      <TiaraCard title="Riepilogo cliente" style={{ maxWidth: 360 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <TiaraSkeleton width="80%" height="12px" />
+          <TiaraSkeleton width="60%" height="12px" />
+          <TiaraSeparator />
+          <span style={{ fontSize: 13, color: 'var(--color-foreground-alt3)' }}>Card · Skeleton · Separator</span>
+        </div>
+      </TiaraCard>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+/* ============================================================================
+ * Tiara DS — Radius & border-width tokens
+ * ========================================================================== */
+
+:root {
+  /* ---- Border radius ---- */
+  --radius-none: 0px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 20px;
+  --radius-full: 1000px;
+
+  /* ---- Border widths ---- */
+  --border-0: 0px;
+  --border-1: 1px;
+  --border-2: 2px;
+  --border-4: 4px;
+  --border-8: 8px;
+
+  /* ---- Component-specific control sizing (heights / radii / borders) ---- */
+  --height-btn-xs: 22px;
+  --height-btn-sm: 28px;
+  --height-btn-md: 32px;
+  --height-btn-lg: 36px;
+  --radius-btn-xs: 8px;
+  --radius-btn-sm: 10px;
+  --radius-btn-md: 14px;
+  --radius-btn-lg: 14px;
+
+  --height-input-xs: 26px;
+  --height-input-sm: 32px;
+  --height-input-md: 36px;
+  --height-input-lg: 40px;
+  --radius-input-xs: 8px;
+  --radius-input-sm: 10px;
+  --radius-input-md: 12px;
+  --radius-input-lg: 14px;
+  --border-input-xs: 1.3px;
+  --border-input-sm: 1.5px;
+  --border-input-md: 1.8px;
+  --border-input-lg: 1.8px;
+}

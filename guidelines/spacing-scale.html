@@ -1,0 +1,23 @@
+<!-- @dsCard group="Spacing" viewport="700x170" name="Spacing Scale" subtitle="4px base step — spacing-1 (4) → spacing-12 (48)" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--color-background); font-family: var(--font-family-sans); color: var(--color-foreground); }
+  .row { display:flex; align-items:center; gap:12px; padding:2px 0; }
+  .tag { width:120px; font-size:11px; color:var(--color-foreground-alt3); flex-shrink:0; }
+  .bar { height:14px; background:var(--color-accent-500); border-radius:var(--radius-sm); }
+</style>
+</head>
+<body>
+  <div class="row"><span class="tag">spacing-1 · 4px</span><div class="bar" style="width:4px"></div></div>
+  <div class="row"><span class="tag">spacing-2 · 8px</span><div class="bar" style="width:8px"></div></div>
+  <div class="row"><span class="tag">spacing-3 · 12px</span><div class="bar" style="width:12px"></div></div>
+  <div class="row"><span class="tag">spacing-4 · 16px</span><div class="bar" style="width:16px"></div></div>
+  <div class="row"><span class="tag">spacing-6 · 24px</span><div class="bar" style="width:24px"></div></div>
+  <div class="row"><span class="tag">spacing-8 · 32px</span><div class="bar" style="width:32px"></div></div>
+  <div class="row"><span class="tag">spacing-12 · 48px</span><div class="bar" style="width:48px"></div></div>
+</body>
+</html>

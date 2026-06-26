@@ -1,0 +1,264 @@
+/* ============================================================================
+ * Tiara DS — Semantic tokens
+ * Maps primitives to roles (surfaces, text, borders, controls) for Light
+ * (:root) and Dark ([data-theme="dark"]) modes. Components reference THESE,
+ * never raw primitives.
+ * ========================================================================== */
+
+/* ============================ LIGHT (default) ============================ */
+:root {
+  /* ---- Surfaces ---- */
+  --color-background: rgba(255, 255, 255, 1);
+  --color-background-alt1: rgba(250, 249, 248, 1);
+  --color-background-alt2: rgba(243, 242, 241, 1);
+  --color-background-alt3: rgba(237, 235, 233, 1);
+  --color-background-alt4: rgba(225, 223, 221, 1);
+  --color-background-alt5: rgba(210, 208, 206, 1);
+  --color-background-alt6: rgba(200, 198, 196, 1);
+  --color-content-bg-hover: rgba(243, 242, 241, 1);
+  --color-content-bg-pressed: rgba(225, 223, 221, 1);
+  --color-content-bg-focus: rgba(237, 235, 233, 1);
+  --color-content-bg-selected: rgba(237, 235, 233, 1);
+  --color-content-bg-disabled: rgba(255, 255, 255, 1);
+  --color-flyout-bg: rgba(255, 255, 255, 1);
+  --color-flyout-bg-hover: rgba(243, 242, 241, 1);
+  --color-flyout-bg-selected: rgba(237, 235, 233, 1);
+  --color-overlay-bg: rgba(0, 0, 0, 0.23);
+  --color-table-bg-hover: rgba(243, 242, 241, 1);
+  --color-table-bg-pressed: rgba(225, 223, 221, 1);
+  --color-table-bg-selected: rgba(237, 235, 233, 1);
+  --segmented-toggle-bg: var(--color-background-alt3);
+
+  /* ---- Foreground / text ---- */
+  --color-foreground: rgba(32, 31, 30, 1);
+  --color-foreground-alt1: rgba(50, 49, 48, 1);
+  --color-foreground-alt2: rgba(59, 58, 57, 1);
+  --color-foreground-alt3: rgba(96, 94, 92, 1);
+  --color-foreground-disabled: rgba(161, 159, 157, 1);
+  --color-placeholder: rgba(121, 119, 117, 1);
+  --color-placeholder-disabled: var(--color-foreground-disabled);
+  --color-muted: var(--color-foreground-alt2);
+
+  /* ---- Icons ---- */
+  --color-icon: rgba(96, 94, 92, 1);
+  --color-icon-hover: rgba(50, 49, 48, 1);
+  --color-icon-pressed: rgba(32, 31, 30, 1);
+  --color-icon-disabled: rgba(161, 159, 157, 1);
+  --color-icon-muted: rgba(151, 149, 147, 1);
+
+  /* ---- Borders ---- */
+  --color-border-light: rgba(237, 235, 233, 1);
+  --color-border: rgba(210, 208, 206, 1);
+  --color-border-dark: rgba(200, 198, 196, 1);
+  --color-border-hover: rgba(225, 223, 221, 1);
+  --color-border-hover-input: rgba(138, 136, 134, 1);
+  --color-border-focus: rgba(225, 223, 221, 1);
+  --color-border-disabled: rgba(237, 235, 233, 1);
+  --color-border-warning: rgba(255, 149, 0, 1);
+  --color-border-error: rgba(190, 0, 0, 1);
+  --color-border-success: rgba(0, 120, 42, 1);
+  --color-border-accent: var(--color-accent-500);
+  --color-ring: var(--color-accent-500);
+
+  /* ---- Tooltip ---- */
+  --color-tooltip-bg: rgba(255, 255, 255, 1);
+  --color-tooltip-border: rgba(225, 223, 221, 1);
+  --color-tooltip-text: rgba(96, 94, 92, 1);
+  --tooltip-radius: 10px;
+
+  /* ---- Primary button (routed to Nyma accent) ---- */
+  --primary-button-primary-bg-color: var(--color-accent-500);
+  --primary-button-primary-border-color: var(--color-accent-500);
+  --primary-button-primary-text: rgba(255, 255, 255, 1);
+  --primary-button-primary-bg-color-hover: var(--color-accent-600);
+  --primary-button-primary-border-color-hover: var(--color-accent-600);
+  --primary-button-primary-bg-color-pressed: var(--color-accent-700);
+  --primary-button-primary-border-color-pressed: var(--color-accent-700);
+  --primary-button-primary-bg-color-disabled: rgba(243, 242, 241, 1);
+  --primary-button-primary-border-color-disabled: rgba(243, 242, 241, 1);
+  --primary-button-primary-text-disabled: rgba(161, 159, 157, 1);
+
+  /* ---- Secondary button ---- */
+  --secondary-button-secondary-bg-color: rgba(255, 255, 255, 1);
+  --secondary-button-secondary-border-color: rgba(210, 208, 206, 1);
+  --secondary-button-secondary-text-color: rgba(50, 49, 48, 1);
+  --secondary-button-secondary-bg-color-hover: rgba(243, 242, 241, 1);
+  --secondary-button-secondary-bg-color-pressed: rgba(237, 235, 233, 1);
+  --secondary-button-secondary-bg-color-disabled: rgba(243, 242, 241, 1);
+  --secondary-button-secondary-border-color-disabled: rgba(243, 242, 241, 1);
+  --secondary-button-secondary-text-color-disabled: rgba(161, 159, 157, 1);
+
+  /* ---- Status buttons ---- */
+  --success-button-success-bg-color: rgba(0, 162, 57, 1);
+  --success-button-success-bg-color-hover: rgba(0, 133, 46, 1);
+  --success-button-success-bg-color-pressed: rgba(0, 120, 42, 1);
+  --warning-button-warning-bg-color: rgba(255, 149, 0, 1);
+  --warning-button-warning-bg-color-hover: rgba(234, 121, 0, 1);
+  --warning-button-warning-bg-color-pressed: rgba(223, 115, 0, 1);
+  --danger-button-danger-bg-color: rgba(235, 0, 0, 1);
+  --danger-button-danger-bg-color-hover: rgba(213, 0, 0, 1);
+  --danger-button-danger-bg-color-pressed: rgba(190, 0, 0, 1);
+  --info-button-info-bg-color: rgba(60, 105, 251, 1);
+  --info-button-info-bg-color-hover: rgba(41, 87, 238, 1);
+  --info-button-info-bg-color-pressed: rgba(35, 75, 204, 1);
+  --outline-button-primary-outline: var(--color-accent-500);
+  --outline-button-secondary-outline: rgba(50, 49, 48, 1);
+  --outline-button-success-outline: rgba(0, 162, 57, 1);
+  --outline-button-warning-outline: rgba(255, 149, 0, 1);
+  --outline-button-danger-outline: rgba(235, 0, 0, 1);
+  --outline-button-info-outline: rgba(60, 105, 251, 1);
+
+  /* ---- Message / alert surfaces ---- */
+  --message-msg-default-msg-bg-color: rgba(243, 242, 241, 1);
+  --message-msg-success-msg-success-bg-color: rgba(244, 255, 244, 1);
+  --message-msg-success-msg-success-icon-color: rgba(0, 162, 57, 1);
+  --message-msg-danger-msg-danger-bg-color: rgba(255, 244, 244, 1);
+  --message-msg-danger-msg-danger-icon-color: rgba(235, 0, 0, 1);
+  --message-msg-warning-msg-warning-bg-color: rgba(255, 248, 236, 1);
+  --message-msg-warning-msg-warning-icon-color: rgba(255, 149, 0, 1);
+  --message-msg-info-msg-info-bg-color: rgba(243, 247, 255, 1);
+  --message-msg-info-msg-info-icon-color: rgba(60, 105, 251, 1);
+
+  /* ---- Panels / page ---- */
+  --panel-bg: var(--color-background);
+  --panel-border: transparent;
+  --panel-shadow: 0 0.8px 16px 0 rgb(0 0 0 / 0.13);
+  --page-bg: var(--color-background-alt1);
+
+  /* ---- App bar ---- */
+  --appbar-bg: rgba(255, 255, 255, 1);
+  --appbar-fg: rgba(32, 31, 30, 1);
+  --appbar-border: rgba(237, 235, 233, 1);
+
+  /* ---- Form focus ---- */
+  --input-focus-bg: var(--color-accent-100);
+
+  /* ---- Toast ---- */
+  --toast-bg: rgba(255, 255, 255, 1);
+  --toast-border: rgba(237, 235, 233, 1);
+  --toast-radius: 14px;
+
+  /* ---- Sidebar (Nyma backoffice shell — dark slate, fixed across modes) ---- */
+  --sidebar-bg: #1e293b;       /* slate-800 */
+  --sidebar-fg: #e2e8f0;       /* slate-200 */
+  --sidebar-fg-muted: #94a3b8; /* slate-400 */
+  --sidebar-section: #64748b;  /* slate-500 */
+  --sidebar-border: #334155;   /* slate-700 */
+  --sidebar-hover: rgba(255, 255, 255, 0.08);
+  --sidebar-active-bg: rgba(59, 130, 246, 0.16);
+  --sidebar-active-fg: #ffffff;
+}
+
+/* ============================ DARK ============================ */
+[data-theme="dark"] {
+  /* ---- Surfaces ---- */
+  --color-background: rgba(27, 26, 25, 1);
+  --color-background-alt1: rgba(32, 31, 30, 1);
+  --color-background-alt2: rgba(37, 36, 35, 1);
+  --color-background-alt3: rgba(41, 40, 39, 1);
+  --color-background-alt4: rgba(50, 49, 48, 1);
+  --color-background-alt5: rgba(59, 58, 57, 1);
+  --color-background-alt6: rgba(72, 70, 68, 1);
+  --color-content-bg-hover: rgba(37, 36, 35, 1);
+  --color-content-bg-pressed: rgba(50, 49, 48, 1);
+  --color-content-bg-focus: rgba(41, 40, 39, 1);
+  --color-content-bg-selected: rgba(41, 40, 39, 1);
+  --color-flyout-bg: rgba(37, 36, 35, 1);
+  --color-flyout-bg-hover: rgba(50, 49, 48, 1);
+  --color-flyout-bg-selected: rgba(59, 58, 57, 1);
+  --color-table-bg-hover: rgba(37, 36, 35, 1);
+  --color-table-bg-pressed: rgba(50, 49, 48, 1);
+  --color-table-bg-selected: rgba(41, 40, 39, 1);
+  --segmented-toggle-bg: var(--color-background-alt4);
+
+  /* ---- Foreground / text ---- */
+  --color-foreground: rgba(243, 242, 241, 1);
+  --color-foreground-alt1: rgba(210, 208, 206, 1);
+  --color-foreground-alt2: rgba(200, 198, 196, 1);
+  --color-foreground-alt3: rgba(161, 159, 157, 1);
+  --color-foreground-disabled: rgba(96, 94, 92, 1);
+  --color-placeholder: rgba(161, 159, 157, 1);
+
+  /* ---- Icons ---- */
+  --color-icon: rgba(161, 159, 157, 1);
+  --color-icon-hover: rgba(243, 242, 241, 1);
+  --color-icon-pressed: rgba(200, 198, 196, 1);
+  --color-icon-disabled: rgba(72, 70, 68, 1);
+  --color-icon-muted: rgba(161, 159, 157, 1);
+
+  /* ---- Borders ---- */
+  --color-border-light: rgba(41, 40, 39, 1);
+  --color-border: rgba(161, 159, 157, 1);
+  --color-border-dark: rgba(121, 119, 117, 1);
+  --color-border-hover: rgba(50, 49, 48, 1);
+  --color-border-hover-input: rgba(200, 198, 196, 1);
+  --color-border-focus: rgba(50, 49, 48, 1);
+  --color-border-disabled: rgba(41, 40, 39, 1);
+  --color-border-warning: rgba(219, 123, 72, 1);
+  --color-border-error: rgba(226, 119, 126, 1);
+  --color-border-success: rgba(134, 226, 119, 1);
+
+  /* ---- Tooltip ---- */
+  --color-tooltip-bg: rgba(37, 36, 35, 1);
+  --color-tooltip-border: rgba(50, 49, 48, 1);
+  --color-tooltip-text: rgba(243, 242, 241, 1);
+
+  /* ---- Primary button ---- */
+  --primary-button-primary-bg-color-disabled: rgba(37, 36, 35, 1);
+  --primary-button-primary-border-color-disabled: rgba(50, 49, 48, 1);
+  --primary-button-primary-text-disabled: rgba(59, 58, 57, 1);
+
+  /* ---- Secondary button ---- */
+  --secondary-button-secondary-bg-color: rgba(27, 26, 25, 1);
+  --secondary-button-secondary-border-color: rgba(161, 159, 157, 1);
+  --secondary-button-secondary-text-color: rgba(255, 255, 255, 1);
+  --secondary-button-secondary-bg-color-hover: rgba(37, 36, 35, 1);
+  --secondary-button-secondary-bg-color-pressed: rgba(41, 40, 39, 1);
+  --secondary-button-secondary-bg-color-disabled: rgba(37, 36, 35, 1);
+  --secondary-button-secondary-border-color-disabled: rgba(50, 49, 48, 1);
+  --secondary-button-secondary-text-color-disabled: rgba(59, 58, 57, 1);
+
+  /* ---- Status buttons ---- */
+  --success-button-success-bg-color: rgba(11, 106, 11, 1);
+  --success-button-success-bg-color-hover: rgba(11, 106, 11, 1);
+  --success-button-success-bg-color-pressed: rgba(9, 85, 9, 1);
+  --warning-button-warning-bg-color: rgba(202, 80, 16, 1);
+  --warning-button-warning-bg-color-hover: rgba(207, 98, 40, 1);
+  --warning-button-warning-bg-color-pressed: rgba(213, 115, 64, 1);
+  --danger-button-danger-bg-color: rgba(209, 52, 56, 1);
+  --danger-button-danger-bg-color-hover: rgba(188, 47, 50, 1);
+  --danger-button-danger-bg-color-pressed: rgba(167, 42, 45, 1);
+  --info-button-info-bg-color: rgba(3, 131, 135, 1);
+  --info-button-info-bg-color-hover: rgba(3, 118, 122, 1);
+  --info-button-info-bg-color-pressed: rgba(53, 156, 159, 1);
+  --outline-button-secondary-outline: rgba(255, 255, 255, 1);
+
+  /* ---- Message / alert surfaces ---- */
+  --message-msg-default-msg-bg-color: rgba(50, 49, 48, 1);
+  --message-msg-success-msg-success-bg-color: rgba(57, 61, 27, 1);
+  --message-msg-success-msg-success-icon-color: rgba(146, 195, 83, 1);
+  --message-msg-danger-msg-danger-bg-color: rgba(68, 39, 38, 1);
+  --message-msg-danger-msg-danger-icon-color: rgba(241, 112, 123, 1);
+  --message-msg-warning-msg-warning-bg-color: rgba(65, 53, 0, 1);
+  --message-msg-warning-msg-warning-icon-color: rgba(200, 198, 196, 1);
+  --message-msg-info-msg-info-bg-color: rgba(1, 58, 60, 1);
+  --message-msg-info-msg-info-icon-color: rgba(4, 179, 185, 1);
+
+  /* ---- Panels / page ---- */
+  --panel-bg: var(--color-background);
+  --panel-border: var(--color-border-light);
+  --panel-shadow: 0 1px 20px 0 rgb(255 255 255 / 0.12);
+  --page-bg: var(--color-background-alt2);
+
+  /* ---- App bar ---- */
+  --appbar-bg: rgba(41, 40, 39, 1);
+  --appbar-fg: rgba(243, 242, 241, 1);
+  --appbar-border: rgba(50, 49, 48, 1);
+
+  /* ---- Form focus ---- */
+  --input-focus-bg: rgba(30, 58, 138, 0.35);
+
+  /* ---- Toast ---- */
+  --toast-bg: rgba(37, 36, 35, 1);
+  --toast-border: rgba(50, 49, 48, 1);
+}

@@ -1,0 +1,62 @@
+/*
+ * Nyma brand color overrides for Tiara DS
+ *
+ * Tiara ships with an orange accent palette (#FF6600) inherited from
+ * the upstream Tarko Design System. This file overrides the accent
+ * + brand tokens with Nyma's blue (#3b82f6, Tailwind blue-500) so
+ * the whole DS adopts the Nyma identity without modifying tokens.css
+ * (kept verbatim so a future Figma re-export stays a clean patch).
+ *
+ * Import order in globals.css MUST be:
+ *   1. tailwindcss
+ *   2. tw-animate-css
+ *   3. ./tokens.css           (Tarko palette)
+ *   4. ./nyma-brand-override.css  (this file — wins over tokens.css)
+ *
+ * Blue scale = Tailwind CSS v4 blue (same scale Nyma uses in apps/web
+ * MUI theme primary).
+ */
+
+:root {
+  /* Light-mode accent scale */
+  --color-accent-100: #eff6ff;   /* blue-50  — lighter-alt */
+  --color-accent-200: #dbeafe;   /* blue-100 — lighter */
+  --color-accent-300: #bfdbfe;   /* blue-200 — light */
+  --color-accent-400: #93c5fd;   /* blue-300 — tertiary */
+  --color-accent-500: #3b82f6;   /* blue-500 — Nyma brand primary */
+  --color-accent-600: #2563eb;   /* blue-600 — dark / hover */
+  --color-accent-700: #1d4ed8;   /* blue-700 — darker / pressed */
+  --color-accent-hover: #2563eb; /* blue-600 */
+
+  /* Brand tokens (logo / banner / gradient — independent of mode) */
+  --color-brand: #3b82f6;
+  --color-brand-hover: #2563eb;
+  --color-brand-gradient-from: #3b82f6;
+  --color-brand-gradient-to: #60a5fa;   /* blue-400 */
+
+  /* Light-mode primary button: re-route hardcoded oranges to the accent
+   * scale so a single source of truth controls the brand color. */
+  --primary-button-primary-bg-color: var(--color-accent-500);
+  --primary-button-primary-border-color: var(--color-accent-500);
+  --primary-button-primary-bg-color-hover: var(--color-accent-600);
+  --primary-button-primary-border-color-hover: var(--color-accent-600);
+  --primary-button-primary-bg-color-pressed: var(--color-accent-700);
+  --primary-button-primary-border-color-pressed: var(--color-accent-700);
+  --primary-button-primary-bg-color-focus: var(--color-accent-600);
+  --primary-button-primary-border-color-focus: var(--color-accent-600);
+}
+
+[data-theme='dark'] {
+  /* Dark-mode accent scale: same Nyma blue, but the 100/200 end of
+   * the scale points to *darker* blues so it remains readable as a
+   * tonal background on dark surfaces. 500 stays #3b82f6 as the
+   * canonical brand color. */
+  --color-accent-100: #1e3a8a;   /* blue-900 */
+  --color-accent-200: #1e40af;   /* blue-800 */
+  --color-accent-300: #1d4ed8;   /* blue-700 */
+  --color-accent-400: #2563eb;   /* blue-600 */
+  --color-accent-500: #3b82f6;   /* blue-500 — Nyma brand primary */
+  --color-accent-600: #60a5fa;   /* blue-400 — hover (lighter on dark) */
+  --color-accent-700: #93c5fd;   /* blue-300 — pressed (lighter on dark) */
+  --color-accent-hover: #60a5fa; /* blue-400 */
+}

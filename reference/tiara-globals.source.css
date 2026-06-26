@@ -1,0 +1,318 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import './tokens.css';
+@import './nyma-brand-override.css';
+
+/*
+ * Tell Tailwind to scan Tiara source files for class usage.
+ * Tailwind 4 ignores node_modules by default, but Tiara is linked as a
+ * pnpm workspace package — without this, atom/molecule/organism classes
+ * (bg-[var(...)], inline-flex, etc.) are not emitted into the bundle and
+ * components render unstyled.
+ */
+@source "../**/*.{ts,tsx}";
+
+/*
+ * Tiara DS - Global Styles
+ *
+ * Color tokens are imported from tokens.css (generated from Figma).
+ * This file adds typography, spacing, radius, shadows, z-index,
+ * animation, base reset, and keyframe animations.
+ *
+ * Pattern: identical to @tarko-next/design-system globals.css
+ */
+
+@theme {
+  /* ==========================================================================
+     TYPOGRAPHY
+     From tokens.json: font-size, font-weight, line-height, letter-spacing
+     ========================================================================== */
+
+  /* Font Family */
+  --font-family-sans: var(--font-roboto, 'Roboto'), system-ui, -apple-system, sans-serif;
+
+  /* Font Sizes */
+  --font-size-xxs: 10px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 30px;
+  --font-size-4xl: 36px;
+  --font-size-5xl: 48px;
+  --font-size-6xl: 60px;
+  --font-size-7xl: 72px;
+  --font-size-8xl: 96px;
+  --font-size-9xl: 128px;
+
+  /* Font Weights */
+  --font-weight-thin: 100;
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  /* Line Heights */
+  --line-height-xxs: 14px;
+  --line-height-xs: 16px;
+  --line-height-sm: 20px;
+  --line-height-base: 24px;
+  --line-height-lg: 28px;
+  --line-height-xl: 28px;
+  --line-height-2xl: 32px;
+  --line-height-3xl: 36px;
+  --line-height-4xl: 40px;
+  --line-height-5xl: 48px;
+  --line-height-6xl: 60px;
+  --line-height-7xl: 72px;
+  --line-height-8xl: 96px;
+  --line-height-9xl: 128px;
+
+  /* Letter Spacing */
+  --letter-spacing-tightest: -0.5px;
+  --letter-spacing-tighter: -0.25px;
+  --letter-spacing-tight: -0.1px;
+  --letter-spacing-normal: 0px;
+  --letter-spacing-wide: 0.1px;
+  --letter-spacing-wider: 0.25px;
+  --letter-spacing-widest: 0.5px;
+
+  /* ==========================================================================
+     SPACING (non-linear scale from Figma)
+     ========================================================================== */
+  --spacing-0: 0px;
+  --spacing-px: 1px;
+  --spacing-0_5: 2px;
+  --spacing-1: 4px;
+  --spacing-1_5: 6px;
+  --spacing-2: 8px;
+  --spacing-2_5: 10px;
+  --spacing-3: 12px;
+  --spacing-3_5: 14px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-7: 28px;
+  --spacing-8: 32px;
+  --spacing-9: 36px;
+  --spacing-10: 40px;
+  --spacing-11: 44px;
+  --spacing-12: 48px;
+  --spacing-14: 56px;
+  --spacing-16: 64px;
+  --spacing-18: 72px;
+  --spacing-20: 80px;
+
+  /* ==========================================================================
+     BORDER RADIUS
+     ========================================================================== */
+  --radius-none: 0px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 20px;
+  --radius-full: 1000px;
+
+  /* Button-specific radii */
+  --radius-btn-xs: 8px;
+  --radius-btn-sm: 10px;
+  --radius-btn-md: 14px;
+  --radius-btn-lg: 14px;
+
+  /* ==========================================================================
+     BORDER WIDTH
+     ========================================================================== */
+  --border-0: 0px;
+  --border-1: 1px;
+  --border-2: 2px;
+  --border-4: 4px;
+  --border-8: 8px;
+
+  /* ==========================================================================
+     SHADOWS
+     ========================================================================== */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 4px 56px -40px rgb(112 114 117 / 1);
+
+  /* ==========================================================================
+     Z-INDEX
+     ========================================================================== */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-toast: 1100;
+
+  /* ==========================================================================
+     BREAKPOINTS
+     ========================================================================== */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  /* ==========================================================================
+     ANIMATION
+     ========================================================================== */
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --easing-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-in: cubic-bezier(0.4, 0, 1, 1);
+  --easing-out: cubic-bezier(0, 0, 0.2, 1);
+
+  --animate-progress-indeterminate: progress-indeterminate 1.5s ease-in-out infinite;
+
+  /* ==========================================================================
+     FORM VARIABLES (Button heights)
+     ========================================================================== */
+  --height-btn-xs: 22px;
+  --height-btn-sm: 28px;
+  --height-btn-md: 32px;
+  --height-btn-lg: 36px;
+
+  /* ==========================================================================
+     FORM VARIABLES (Input heights, radii, border widths)
+     Synced from Figma: file ZpW8F5P4BYkqURaTASgQym, node 23704:32653
+     ========================================================================== */
+  --height-input-xs: 26px;
+  --height-input-sm: 32px;
+  --height-input-md: 36px;
+  --height-input-lg: 40px;
+
+  --radius-input-xs: 8px;
+  --radius-input-sm: 10px;
+  --radius-input-md: 12px;
+  --radius-input-lg: 14px;
+
+  --border-input-xs: 1.3px;
+  --border-input-sm: 1.5px;
+  --border-input-md: 1.8px;
+  --border-input-lg: 1.8px;
+}
+
+/* ==========================================================================
+   BASE RESET
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  color: var(--color-foreground);
+  background-color: var(--color-background);
+  line-height: var(--line-height-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   KEYFRAME ANIMATIONS
+   ========================================================================== */
+
+@keyframes progress-indeterminate {
+  0% { transform: translateX(-100%); width: 40%; }
+  50% { transform: translateX(50%); width: 60%; }
+  100% { transform: translateX(250%); width: 40%; }
+}
+
+.animate-progress-indeterminate {
+  animation: progress-indeterminate 1.5s ease-in-out infinite;
+}
+
+@keyframes progress-bar-indeterminate {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(400%);  }
+}
+
+.animate-progress-bar-indeterminate {
+  width: 30%;
+  animation: progress-bar-indeterminate 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes accordion-down {
+  from { height: 0; opacity: 0; }
+  to { height: var(--radix-accordion-content-height); opacity: 1; }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); opacity: 1; }
+  to { height: 0; opacity: 0; }
+}
+
+.animate-accordion-down {
+  animation: accordion-down 200ms ease-out;
+}
+
+.animate-accordion-up {
+  animation: accordion-up 200ms ease-out;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* Dialog/AlertDialog Animations */
+@keyframes dialog-overlay-show { from { opacity: 0; } to { opacity: 1; } }
+@keyframes dialog-overlay-hide { from { opacity: 1; } to { opacity: 0; } }
+@keyframes dialog-content-show { from { opacity: 0; scale: 0.95; } to { opacity: 1; scale: 1; } }
+@keyframes dialog-content-hide { from { opacity: 1; scale: 1; } to { opacity: 0; scale: 0.95; } }
+
+/* Sheet Slide Animations */
+@keyframes sheet-slide-in-from-right { from { transform: translateX(100%); } to { transform: translateX(0); } }
+@keyframes sheet-slide-out-to-right { from { transform: translateX(0); } to { transform: translateX(100%); } }
+@keyframes sheet-slide-in-from-left { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+@keyframes sheet-slide-out-to-left { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+@keyframes sheet-slide-in-from-top { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+@keyframes sheet-slide-out-to-top { from { transform: translateY(0); } to { transform: translateY(-100%); } }
+@keyframes sheet-slide-in-from-bottom { from { transform: translateY(100%); } to { transform: translateY(0); } }
+@keyframes sheet-slide-out-to-bottom { from { transform: translateY(0); } to { transform: translateY(100%); } }
+
+/* Tooltip Animations */
+@keyframes tooltip-fade-in { from { opacity: 0; scale: 0.95; } to { opacity: 1; scale: 1; } }
+@keyframes tooltip-fade-out { from { opacity: 1; scale: 1; } to { opacity: 0; scale: 0.95; } }
+
+.animate-tooltip-in {
+  animation: tooltip-fade-in 150ms ease-out;
+}
+.animate-tooltip-out {
+  animation: tooltip-fade-out 150ms ease-in;
+}
+
+/* ==========================================================================
+   REDUCED MOTION (WCAG 2.3.3 / Phase 5: A11y)
+   Disables transitions and animations for users who prefer reduced motion.
+   Applies to all elements within the design system scope.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

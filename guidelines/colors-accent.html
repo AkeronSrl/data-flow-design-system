@@ -1,0 +1,27 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Accent — Nyma Blue" subtitle="Brand primary scale (#3b82f6), accent-100 → accent-700" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--color-background); font-family: var(--font-family-sans); }
+  .row { display: flex; gap: 10px; }
+  .sw { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+  .chip { height: 64px; border-radius: var(--radius-lg); border: 1px solid var(--color-border-light); }
+  .lbl { font-size: 11px; font-weight: 600; color: var(--color-foreground); }
+  .hex { font-size: 10px; color: var(--color-foreground-alt3); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw"><div class="chip" style="background:var(--color-accent-100)"></div><span class="lbl">100</span><span class="hex">#eff6ff</span></div>
+    <div class="sw"><div class="chip" style="background:var(--color-accent-200)"></div><span class="lbl">200</span><span class="hex">#dbeafe</span></div>
+    <div class="sw"><div class="chip" style="background:var(--color-accent-300)"></div><span class="lbl">300</span><span class="hex">#bfdbfe</span></div>
+    <div class="sw"><div class="chip" style="background:var(--color-accent-400)"></div><span class="lbl">400</span><span class="hex">#93c5fd</span></div>
+    <div class="sw"><div class="chip" style="background:var(--color-accent-500);border-color:transparent"></div><span class="lbl">500 ·base</span><span class="hex">#3b82f6</span></div>
+    <div class="sw"><div class="chip" style="background:var(--color-accent-600);border-color:transparent"></div><span class="lbl">600</span><span class="hex">#2563eb</span></div>
+    <div class="sw"><div class="chip" style="background:var(--color-accent-700);border-color:transparent"></div><span class="lbl">700</span><span class="hex">#1d4ed8</span></div>
+  </div>
+</body>
+</html>

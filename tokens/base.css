@@ -1,0 +1,48 @@
+/* ============================================================================
+ * Tiara DS — Base reset, body defaults, keyframes
+ * ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-sans);
+  color: var(--color-foreground);
+  background-color: var(--color-background);
+  line-height: var(--line-height-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- Keyframes used by components ---- */
+@keyframes tiara-spin { to { transform: rotate(360deg); } }
+
+@keyframes tiara-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes tiara-progress-indeterminate {
+  0% { transform: translateX(-100%); width: 40%; }
+  50% { transform: translateX(50%); width: 60%; }
+  100% { transform: translateX(250%); width: 40%; }
+}
+
+@keyframes tiara-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes tiara-pop-in { from { opacity: 0; scale: 0.95; } to { opacity: 1; scale: 1; } }
+
+/* ---- Reduced motion (WCAG 2.3.3) ---- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

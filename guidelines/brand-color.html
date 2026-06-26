@@ -1,0 +1,22 @@
+<!-- @dsCard group="Brand" viewport="700x150" name="Brand Color & Gradient" subtitle="Nyma blue #3b82f6 — solid, hover, and brand gradient" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--color-background); font-family: var(--font-family-sans); color: var(--color-foreground); }
+  .row { display:flex; gap:14px; }
+  .col { flex:1; display:flex; flex-direction:column; gap:6px; }
+  .chip { height:72px; border-radius:var(--radius-xl); display:flex; align-items:flex-end; padding:10px; color:#fff; font-size:11px; font-weight:600; }
+  .lbl { font-size:10px; color:var(--color-foreground-alt3); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="col"><div class="chip" style="background:var(--color-brand)">#3b82f6</div><span class="lbl">brand</span></div>
+    <div class="col"><div class="chip" style="background:var(--color-brand-hover)">#2563eb</div><span class="lbl">brand-hover</span></div>
+    <div class="col"><div class="chip" style="background:linear-gradient(90deg,var(--color-brand-gradient-from),var(--color-brand-gradient-to))">gradient</div><span class="lbl">brand gradient · from → to</span></div>
+  </div>
+</body>
+</html>

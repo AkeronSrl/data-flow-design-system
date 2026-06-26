@@ -1,0 +1,1161 @@
+/*
+ * Tiara DS - Color Tokens (no @import 'tailwindcss')
+ *
+ * Generated from Figma file: Tiara - Tarko-New
+ * Collection: fluent2 | Modes: Light, Dark
+ * Total color tokens: 342
+ *
+ * Source of truth: packages/tiara-ds/src/tokens/colors-resolved.json
+ * Generated: 2026-02-20
+ */
+
+@theme {
+  /* ======== PRIMITIVES: Black & White ======== */
+  --color-black: rgba(0,0,0,1);
+  --color-white: rgba(255,255,255,1);
+  --color-transparent: rgba(255,255,255,0);
+
+  /* ======== PRIMITIVES: Neutral Scale ======== */
+  --color-neutral-10: rgba(250,249,248,1);
+  --color-neutral-20: rgba(243,242,241,1);
+  --color-neutral-30: rgba(237,235,233,1);
+  --color-neutral-40: rgba(225,223,221,1);
+  --color-neutral-50: rgba(210,208,206,1);
+  --color-neutral-60: rgba(200,198,196,1);
+  --color-neutral-70: rgba(190,187,184,1);
+  --color-neutral-80: rgba(179,176,173,1);
+  --color-neutral-90: rgba(161,159,157,1);
+  --color-neutral-100: rgba(151,149,147,1);
+  --color-neutral-110: rgba(138,136,134,1);
+  --color-neutral-120: rgba(121,119,117,1);
+  --color-neutral-130: rgba(96,94,92,1);
+  --color-neutral-140: rgba(72,70,68,1);
+  --color-neutral-150: rgba(59,58,57,1);
+  --color-neutral-160: rgba(50,49,48,1);
+  --color-neutral-170: rgba(41,40,39,1);
+  --color-neutral-180: rgba(37,36,35,1);
+  --color-neutral-190: rgba(32,31,30,1);
+  --color-neutral-200: rgba(27,26,25,1);
+  --color-neutral-210: rgba(22,21,20,1);
+  --color-neutral-220: rgba(17,16,15,1);
+
+  /* ======== PRIMITIVES: Accent (Brand) Scale ======== */
+  --color-accent-100: rgba(255,249,245,1);   /* foregroung-color-theme-lighter-alt */
+  --color-accent-200: rgba(255,235,222,1);   /* foregroung-color-theme-lighter */
+  --color-accent-300: rgba(255,200,163,1);   /* foregroung-color-theme-light */
+  --color-accent-400: rgba(255,172,116,1);   /* foregroung-color-theme-tertiary */
+  --color-accent-500: rgba(255,102,0,1);   /* shared-cyanblue10 */
+  --color-accent-600: rgba(238,95,0,1);   /* foregroung-color-theme-dark */
+  --color-accent-700: rgba(238,83,0,1);   /* foregroung-color-theme-darker */
+  --color-accent-hover: rgba(255,115,22,1);   /* foregroung-color-theme-dark-alt */
+
+  /* Brand orange - ALWAYS #ff6600, never changes in dark mode */
+  --color-brand: rgba(255,102,0,1);
+  --color-brand-hover: rgba(255,115,22,1);
+  --color-brand-gradient-from: rgba(255,102,0,1);   /* #FF6600 */
+  --color-brand-gradient-to: rgba(255,140,51,1);     /* #FF8C33 */
+
+  /* ======== PRIMITIVES: Status Colors ======== */
+  --color-success-100: rgba(244,255,244,1);   /* foregroung-color-success-light */
+  --color-success-500: rgba(0,162,57,1);   /* shared-green20 */
+  --color-success-600: rgba(0,133,46,1);   /* success-button-success-bg-color-hover */
+  --color-success-700: rgba(0,120,42,1);   /* foregroung-color-success-dark */
+  --color-warning-100: rgba(255,248,236,1);   /* foregroung-color-warning-light */
+  --color-warning-500: rgba(255,149,0,1);   /* shared-orange20 */
+  --color-warning-600: rgba(234,121,0,1);   /* warning-button-warning-bg-color-hover */
+  --color-warning-700: rgba(223,115,0,1);   /* foregroung-color-warning-dark */
+  --color-danger-100: rgba(255,244,244,1);   /* foregroung-color-danger-light */
+  --color-danger-500: rgba(235,0,0,1);   /* shared-red10 */
+  --color-danger-600: rgba(213,0,0,1);   /* danger-button-danger-bg-color-hover */
+  --color-danger-700: rgba(190,0,0,1);   /* foregroung-color-danger-dark */
+  --color-info-100: rgba(243,247,255,1);   /* foregroung-color-info-light */
+  --color-info-500: rgba(60,105,251,1);   /* shared-cyan20 */
+  --color-info-600: rgba(41,87,238,1);   /* info-button-info-bg-color-hover */
+  --color-info-700: rgba(35,75,204,1);   /* foregroung-color-info-dark */
+
+  /* ======== PRIMITIVES: Additional Shared Colors ======== */
+  --color-yellow-500: rgba(252,225,0,1);
+  --color-amber-500: rgba(193,156,0,1);
+
+  /* ==========================================================================
+     TYPOGRAPHY
+     ========================================================================== */
+  --font-family-sans: var(--font-roboto, 'Roboto'), system-ui, -apple-system, sans-serif;
+
+  --font-size-xxs: 10px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 30px;
+  --font-size-4xl: 36px;
+  --font-size-5xl: 48px;
+  --font-size-6xl: 60px;
+  --font-size-7xl: 72px;
+  --font-size-8xl: 96px;
+  --font-size-9xl: 128px;
+
+  --font-weight-thin: 100;
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  --line-height-xxs: 14px;
+  --line-height-xs: 16px;
+  --line-height-sm: 20px;
+  --line-height-base: 24px;
+  --line-height-lg: 28px;
+  --line-height-xl: 28px;
+  --line-height-2xl: 32px;
+  --line-height-3xl: 36px;
+  --line-height-4xl: 40px;
+  --line-height-5xl: 48px;
+  --line-height-6xl: 60px;
+  --line-height-7xl: 72px;
+  --line-height-8xl: 96px;
+  --line-height-9xl: 128px;
+
+  --letter-spacing-tightest: -0.5px;
+  --letter-spacing-tighter: -0.25px;
+  --letter-spacing-tight: -0.1px;
+  --letter-spacing-normal: 0px;
+  --letter-spacing-wide: 0.1px;
+  --letter-spacing-wider: 0.25px;
+  --letter-spacing-widest: 0.5px;
+
+  /* ==========================================================================
+     SPACING
+     ========================================================================== */
+  --spacing-0: 0px;
+  --spacing-px: 1px;
+  --spacing-0_5: 2px;
+  --spacing-1: 4px;
+  --spacing-1_5: 6px;
+  --spacing-2: 8px;
+  --spacing-2_5: 10px;
+  --spacing-3: 12px;
+  --spacing-3_5: 14px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-7: 28px;
+  --spacing-8: 32px;
+  --spacing-9: 36px;
+  --spacing-10: 40px;
+  --spacing-11: 44px;
+  --spacing-12: 48px;
+  --spacing-14: 56px;
+  --spacing-16: 64px;
+  --spacing-18: 72px;
+  --spacing-20: 80px;
+
+  /* ==========================================================================
+     BORDER RADIUS
+     ========================================================================== */
+  --radius-none: 0px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 20px;
+  --radius-full: 1000px;
+
+  /* ==========================================================================
+     BORDER WIDTH
+     ========================================================================== */
+  --border-0: 0px;
+  --border-1: 1px;
+  --border-2: 2px;
+  --border-4: 4px;
+  --border-8: 8px;
+
+  /* ==========================================================================
+     SHADOWS
+     ========================================================================== */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 4px 56px -40px rgb(112 114 117 / 1);
+  --shadow-panel: 0 0.8px 16px 0 rgb(0 0 0 / 0.13);
+
+  /* ==========================================================================
+     Z-INDEX
+     ========================================================================== */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+
+  /* ==========================================================================
+     BREAKPOINTS
+     ========================================================================== */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  /* ==========================================================================
+     ANIMATION
+     ========================================================================== */
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --easing-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-in: cubic-bezier(0.4, 0, 1, 1);
+  --easing-out: cubic-bezier(0, 0, 0.2, 1);
+
+  --animate-progress-indeterminate: progress-indeterminate 1.5s ease-in-out infinite;
+
+  /* ======== BORDER COLORS (light defaults, dark overrides in [data-theme="dark"]) ======== */
+  --color-border-light: rgba(237,235,233,1);
+  --color-border: rgba(210,208,206,1);
+  --color-border-alt: rgba(50,49,48,1);
+  --color-border-dark: rgba(200,198,196,1);
+  --color-border-hover: rgba(225,223,221,1);
+  --color-border-hover-input: rgba(138,136,134,1);
+  --color-border-pressed: rgba(210,208,206,1);
+  --color-border-focus: rgba(225,223,221,1);
+  --color-border-selected: rgba(210,208,206,1);
+  --color-border-dragged: rgba(237,235,233,1);
+  --color-border-disabled: rgba(237,235,233,1);
+  --color-border-warning: rgba(255,149,0,1);
+  --color-border-error: rgba(190,0,0,1);
+  --color-border-success: rgba(0,120,42,1);
+  --color-border-accent: var(--color-accent-500);
+}
+
+/* ======== SEMANTIC TOKENS - Light Mode (default) ======== */
+:root {
+  --color-background: rgba(255,255,255,1);
+  --color-background-alt1: rgba(250,249,248,1);
+  --color-background-alt2: rgba(243,242,241,1);
+  --color-background-alt3: rgba(237,235,233,1);
+  --color-background-alt4: rgba(225,223,221,1);
+  --color-background-alt5: rgba(210,208,206,1);
+  --color-background-alt6: rgba(200,198,196,1);
+  --segmented-toggle-bg: var(--color-background-alt3);
+  --color-content-bg-hover: rgba(243,242,241,1);
+  --color-content-bg-pressed: rgba(225,223,221,1);
+  --color-content-bg-focus: rgba(237,235,233,1);
+  --color-content-bg-selected: rgba(237,235,233,1);
+  --color-content-bg-dragged: rgba(243,242,241,0.009);
+  --color-content-bg-disabled: rgba(255,255,255,1);
+  --color-flyout-bg: rgba(255,255,255,1);
+  --color-flyout-bg-hover: rgba(243,242,241,1);
+  --color-flyout-bg-pressed: rgba(237,235,233,1);
+  --color-flyout-bg-selected: rgba(237,235,233,1);
+  --color-flyout-bg-focus: rgba(237,235,233,1);
+  --color-overlay-bg: rgba(0,0,0,0.23);
+  --color-table-bg-hover: rgba(243,242,241,1);
+  --color-table-bg-pressed: rgba(225,223,221,1);
+  --color-table-bg-selected: rgba(237,235,233,1);
+  --color-foreground: rgba(32,31,30,1);
+  --color-foreground-alt1: rgba(50,49,48,1);
+  --color-foreground-alt2: rgba(59,58,57,1);
+  --color-foreground-alt3: rgba(96,94,92,1);
+  --color-foreground-hover: rgba(32,31,30,1);
+  --color-foreground-pressed: rgba(32,31,30,1);
+  --color-foreground-focus: rgba(32,31,30,1);
+  --color-foreground-selected: rgba(32,31,30,1);
+  --color-foreground-dragged: rgba(32,31,30,1);
+  --color-foreground-disabled: rgba(161,159,157,1);
+  --color-placeholder: rgba(121,119,117,1);
+  --color-flyout-text: rgba(32,31,30,1);
+  --color-flyout-text-hover: rgba(32,31,30,1);
+  --color-flyout-text-pressed: rgba(32,31,30,1);
+  --color-flyout-text-selected: rgba(32,31,30,1);
+  --color-flyout-text-focus: rgba(32,31,30,1);
+  --color-flyout-text-disabled: rgba(161,159,157,1);
+  --color-table-text-hover: rgba(32,31,30,1);
+  --color-table-text-pressed: rgba(32,31,30,1);
+  --color-table-text-selected: rgba(32,31,30,1);
+  --color-icon: rgba(96,94,92,1);
+  --color-icon-hover: rgba(50,49,48,1);
+  --color-icon-pressed: rgba(32,31,30,1);
+  --color-icon-disabled: rgba(161,159,157,1);
+  /* Muted icon tone used by info / help indicators that should stay subtle
+     against body text. Light theme needs a lighter grey to avoid looking
+     "heavy" next to foreground text; dark theme keeps the existing feel
+     via its own override below. */
+  --color-icon-muted: rgba(151,149,147,1);
+  --color-placeholder-disabled: var(--color-foreground-disabled);
+  --color-spreadsheet-gridline: rgba(237,235,233,1);
+  --color-flyout-border: rgba(237,235,233,1);
+  --color-tooltip-bg: rgba(255,255,255,1);
+  --color-tooltip-border: rgba(225,223,221,1);
+  --color-tooltip-text: rgba(96,94,92,1);
+  --color-ring: var(--color-accent-500);
+  --color-muted: var(--color-foreground-alt2);
+
+  /* --- Component tokens --- */
+  --secondary-button-secondary-bg-color: rgba(255,255,255,1);
+  --secondary-button-secondary-border-color: rgba(210,208,206,1);
+  --secondary-button-secondary-text-color: rgba(50,49,48,1);
+  --secondary-button-secondary-bg-color-hover: rgba(243,242,241,1);
+  --secondary-button-secondary-border-color-hover: rgba(210,208,206,1);
+  --secondary-button-secondary-text-color-hover: rgba(50,49,48,1);
+  --secondary-button-secondary-bg-color-pressed: rgba(237,235,233,1);
+  --secondary-button-secondary-border-color-pressed: rgba(210,208,206,1);
+  --secondary-button-secondary-text-color-pressed: rgba(50,49,48,1);
+  --secondary-button-secondary-bg-color-focus: rgba(243,242,241,1);
+  --secondary-button-secondary-border-color-focus: rgba(210,208,206,1);
+  --secondary-button-secondary-text-color-focus: rgba(50,49,48,1);
+  --secondary-button-secondary-bg-color-disabled: rgba(243,242,241,1);
+  --secondary-button-secondary-border-color-disabled: rgba(243,242,241,1);
+  --secondary-button-secondary-text-color-disabled: rgba(161,159,157,1);
+  --primary-button-primary-bg-color: rgba(255,102,0,1);
+  --primary-button-primary-border-color: rgba(255,102,0,1);
+  --primary-button-primary-text: rgba(255,255,255,1);
+  --primary-button-primary-bg-color-hover: rgba(238,95,0,1);
+  --primary-button-primary-border-color-hover: rgba(238,95,0,1);
+  --primary-button-primary-text-hover: rgba(255,255,255,1);
+  --primary-button-primary-bg-color-pressed: rgba(238,83,0,1);
+  --primary-button-primary-border-color-pressed: rgba(238,83,0,1);
+  --primary-button-primary-text-pressed: rgba(255,255,255,1);
+  --primary-button-primary-bg-color-focus: rgba(238,95,0,1);
+  --primary-button-primary-border-color-focus: rgba(238,95,0,1);
+  --primary-button-primary-text-focus: rgba(255,255,255,1);
+  --primary-button-primary-bg-color-disabled: rgba(243,242,241,1);
+  --primary-button-primary-border-color-disabled: rgba(243,242,241,1);
+  --primary-button-primary-text-disabled: rgba(161,159,157,1);
+  --success-button-success-bg-color: rgba(0,162,57,1);
+  --success-button-success-border-color: rgba(0,162,57,1);
+  --success-button-success-text: rgba(255,255,255,1);
+  --success-button-success-bg-color-hover: rgba(0,133,46,1);
+  --success-button-success-border-color-hover: rgba(0,133,46,1);
+  --success-button-success-text-hover: rgba(255,255,255,1);
+  --success-button-success-bg-color-pressed: rgba(0,120,42,1);
+  --success-button-success-border-color-pressed: rgba(0,120,42,1);
+  --success-button-success-text-pressed: rgba(255,255,255,1);
+  --success-button-success-bg-color-focus: rgba(0,133,46,1);
+  --success-button-success-border-color-focus: rgba(0,133,46,1);
+  --success-button-success-text-focus: rgba(255,255,255,1);
+  --success-button-success-bg-color-disabled: rgba(243,242,241,1);
+  --success-button-success-border-color-disabled: rgba(243,242,241,1);
+  --success-button-success-text-disabled: rgba(161,159,157,1);
+  --warning-button-warning-bg-color: rgba(255,149,0,1);
+  --warning-button-warning-border-color: rgba(255,149,0,1);
+  --warning-button-warning-text: rgba(255,255,255,1);
+  --warning-button-warning-bg-color-hover: rgba(234,121,0,1);
+  --warning-button-warning-border-color-hover: rgba(234,121,0,1);
+  --warning-button-warning-text-hover: rgba(255,255,255,1);
+  --warning-button-warning-bg-color-pressed: rgba(223,115,0,1);
+  --warning-button-warning-border-color-pressed: rgba(223,115,0,1);
+  --warning-button-warning-text-pressed: rgba(255,255,255,1);
+  --warning-button-warning-bg-color-focus: rgba(234,121,0,1);
+  --warning-button-warning-border-color-focus: rgba(234,121,0,1);
+  --warning-button-warning-text-focus: rgba(255,255,255,1);
+  --warning-button-warning-bg-color-disabled: rgba(243,242,241,1);
+  --warning-button-warning-border-color-disabled: rgba(243,242,241,1);
+  --warning-button-warning-text-disabled: rgba(161,159,157,1);
+  --danger-button-danger-bg-color: rgba(235,0,0,1);
+  --danger-button-danger-border-color: rgba(235,0,0,1);
+  --danger-button-danger-text: rgba(255,255,255,1);
+  --danger-button-danger-bg-color-hover: rgba(213,0,0,1);
+  --danger-button-danger-border-color-hover: rgba(213,0,0,1);
+  --danger-button-danger-text-hover: rgba(255,255,255,1);
+  --danger-button-danger-bg-color-pressed: rgba(190,0,0,1);
+  --danger-button-danger-border-color-pressed: rgba(190,0,0,1);
+  --danger-button-danger-text-pressed: rgba(255,255,255,1);
+  --danger-button-danger-bg-color-focus: rgba(213,0,0,1);
+  --danger-button-danger-border-color-focus: rgba(213,0,0,1);
+  --danger-button-danger-text-focus: rgba(255,255,255,1);
+  --danger-button-danger-bg-color-disabled: rgba(243,242,241,1);
+  --danger-button-danger-border-color-disabled: rgba(243,242,241,1);
+  --danger-button-danger-text-disabled: rgba(161,159,157,1);
+  --info-button-info-bg-color: rgba(60,105,251,1);
+  --info-button-info-border-color: rgba(60,105,251,1);
+  --info-button-info-text: rgba(255,255,255,1);
+  --info-button-info-bg-color-hover: rgba(41,87,238,1);
+  --info-button-info-border-color-hover: rgba(41,87,238,1);
+  --info-button-info-text-hover: rgba(255,255,255,1);
+  --info-button-info-bg-color-pressed: rgba(35,75,204,1);
+  --info-button-info-border-color-pressed: rgba(35,75,204,1);
+  --info-button-info-text-pressed: rgba(255,255,255,1);
+  --info-button-info-bg-color-focus: rgba(41,87,238,1);
+  --info-button-info-border-color-focus: rgba(41,87,238,1);
+  --info-button-info-text-focus: rgba(255,255,255,1);
+  --info-button-info-bg-color-disable: rgba(243,242,241,1);
+  --info-button-info-border-color-disabled: rgba(243,242,241,1);
+  --info-button-info-text-disabled: rgba(161,159,157,1);
+  --outline-button-primary-outline: rgba(255,102,0,1);
+  --outline-button-secondary-outline: rgba(50,49,48,1);
+  --outline-button-warning-outline: rgba(255,149,0,1);
+  --outline-button-success-outline: rgba(0,162,57,1);
+  --outline-button-info-outline: rgba(60,105,251,1);
+  --toast-text-toast-text-color: rgba(32,31,30,1);
+  --toast-text-toast-alt-text-color: rgba(32,31,30,1);
+  --chart-series-series-1: rgba(237,235,233,1);
+  --chart-series-series-2: rgba(210,208,206,1);
+  --chart-series-series-3: rgba(200,198,196,1);
+  --chart-series-series-4: rgba(161,159,157,1);
+  --chart-series-series-5: rgba(97,69,112,1);
+  --chart-series-series-6: rgba(76,111,177,1);
+  --chart-series-series-7: rgba(204,105,82,1);
+  --chart-series-series-8: rgba(63,87,154,1);
+  --chart-series-series-9: rgba(78,160,155,1);
+  --chart-series-series-10: rgba(110,122,137,1);
+  --chart-series-series-11: rgba(61,117,166,1);
+  --chart-series-series-12: rgba(243,169,60,1);
+  --diagram-palette-color-diagram-palette-background: rgba(255,255,255,1);
+  --diagram-palette-color-diagram-palette-hover-background: rgba(243,242,241,1);
+  --message-msg-default-msg-color: rgba(50,49,48,1);
+  --message-msg-default-msg-bg-color: rgba(243,242,241,1);
+  --message-msg-default-msg-border-color: rgba(243,242,241,1);
+  --message-msg-default-msg-color-alt1: rgba(32,31,30,1);
+  --message-msg-default-msg-bg-color-alt1: rgba(255,255,255,0);
+  --message-msg-default-msg-border-color-alt: rgba(200,198,196,1);
+  --message-msg-default-msg-color-alt2: rgba(255,255,255,1);
+  --message-msg-default-msg-bg-color-alt2: rgba(96,94,92,1);
+  --message-msg-default-msg-border-color-alt2: rgba(96,94,92,1);
+  --message-msg-default-msg-icon-color: rgba(96,94,92,1);
+  --message-msg-default-msg-icon-color-alt1: rgba(96,94,92,1);
+  --message-msg-default-msg-icon-color-alt2: rgba(255,255,255,1);
+  --message-msg-default-msg-close-icon-color: rgba(50,49,48,1);
+  --message-msg-default-msg-close-icon-color-alt1: rgba(50,49,48,1);
+  --message-msg-default-msg-close-icon-color-alt2: rgba(255,255,255,1);
+  --message-msg-default-msg-icon-bg: rgba(255,235,222,1);
+  --message-msg-success-msg-success-icon-bg: rgba(218,244,217,1);
+  --message-msg-info-msg-info-icon-bg: rgba(214,230,255,1);
+  --message-msg-danger-msg-danger-icon-bg: rgba(255,211,211,1);
+  --message-msg-warning-msg-warning-icon-bg: rgba(255,231,196,1);
+  --message-msg-success-msg-success-color: rgba(50,49,48,1);
+  --message-msg-success-msg-success-bg-color: rgba(244,255,244,1);
+  --message-msg-success-msg-success-border-color: rgba(244,255,244,1);
+  --message-msg-success-msg-success-color-alt1: rgba(0,120,42,1);
+  --message-msg-success-msg-success-bg-color-alt1: rgba(255,255,255,0);
+  --message-msg-success-msg-success-border-color-alt1: rgba(0,120,42,1);
+  --message-msg-success-msg-success-color-alt2: rgba(255,255,255,1);
+  --message-msg-success-msg-success-bg-color-alt2: rgba(0,162,57,1);
+  --message-msg-success-msg-success-border-color-alt2: rgba(0,162,57,1);
+  --message-msg-success-msg-success-icon-color: rgba(0,162,57,1);
+  --message-msg-success-msg-success-icon-color-alt1: rgba(0,120,42,1);
+  --message-msg-success-msg-success-icon-color-alt2: rgba(255,255,255,1);
+  --message-msg-success-msg-success-close-icon-color: rgba(50,49,48,1);
+  --message-msg-success-msg-success-close-icon-color-alt1: rgba(50,49,48,1);
+  --message-msg-success-msg-success-close-icon-color-alt2: rgba(255,255,255,1);
+  --message-msg-danger-msg-danger-color: rgba(50,49,48,1);
+  --message-msg-danger-msg-danger-bg-color: rgba(255,244,244,1);
+  --message-msg-danger-msg-danger-border-color: rgba(255,244,244,1);
+  --message-msg-danger-msg-danger-color-alt1: rgba(190,0,0,1);
+  --message-msg-danger-msg-danger-bg-color-alt1: rgba(255,255,255,0);
+  --message-msg-danger-msg-danger-border-color-alt1: rgba(164,38,44,1);
+  --message-msg-danger-msg-danger-color-alt2: rgba(255,255,255,1);
+  --message-msg-danger-msg-danger-bg-color-alt2: rgba(235,0,0,1);
+  --message-msg-danger-msg-danger-border-color-alt2: rgba(235,0,0,1);
+  --message-msg-danger-msg-danger-icon-color: rgba(235,0,0,1);
+  --message-msg-danger-msg-danger-icon-color-alt1: rgba(190,0,0,1);
+  --message-msg-danger-msg-danger-icon-color-alt2: rgba(255,255,255,1);
+  --message-msg-danger-msg-danger-close-icon-color: rgba(50,49,48,1);
+  --message-msg-danger-msg-danger-close-icon-color-alt1: rgba(50,49,48,1);
+  --message-msg-danger-msg-danger-close-icon-color-alt2: rgba(255,255,255,1);
+  --message-msg-warning-msg-warning-color: rgba(50,49,48,1);
+  --message-msg-warning-msg-warning-bg-color: rgba(255,248,236,1);
+  --message-msg-warning-msg-warning-border-color: rgba(255,248,236,1);
+  --message-msg-warning-msg-warning-color-alt1: rgba(223,115,0,1);
+  --message-msg-warning-msg-warning-bg-color-alt1: rgba(255,255,255,0);
+  --message-msg-warning-msg-warning-border-color-alt1: rgba(223,115,0,1);
+  --message-msg-warning-msg-warning-color-alt2: rgba(255,255,255,1);
+  --message-msg-warning-msg-warning-bg-color-alt2: rgba(223,115,0,1);
+  --message-msg-warning-msg-warning-border-color-alt2: rgba(223,115,0,1);
+  --message-msg-warning-msg-warning-icon-color: rgba(255,149,0,1);
+  --message-msg-warning-msg-warning-icon-color-alt1: rgba(223,115,0,1);
+  --message-msg-warning-msg-warning-icon-color-alt2: rgba(255,255,255,1);
+  --message-msg-warning-msg-warning-close-icon-color: rgba(50,49,48,1);
+  --message-msg-warning-msg-warning-close-icon-color-alt1: rgba(50,49,48,1);
+  --message-msg-warning-msg-warning-close-icon-color-alt2: rgba(255,255,255,1);
+  --message-msg-info-msg-info-color: rgba(50,49,48,1);
+  --message-msg-info-msg-info-bg-color: rgba(243,247,255,1);
+  --message-msg-info-msg-info-border-color: rgba(243,247,255,1);
+  --message-msg-info-msg-info-color-alt1: rgba(35,75,204,1);
+  --message-msg-info-msg-info-bg-color-alt1: rgba(255,255,255,0);
+  --message-msg-info-msg-info-border-color-alt1: rgba(60,105,251,1);
+  --message-msg-info-msg-info-color-alt2: rgba(255,255,255,1);
+  --message-msg-info-msg-info-bg-color-alt2: rgba(60,105,251,1);
+  --message-msg-info-msg-info-border-color-alt2: rgba(60,105,251,1);
+  --message-msg-info-msg-info-icon-color: rgba(60,105,251,1);
+  --message-msg-info-msg-info-icon-color-alt1: rgba(35,75,204,1);
+  --message-msg-info-msg-info-icon-color-alt2: rgba(255,255,255,1);
+  --message-msg-info-msg-info-close-icon-color: rgba(50,49,48,1);
+  --message-msg-info-msg-info-close-icon-color-alt1: rgba(50,49,48,1);
+  --message-msg-info-msg-info-close-icon-color-alt2: rgba(255,255,255,1);
+  --appbar-appbar-light-appbar-bg-color-alt1: rgba(250,249,248,1);
+  --appbar-appbar-light-appbar-color-alt1: rgba(32,31,30,1);
+  --appbar-appbar-light-appbar-border-color-alt1: rgba(250,249,248,1);
+  --appbar-appbar-light-appbar-hover-bg-color-alt1: rgba(255,255,255,0.006);
+  --appbar-appbar-dark-appbar-bg-color-alt2: rgba(59,58,57,1);
+  --appbar-appbar-dark-appbar-color-alt2: rgba(255,255,255,1);
+  --appbar-appbar-dark-appbar-border-color-alt2: rgba(59,58,57,1);
+  --appbar-appbar-dark-appbar-hover-bg-color-alt2: rgba(255,255,255,0.001);
+  --rating-rating-selected-color: rgba(50,49,48,1);
+  --rating-rating-unrated-color: rgba(96,94,92,1);
+  --rating-rating-selected-disabled-color: rgba(200,198,196,1);
+  --rating-rating-unrated-disabled-color: rgba(200,198,196,1);
+  --rating-rating-selected-hover-color: rgba(0,108,191,1);
+  --rating-rating-unrated-hover-color: rgba(0,96,170,1);
+  --rating-rating-pressed-color: rgba(0,96,170,1);
+  --outline-button-danger-outline: rgba(235,0,0,1);
+  --diagram-palette-color-diagram-palette-pressed-background: rgba(225,223,221,1);
+
+  /* --- Carousel dot tokens --- */
+  --carousel-dot-current: rgba(255,102,0,1);
+  --carousel-dot-default: rgba(190,187,184,1);
+  --carousel-dot-hover: rgba(151,149,147,1);
+  --carousel-dot-pressed: rgba(151,149,147,1);
+  --carousel-dot-focus: rgba(190,187,184,1);
+  --carousel-dot-disabled: rgba(246,244,242,1);
+
+  /* --- Tooltip tokens --- */
+  --tooltip-shadow: 0px 1.2px 3.6px 0px rgba(0,0,0,0.1), 0px 6.4px 14.4px 0px rgba(0,0,0,0.13);
+  --tooltip-radius: 10px;
+
+  /* --- Toast tokens --- */
+  --toast-bg: rgba(255,255,255,1);
+  --toast-border: rgba(237,235,233,1);
+  --toast-shadow: 0px 1.6px 3.6px 0px rgba(0,0,0,0.13), 0px 6px 16px 0px rgba(0,0,0,0.11);
+  --toast-radius: 14px;
+  --toast-progress-track: rgba(237,235,233,1);
+
+  /* --- Badge color tokens (from Penpot Tag variants) --- */
+  --color-badge-dark-red: rgba(175,0,21,1);
+  --color-badge-red: rgba(235,0,0,1);
+  --color-badge-orange: rgba(252,101,0,1);
+  --color-badge-amber: rgba(255,153,0,1);
+  --color-badge-green: rgba(14,171,66,1);
+  --color-badge-purple: rgba(194,36,178,1);
+  --color-badge-dark-purple: rgba(147,27,135,1);
+  --color-badge-pink: rgba(222,13,145,1);
+  --color-badge-dark-pink: rgba(183,11,120,1);
+  --color-badge-blue: rgba(30,65,249,1);
+
+  /* --- Form tokens: Input heights, radii, border widths --- */
+  /* Synced from Figma: file ZpW8F5P4BYkqURaTASgQym, node 23704:32653 */
+  --height-input-xs: 26px;
+  --height-input-sm: 32px;
+  --height-input-md: 36px;
+  --height-input-lg: 40px;
+
+  --radius-input-xs: 8px;
+  --radius-input-sm: 10px;
+  --radius-input-md: 12px;
+  --radius-input-lg: 14px;
+
+  --border-input-xs: 1.3px;
+  --border-input-sm: 1.5px;
+  --border-input-md: 1.8px;
+  --border-input-lg: 1.8px;
+
+  /* --- Form tokens: Button heights --- */
+  --height-btn-xs: 22px;
+  --height-btn-sm: 28px;
+  --height-btn-md: 32px;
+  --height-btn-lg: 36px;
+
+  /* --- Form tokens: Button radii --- */
+  --radius-btn-xs: 8px;
+  --radius-btn-sm: 10px;
+  --radius-btn-md: 14px;
+  --radius-btn-lg: 14px;
+
+  /* --- Input focus tokens --- */
+  --input-focus-bg: var(--color-accent-100);
+
+  /* --- Inset shadow (dialog footer, record-sheet sticky) --- */
+  --shadow-inset-top: 0 -2px 6px 0 rgb(0 0 0 / 0.08);
+
+  /* --- Inline sheet shadow (non-overlay edit sheets) --- */
+  --sheet-inline-shadow: -8px 0 24px rgb(0 0 0 / 0.14);
+
+  /* --- Panel tokens --- */
+  --panel-bg: var(--color-background);
+  --panel-border: transparent;
+  --panel-shadow: 0 0.8px 16px 0 rgb(0 0 0 / 0.13);
+  --page-bg: var(--color-background-alt1);
+}
+
+/* ======== SEMANTIC TOKENS - Dark Mode ======== */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-background: rgba(27,26,25,1);
+  --color-background-alt1: rgba(32,31,30,1);
+  --color-background-alt2: rgba(37,36,35,1);
+  --color-background-alt3: rgba(41,40,39,1);
+  --color-background-alt4: rgba(50,49,48,1);
+  --color-background-alt5: rgba(59,58,57,1);
+  --color-background-alt6: rgba(72,70,68,1);
+  --segmented-toggle-bg: var(--color-background-alt4);
+  --color-content-bg-hover: rgba(37,36,35,1);
+  --color-content-bg-pressed: rgba(50,49,48,1);
+  --color-content-bg-focus: rgba(41,40,39,1);
+  --color-content-bg-selected: rgba(41,40,39,1);
+  --color-content-bg-dragged: rgba(37,36,35,0.01);
+  --color-content-bg-disabled: rgba(27,26,25,1);
+  --color-flyout-bg: rgba(37,36,35,1);
+  --color-flyout-bg-hover: rgba(50,49,48,1);
+  --color-flyout-bg-pressed: rgba(59,58,57,1);
+  --color-flyout-bg-selected: rgba(59,58,57,1);
+  --color-flyout-bg-focus: rgba(59,58,57,1);
+  --color-table-bg-hover: rgba(37,36,35,1);
+  --color-table-bg-pressed: rgba(50,49,48,1);
+  --color-table-bg-selected: rgba(41,40,39,1);
+  --color-foreground: rgba(243,242,241,1);
+  --color-foreground-alt1: rgba(210,208,206,1);
+  --color-foreground-alt2: rgba(200,198,196,1);
+  --color-foreground-alt3: rgba(161,159,157,1);
+  --color-foreground-hover: rgba(243,242,241,1);
+  --color-foreground-pressed: rgba(243,242,241,1);
+  --color-foreground-focus: rgba(243,242,241,1);
+  --color-foreground-selected: rgba(243,242,241,1);
+  --color-foreground-dragged: rgba(243,242,241,1);
+  --color-foreground-disabled: rgba(96,94,92,1);
+  --color-placeholder: rgba(161,159,157,1);
+  --color-flyout-text: rgba(243,242,241,1);
+  --color-flyout-text-hover: rgba(243,242,241,1);
+  --color-flyout-text-pressed: rgba(243,242,241,1);
+  --color-flyout-text-selected: rgba(243,242,241,1);
+  --color-flyout-text-focus: rgba(243,242,241,1);
+  --color-flyout-text-disabled: rgba(96,94,92,1);
+  --color-table-text-hover: rgba(243,242,241,1);
+  --color-table-text-pressed: rgba(243,242,241,1);
+  --color-table-text-selected: rgba(243,242,241,1);
+  --color-icon: rgba(161,159,157,1);
+  --color-icon-hover: rgba(243,242,241,1);
+  --color-icon-pressed: rgba(200,198,196,1);
+  --color-icon-disabled: rgba(72,70,68,1);
+  --color-border-light: rgba(41,40,39,1);
+  --color-border: rgba(161,159,157,1);
+  --color-border-alt: rgba(210,208,206,1);
+  --color-border-dark: rgba(121,119,117,1);
+  --color-border-hover: rgba(50,49,48,1);
+  --color-border-hover-input: rgba(200,198,196,1);
+  --color-border-pressed: rgba(59,58,57,1);
+  --color-border-focus: rgba(50,49,48,1);
+  --color-border-selected: rgba(59,58,57,1);
+  --color-border-dragged: rgba(41,40,39,1);
+  --color-border-disabled: rgba(41,40,39,1);
+  --color-border-warning: rgba(219,123,72,1);
+  --color-border-error: rgba(226,119,126,1);
+  --color-border-success: rgba(134,226,119,1);
+  --color-border-accent: var(--color-accent-500);
+  --color-placeholder-disabled: var(--color-foreground-disabled);
+  --color-flyout-border: rgba(50,49,48,1);
+  --color-tooltip-bg: rgba(37,36,35,1);
+  --color-tooltip-border: rgba(50,49,48,1);
+  --color-tooltip-text: rgba(243,242,241,1);
+  /* Dark mode keeps the existing alt3 foreground tone for muted icons. */
+  --color-icon-muted: rgba(161,159,157,1);
+
+  /* Accent colors for dark mode — brand-orange coherent */
+  --color-accent-100: rgba(252,241,233,1);   /* warm light foreground on dark */
+  --color-accent-200: rgba(249,226,208,1);   /* warm foreground on dark */
+  --color-accent-300: rgba(244,206,175,1);   /* warm medium foreground on dark */
+  --color-accent-400: rgba(218,128,48,1);    /* medium orange on dark */
+  --color-accent-500: rgba(255,102,0,1);     /* #FF6600 brand primary */
+  --color-accent-600: rgba(238,95,0,1);      /* darker orange (hover) */
+  --color-accent-700: rgba(238,83,0,1);      /* darkest orange (pressed) */
+  --color-accent-hover: rgba(255,115,22,1);  /* interactive hover */
+
+  /* Status colors for dark mode */
+  --color-success-100: rgba(223,246,221,1);
+  --color-success-500: rgba(76,175,80,1);
+  --color-success-600: rgba(56,142,60,1);
+  --color-success-700: rgba(46,125,50,1);
+  --color-warning-100: rgba(255,244,206,1);
+  --color-warning-500: rgba(202,80,16,1);
+  --color-warning-600: rgba(207,98,40,1);
+  --color-warning-700: rgba(178,71,14,1);
+  --color-danger-100: rgba(254,217,204,1);
+  --color-danger-500: rgba(239,83,80,1);
+  --color-danger-600: rgba(229,57,53,1);
+  --color-danger-700: rgba(211,47,47,1);
+  --color-info-100: rgba(229,244,253,1);
+  --color-info-500: rgba(3,131,135,1);
+  --color-info-600: rgba(3,118,122,1);
+  --color-info-700: rgba(2,107,110,1);
+
+  /* --- Component tokens dark --- */
+  --secondary-button-secondary-bg-color: rgba(27,26,25,1);
+  --secondary-button-secondary-text-color: rgba(255,255,255,1);
+  --secondary-button-secondary-bg-color-hover: rgba(37,36,35,1);
+  --secondary-button-secondary-text-color-hover: rgba(255,255,255,1);
+  --secondary-button-secondary-bg-color-pressed: rgba(41,40,39,1);
+  --secondary-button-secondary-text-color-pressed: rgba(255,255,255,1);
+  --secondary-button-secondary-bg-color-focus: rgba(37,36,35,1);
+  --secondary-button-secondary-text-color-focus: rgba(255,255,255,1);
+  --secondary-button-secondary-bg-color-disabled: rgba(37,36,35,1);
+  --secondary-button-secondary-border-color-disabled: rgba(50,49,48,1);
+  --secondary-button-secondary-text-color-disabled: rgba(59,58,57,1);
+  --primary-button-primary-bg-color: var(--color-accent-500);
+  --primary-button-primary-border-color: var(--color-accent-500);
+  --primary-button-primary-bg-color-hover: var(--color-accent-600);
+  --primary-button-primary-border-color-hover: var(--color-accent-600);
+  --primary-button-primary-bg-color-pressed: var(--color-accent-700);
+  --primary-button-primary-border-color-pressed: var(--color-accent-700);
+  --primary-button-primary-bg-color-focus: var(--color-accent-600);
+  --primary-button-primary-border-color-focus: var(--color-accent-600);
+  --primary-button-primary-bg-color-disabled: rgba(37,36,35,1);
+  --primary-button-primary-border-color-disabled: rgba(50,49,48,1);
+  --primary-button-primary-text-disabled: rgba(59,58,57,1);
+  --success-button-success-bg-color: rgba(11,106,11,1);
+  --success-button-success-border-color: rgba(11,106,11,1);
+  --success-button-success-bg-color-hover: rgba(11,106,11,1);
+  --success-button-success-border-color-hover: rgba(11,106,11,1);
+  --success-button-success-bg-color-pressed: rgba(9,85,9,1);
+  --success-button-success-border-color-pressed: rgba(9,85,9,1);
+  --success-button-success-bg-color-focus: rgba(11,106,11,1);
+  --success-button-success-border-color-focus: rgba(11,106,11,1);
+  --success-button-success-bg-color-disabled: rgba(37,36,35,1);
+  --success-button-success-border-color-disabled: rgba(50,49,48,1);
+  --success-button-success-text-disabled: rgba(59,58,57,1);
+  --warning-button-warning-bg-color: rgba(202,80,16,1);
+  --warning-button-warning-border-color: rgba(202,80,16,1);
+  --warning-button-warning-bg-color-hover: rgba(207,98,40,1);
+  --warning-button-warning-border-color-hover: rgba(207,98,40,1);
+  --warning-button-warning-bg-color-pressed: rgba(213,115,64,1);
+  --warning-button-warning-border-color-pressed: rgba(213,115,64,1);
+  --warning-button-warning-bg-color-focus: rgba(207,98,40,1);
+  --warning-button-warning-border-color-focus: rgba(207,98,40,1);
+  --warning-button-warning-bg-color-disabled: rgba(37,36,35,1);
+  --warning-button-warning-border-color-disabled: rgba(50,49,48,1);
+  --warning-button-warning-text-disabled: rgba(59,58,57,1);
+  --danger-button-danger-bg-color: rgba(209,52,56,1);
+  --danger-button-danger-border-color: rgba(209,52,56,1);
+  --danger-button-danger-bg-color-hover: rgba(188,47,50,1);
+  --danger-button-danger-border-color-hover: rgba(188,47,50,1);
+  --danger-button-danger-bg-color-pressed: rgba(167,42,45,1);
+  --danger-button-danger-border-color-pressed: rgba(167,42,45,1);
+  --danger-button-danger-bg-color-focus: rgba(188,47,50,1);
+  --danger-button-danger-border-color-focus: rgba(188,47,50,1);
+  --danger-button-danger-bg-color-disabled: rgba(37,36,35,1);
+  --danger-button-danger-border-color-disabled: rgba(50,49,48,1);
+  --danger-button-danger-text-disabled: rgba(59,58,57,1);
+  --info-button-info-bg-color: rgba(3,131,135,1);
+  --info-button-info-border-color: rgba(3,131,135,1);
+  --info-button-info-bg-color-hover: rgba(3,118,122,1);
+  --info-button-info-border-color-hover: rgba(3,118,122,1);
+  --info-button-info-bg-color-pressed: rgba(53,156,159,1);
+  --info-button-info-border-color-pressed: rgba(53,156,159,1);
+  --info-button-info-bg-color-focus: rgba(3,118,122,1);
+  --info-button-info-border-color-focus: rgba(3,118,122,1);
+  --info-button-info-bg-color-disable: rgba(37,36,35,1);
+  --info-button-info-border-color-disabled: rgba(50,49,48,1);
+  --info-button-info-text-disabled: rgba(59,58,57,1);
+  --outline-button-primary-outline: var(--color-accent-500);
+  --outline-button-secondary-outline: rgba(255,255,255,1);
+  --outline-button-warning-outline: rgba(202,80,16,1);
+  --outline-button-success-outline: rgba(11,106,11,1);
+  --outline-button-info-outline: rgba(3,131,135,1);
+  --chart-series-series-1: rgba(41,40,39,1);
+  --chart-series-series-2: rgba(59,58,57,1);
+  --chart-series-series-3: rgba(72,70,68,1);
+  --chart-series-series-4: rgba(138,136,134,1);
+  --chart-series-series-5: rgba(155,180,73,1);
+  --chart-series-series-6: rgba(42,114,213,1);
+  --chart-series-series-7: rgba(67,183,134,1);
+  --chart-series-series-9: rgba(88,78,198,1);
+  --chart-series-series-10: rgba(232,95,156,1);
+  --chart-series-series-11: rgba(110,122,137,1);
+  --chart-series-series-12: rgba(234,98,102,1);
+  --diagram-palette-color-diagram-palette-background: rgba(243,242,241,1);
+  --diagram-palette-color-diagram-palette-hover-background: rgba(225,223,221,1);
+  --message-msg-default-msg-color: rgba(255,255,255,1);
+  --message-msg-default-msg-bg-color: rgba(50,49,48,1);
+  --message-msg-default-msg-border-color: rgba(50,49,48,1);
+  --message-msg-default-msg-color-alt1: rgba(255,255,255,1);
+  --message-msg-default-msg-border-color-alt: rgba(121,119,117,1);
+  --message-msg-default-msg-color-alt2: rgba(32,31,30,1);
+  --message-msg-default-msg-bg-color-alt2: rgba(161,159,157,1);
+  --message-msg-default-msg-border-color-alt2: rgba(161,159,157,1);
+  --message-msg-default-msg-icon-color: rgba(200,198,196,1);
+  --message-msg-default-msg-icon-color-alt1: rgba(200,198,196,1);
+  --message-msg-default-msg-icon-color-alt2: rgba(32,31,30,1);
+  --message-msg-default-msg-close-icon-color: rgba(161,159,157,1);
+  --message-msg-default-msg-close-icon-color-alt1: rgba(161,159,157,1);
+  --message-msg-default-msg-close-icon-color-alt2: rgba(32,31,30,1);
+  --message-msg-default-msg-icon-bg: rgba(59,58,57,1);
+  --message-msg-success-msg-success-icon-bg: rgba(57,61,27,1);
+  --message-msg-info-msg-info-icon-bg: rgba(1,58,60,1);
+  --message-msg-danger-msg-danger-icon-bg: rgba(68,39,38,1);
+  --message-msg-warning-msg-warning-icon-bg: rgba(65,53,0,1);
+  --message-msg-success-msg-success-color: rgba(255,255,255,1);
+  --message-msg-success-msg-success-bg-color: rgba(57,61,27,1);
+  --message-msg-success-msg-success-border-color: rgba(57,61,27,1);
+  --message-msg-success-msg-success-color-alt1: rgba(134,226,119,1);
+  --message-msg-success-msg-success-border-color-alt1: rgba(134,226,119,1);
+  --message-msg-success-msg-success-bg-color-alt2: rgba(11,106,11,1);
+  --message-msg-success-msg-success-border-color-alt2: rgba(11,106,11,1);
+  --message-msg-success-msg-success-icon-color: rgba(146,195,83,1);
+  --message-msg-success-msg-success-icon-color-alt1: rgba(134,226,119,1);
+  --message-msg-success-msg-success-close-icon-color: rgba(161,159,157,1);
+  --message-msg-success-msg-success-close-icon-color-alt1: rgba(161,159,157,1);
+  --message-msg-danger-msg-danger-color: rgba(255,255,255,1);
+  --message-msg-danger-msg-danger-bg-color: rgba(68,39,38,1);
+  --message-msg-danger-msg-danger-border-color: rgba(68,39,38,1);
+  --message-msg-danger-msg-danger-color-alt1: rgba(226,119,126,1);
+  --message-msg-danger-msg-danger-border-color-alt1: rgba(226,119,126,1);
+  --message-msg-danger-msg-danger-bg-color-alt2: rgba(209,52,56,1);
+  --message-msg-danger-msg-danger-border-color-alt2: rgba(209,52,56,1);
+  --message-msg-danger-msg-danger-icon-color: rgba(241,112,123,1);
+  --message-msg-danger-msg-danger-icon-color-alt1: rgba(226,119,126,1);
+  --message-msg-danger-msg-danger-close-icon-color: rgba(161,159,157,1);
+  --message-msg-danger-msg-danger-close-icon-color-alt1: rgba(161,159,157,1);
+  --message-msg-warning-msg-warning-color: rgba(255,255,255,1);
+  --message-msg-warning-msg-warning-bg-color: rgba(65,53,0,1);
+  --message-msg-warning-msg-warning-border-color: rgba(65,53,0,1);
+  --message-msg-warning-msg-warning-color-alt1: rgba(193,156,0,1);
+  --message-msg-warning-msg-warning-border-color-alt1: rgba(193,156,0,1);
+  --message-msg-warning-msg-warning-bg-color-alt2: rgba(116,94,0,1);
+  --message-msg-warning-msg-warning-border-color-alt2: rgba(116,94,0,1);
+  --message-msg-warning-msg-warning-icon-color: rgba(200,198,196,1);
+  --message-msg-warning-msg-warning-icon-color-alt1: rgba(193,156,0,1);
+  --message-msg-warning-msg-warning-close-icon-color: rgba(161,159,157,1);
+  --message-msg-warning-msg-warning-close-icon-color-alt1: rgba(161,159,157,1);
+  --message-msg-info-msg-info-color: rgba(255,255,255,1);
+  --message-msg-info-msg-info-bg-color: rgba(1,58,60,1);
+  --message-msg-info-msg-info-border-color: rgba(1,34,35,1);
+  --message-msg-info-msg-info-color-alt1: rgba(4,179,185,1);
+  --message-msg-info-msg-info-border-color-alt1: rgba(4,179,185,1);
+  --message-msg-info-msg-info-bg-color-alt2: rgba(3,131,135,1);
+  --message-msg-info-msg-info-border-color-alt2: rgba(3,131,135,1);
+  --message-msg-info-msg-info-icon-color: rgba(161,159,157,1);
+  --message-msg-info-msg-info-icon-color-alt1: rgba(4,179,185,1);
+  --message-msg-info-msg-info-close-icon-color: rgba(161,159,157,1);
+  --message-msg-info-msg-info-close-icon-color-alt1: rgba(161,159,157,1);
+  --appbar-appbar-light-appbar-bg-color-alt1: rgba(41,40,39,1);
+  --appbar-appbar-light-appbar-color-alt1: rgba(250,249,248,1);
+  --appbar-appbar-light-appbar-border-color-alt1: rgba(41,40,39,1);
+  --appbar-appbar-dark-appbar-bg-color-alt2: rgba(179,176,173,1);
+  --appbar-appbar-dark-appbar-color-alt2: rgba(32,31,30,1);
+  --appbar-appbar-dark-appbar-border-color-alt2: rgba(179,176,173,1);
+  --rating-rating-selected-color: rgba(243,242,241,1);
+  --rating-rating-unrated-color: rgba(161,159,157,1);
+  --rating-rating-selected-disabled-color: rgba(72,70,68,1);
+  --rating-rating-unrated-disabled-color: rgba(72,70,68,1);
+  --rating-rating-selected-hover-color: rgba(26,134,216,1);
+  --rating-rating-unrated-hover-color: rgba(51,147,221,1);
+  --rating-rating-pressed-color: rgba(51,147,221,1);
+  --outline-button-danger-outline: rgba(209,52,56,1);
+  --diagram-palette-color-diagram-palette-pressed-background: rgba(237,235,233,1);
+
+  /* --- Carousel dot tokens dark --- */
+  --carousel-dot-current: var(--color-accent-500);
+  --carousel-dot-default: rgba(96,94,92,1);
+  --carousel-dot-hover: rgba(138,136,134,1);
+  --carousel-dot-pressed: rgba(138,136,134,1);
+  --carousel-dot-focus: rgba(96,94,92,1);
+  --carousel-dot-disabled: rgba(41,40,39,1);
+
+  /* --- Tooltip tokens dark --- */
+  --tooltip-shadow: 0px 1.2px 3.6px 0px rgba(0,0,0,0.18), 0px 6.4px 14.4px 0px rgba(0,0,0,0.22);
+  --tooltip-radius: 10px;
+
+  /* --- Toast tokens dark --- */
+  --toast-bg: rgba(37,36,35,1);
+  --toast-border: rgba(50,49,48,1);
+  --toast-shadow: 0px 1.6px 3.6px 0px rgba(0,0,0,0.26), 0px 6px 16px 0px rgba(0,0,0,0.22);
+  --toast-progress-track: rgba(59,58,57,1);
+
+  /* --- Input focus tokens dark --- */
+  --input-focus-bg: rgba(51,33,18,1);   /* warm dark orange tint — subtle accent on dark surfaces */
+
+  /* --- Shadows dark (light glow visible on dark backgrounds) --- */
+  --shadow-sm: 0 1px 2px 0 rgb(255 255 255 / 0.08);
+  --shadow-md: 0 4px 6px -1px rgb(255 255 255 / 0.12);
+  --shadow-lg: 0 4px 56px -40px rgb(255 255 255 / 0.25);
+  --shadow-panel: 0 0.8px 16px 0 rgb(255 255 255 / 0.12);
+  --shadow-inset-top: 0 -2px 8px 0 rgb(255 255 255 / 0.1);
+  --sheet-inline-shadow: -8px 0 24px rgb(255 255 255 / 0.15);
+
+  /* --- Panel tokens dark --- */
+  --panel-bg: var(--color-background);
+  --panel-border: var(--color-border-light);
+  --panel-shadow: 0 1px 20px 0 rgb(255 255 255 / 0.12);
+  --page-bg: var(--color-background-alt2);
+
+  /* --- Badge color tokens dark (same hues, kept vibrant for tag visibility) --- */
+  --color-badge-dark-red: rgba(175,0,21,1);
+  --color-badge-red: rgba(235,0,0,1);
+  --color-badge-orange: rgba(252,101,0,1);
+  --color-badge-amber: rgba(255,153,0,1);
+  --color-badge-green: rgba(14,171,66,1);
+  --color-badge-purple: rgba(194,36,178,1);
+  --color-badge-dark-purple: rgba(147,27,135,1);
+  --color-badge-pink: rgba(222,13,145,1);
+  --color-badge-dark-pink: rgba(183,11,120,1);
+  --color-badge-blue: rgba(30,65,249,1);
+}
+
+/* =============================================================================
+ * NavSidebar scroll-reveal scrollbar
+ * ========================================================================== */
+
+.navsidebar-scroll-dark {
+  --_sb-thumb: var(--color-brand);
+  --_sb-thumb-hover: var(--color-brand-hover);
+}
+.navsidebar-scroll-light {
+  --_sb-thumb: var(--color-neutral-100);
+  --_sb-thumb-hover: var(--color-neutral-130);
+}
+
+.navsidebar-scroll-dark,
+.navsidebar-scroll-light {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.navsidebar-scroll-dark::-webkit-scrollbar,
+.navsidebar-scroll-light::-webkit-scrollbar {
+  width: 6px;
+}
+.navsidebar-scroll-dark::-webkit-scrollbar-track,
+.navsidebar-scroll-light::-webkit-scrollbar-track {
+  background: transparent;
+}
+.navsidebar-scroll-dark::-webkit-scrollbar-thumb,
+.navsidebar-scroll-light::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: transparent;
+  transition: background-color 300ms ease;
+}
+
+.navsidebar-scroll-dark.is-scrolling,
+.navsidebar-scroll-light.is-scrolling {
+  scrollbar-color: var(--_sb-thumb) transparent;
+}
+.navsidebar-scroll-dark.is-scrolling::-webkit-scrollbar-thumb,
+.navsidebar-scroll-light.is-scrolling::-webkit-scrollbar-thumb {
+  background-color: var(--_sb-thumb);
+}
+.navsidebar-scroll-dark.is-scrolling::-webkit-scrollbar-thumb:hover,
+.navsidebar-scroll-light.is-scrolling::-webkit-scrollbar-thumb:hover {
+  background-color: var(--_sb-thumb-hover);
+}
+
+/* =============================================================================
+ * DataGrid scroll-on-hover scrollbar
+ * Shows a thin scrollbar only when hovering over the grid scroll area.
+ * ========================================================================== */
+
+.datagrid-scroll-fade {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-background-alt5) transparent;
+}
+
+.datagrid-scroll-fade::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.datagrid-scroll-fade::-webkit-scrollbar-track {
+  background: transparent;
+}
+.datagrid-scroll-fade::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: var(--color-background-alt5);
+  transition: background-color 300ms ease;
+}
+
+.datagrid-scroll-fade:hover::-webkit-scrollbar-thumb {
+  background-color: var(--color-background-alt6);
+}
+.datagrid-scroll-fade:hover::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-icon);
+}
+
+/* ==========================================================================
+ * Grid Management panel scroll-reveal scrollbar
+ * Thin scrollbar that fades in on scroll and fades out after idle.
+ * Same pattern as navsidebar-scroll.
+ * ========================================================================== */
+
+.gm-scroll {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+.gm-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.gm-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.gm-scroll::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: transparent;
+  transition: background-color 300ms ease;
+}
+.gm-scroll.is-scrolling {
+  scrollbar-color: var(--color-neutral-80) transparent;
+}
+.gm-scroll.is-scrolling::-webkit-scrollbar-thumb {
+  background-color: var(--color-neutral-80);
+}
+.gm-scroll.is-scrolling::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-neutral-100);
+}
+
+/* ==========================================================================
+ * RecordSheet scroll-fade scrollbar
+ * Thin scrollbar with padding from content, fades out when not scrolling.
+ * Uses @property to enable smooth color transitions on the thumb.
+ * ========================================================================== */
+
+@property --rs-thumb {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: transparent;
+}
+
+.recordsheet-scroll-fade {
+  --rs-thumb: transparent;
+  transition: --rs-thumb 600ms ease-out;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rs-thumb) transparent;
+  padding-right: 6px;
+}
+
+.recordsheet-scroll-fade.is-scrolling {
+  --rs-thumb: var(--color-background-alt5);
+  transition: --rs-thumb 150ms ease-in;
+}
+
+.recordsheet-scroll-fade::-webkit-scrollbar {
+  width: 8px;
+}
+.recordsheet-scroll-fade::-webkit-scrollbar-track {
+  background: transparent;
+}
+.recordsheet-scroll-fade::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: var(--rs-thumb);
+}
+
+.recordsheet-scroll-fade.is-scrolling:hover::-webkit-scrollbar-thumb {
+  background-color: var(--color-background-alt6);
+}
+.recordsheet-scroll-fade.is-scrolling::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-icon);
+}
+
+/* ==========================================================================
+   BASE RESET
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  color: var(--color-foreground);
+  background-color: var(--color-background);
+  line-height: var(--line-height-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   KEYFRAME ANIMATIONS
+   ========================================================================== */
+
+@keyframes progress-indeterminate {
+  0% { transform: translateX(-100%); width: 40%; }
+  50% { transform: translateX(50%); width: 60%; }
+  100% { transform: translateX(250%); width: 40%; }
+}
+
+.animate-progress-indeterminate {
+  animation: progress-indeterminate 1.5s ease-in-out infinite;
+}
+
+@keyframes progress-bar-indeterminate {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(400%);  }
+}
+
+.animate-progress-bar-indeterminate {
+  width: 30%;
+  animation: progress-bar-indeterminate 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes accordion-down {
+  from { height: 0; opacity: 0; }
+  to { height: var(--radix-accordion-content-height); opacity: 1; }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); opacity: 1; }
+  to { height: 0; opacity: 0; }
+}
+
+.animate-accordion-down {
+  animation: accordion-down 200ms ease-out;
+}
+
+.animate-accordion-up {
+  animation: accordion-up 200ms ease-out;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* Dialog/AlertDialog Animations */
+@keyframes dialog-overlay-show { from { opacity: 0; } to { opacity: 1; } }
+@keyframes dialog-overlay-hide { from { opacity: 1; } to { opacity: 0; } }
+@keyframes dialog-content-show { from { opacity: 0; scale: 0.95; } to { opacity: 1; scale: 1; } }
+@keyframes dialog-content-hide { from { opacity: 1; scale: 1; } to { opacity: 0; scale: 0.95; } }
+
+/* Sheet Slide Animations */
+@keyframes sheet-slide-in-from-right { from { transform: translateX(100%); } to { transform: translateX(0); } }
+@keyframes sheet-slide-out-to-right { from { transform: translateX(0); } to { transform: translateX(100%); } }
+@keyframes sheet-slide-in-from-left { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+@keyframes sheet-slide-out-to-left { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+@keyframes sheet-slide-in-from-top { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+@keyframes sheet-slide-out-to-top { from { transform: translateY(0); } to { transform: translateY(-100%); } }
+@keyframes sheet-slide-in-from-bottom { from { transform: translateY(100%); } to { transform: translateY(0); } }
+@keyframes sheet-slide-out-to-bottom { from { transform: translateY(0); } to { transform: translateY(100%); } }
+
+/* Tooltip Animations */
+@keyframes tooltip-fade-in { from { opacity: 0; scale: 0.95; } to { opacity: 1; scale: 1; } }
+@keyframes tooltip-fade-out { from { opacity: 1; scale: 1; } to { opacity: 0; scale: 0.95; } }
+
+.animate-tooltip-in {
+  animation: tooltip-fade-in 150ms ease-out;
+}
+.animate-tooltip-out {
+  animation: tooltip-fade-out 150ms ease-in;
+}
+
+/* ==========================================================================
+   REDUCED MOTION (WCAG 2.3.3)
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

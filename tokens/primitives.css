@@ -1,0 +1,141 @@
+/* ============================================================================
+ * Tiara DS — Color Primitives
+ * Raw palette values. Semantic aliases live in semantic.css.
+ *
+ * Source of truth: Figma "Tiara - Tarko-New" (fluent2 collection).
+ * The ACCENT scale = Nyma blue (#3b82f6, Tailwind blue-500), which overrides
+ * the upstream Tarko orange. Brand orange is preserved as --color-tarko-* for
+ * legacy reference only.
+ * ========================================================================== */
+
+:root {
+  /* ---- Black & White ---- */
+  --color-black: rgba(0, 0, 0, 1);
+  --color-white: rgba(255, 255, 255, 1);
+  --color-transparent: rgba(255, 255, 255, 0);
+
+  /* ---- Neutral scale (warm Fluent2 grey, 10 = lightest … 220 = near-black) ---- */
+  --color-neutral-10: rgba(250, 249, 248, 1);
+  --color-neutral-20: rgba(243, 242, 241, 1);
+  --color-neutral-30: rgba(237, 235, 233, 1);
+  --color-neutral-40: rgba(225, 223, 221, 1);
+  --color-neutral-50: rgba(210, 208, 206, 1);
+  --color-neutral-60: rgba(200, 198, 196, 1);
+  --color-neutral-70: rgba(190, 187, 184, 1);
+  --color-neutral-80: rgba(179, 176, 173, 1);
+  --color-neutral-90: rgba(161, 159, 157, 1);
+  --color-neutral-100: rgba(151, 149, 147, 1);
+  --color-neutral-110: rgba(138, 136, 134, 1);
+  --color-neutral-120: rgba(121, 119, 117, 1);
+  --color-neutral-130: rgba(96, 94, 92, 1);
+  --color-neutral-140: rgba(72, 70, 68, 1);
+  --color-neutral-150: rgba(59, 58, 57, 1);
+  --color-neutral-160: rgba(50, 49, 48, 1);
+  --color-neutral-170: rgba(41, 40, 39, 1);
+  --color-neutral-180: rgba(37, 36, 35, 1);
+  --color-neutral-190: rgba(32, 31, 30, 1);
+  --color-neutral-200: rgba(27, 26, 25, 1);
+  --color-neutral-210: rgba(22, 21, 20, 1);
+  --color-neutral-220: rgba(17, 16, 15, 1);
+
+  /* ---- Accent (Brand) scale — Nyma blue ---- */
+  --color-accent-100: #eff6ff;   /* blue-50  — lighter-alt */
+  --color-accent-200: #dbeafe;   /* blue-100 — lighter */
+  --color-accent-300: #bfdbfe;   /* blue-200 — light */
+  --color-accent-400: #93c5fd;   /* blue-300 — tertiary */
+  --color-accent-500: #3b82f6;   /* blue-500 — brand primary */
+  --color-accent-600: #2563eb;   /* blue-600 — dark / hover */
+  --color-accent-700: #1d4ed8;   /* blue-700 — darker / pressed */
+  --color-accent-hover: #2563eb;
+
+  /* Brand tokens (logo / banner / gradient — independent of light/dark mode) */
+  --color-brand: #3b82f6;
+  --color-brand-hover: #2563eb;
+  --color-brand-gradient-from: #3b82f6;
+  --color-brand-gradient-to: #60a5fa;
+
+  /* Legacy upstream Tarko orange — reference only, not used by live brand */
+  --color-tarko-orange: #ff6600;
+  --color-tarko-orange-hover: #ff7316;
+
+  /* ---- Status colors ---- */
+  --color-success-100: rgba(244, 255, 244, 1);
+  --color-success-500: rgba(0, 162, 57, 1);
+  --color-success-600: rgba(0, 133, 46, 1);
+  --color-success-700: rgba(0, 120, 42, 1);
+  --color-warning-100: rgba(255, 248, 236, 1);
+  --color-warning-500: rgba(255, 149, 0, 1);
+  --color-warning-600: rgba(234, 121, 0, 1);
+  --color-warning-700: rgba(223, 115, 0, 1);
+  --color-danger-100: rgba(255, 244, 244, 1);
+  --color-danger-500: rgba(235, 0, 0, 1);
+  --color-danger-600: rgba(213, 0, 0, 1);
+  --color-danger-700: rgba(190, 0, 0, 1);
+  --color-info-100: rgba(243, 247, 255, 1);
+  --color-info-500: rgba(60, 105, 251, 1);
+  --color-info-600: rgba(41, 87, 238, 1);
+  --color-info-700: rgba(35, 75, 204, 1);
+
+  /* ---- Additional shared ---- */
+  --color-yellow-500: rgba(252, 225, 0, 1);
+  --color-amber-500: rgba(193, 156, 0, 1);
+
+  /* ---- Badge / tag colors ---- */
+  --color-badge-dark-red: rgba(175, 0, 21, 1);
+  --color-badge-red: rgba(235, 0, 0, 1);
+  --color-badge-orange: rgba(252, 101, 0, 1);
+  --color-badge-amber: rgba(255, 153, 0, 1);
+  --color-badge-green: rgba(14, 171, 66, 1);
+  --color-badge-purple: rgba(194, 36, 178, 1);
+  --color-badge-dark-purple: rgba(147, 27, 135, 1);
+  --color-badge-pink: rgba(222, 13, 145, 1);
+  --color-badge-dark-pink: rgba(183, 11, 120, 1);
+  --color-badge-blue: rgba(30, 65, 249, 1);
+
+  /* ---- Chart series ---- */
+  --chart-series-series-1: rgba(237, 235, 233, 1);
+  --chart-series-series-2: rgba(210, 208, 206, 1);
+  --chart-series-series-3: rgba(200, 198, 196, 1);
+  --chart-series-series-4: rgba(161, 159, 157, 1);
+  --chart-series-series-5: rgba(97, 69, 112, 1);
+  --chart-series-series-6: rgba(76, 111, 177, 1);
+  --chart-series-series-7: rgba(204, 105, 82, 1);
+  --chart-series-series-8: rgba(63, 87, 154, 1);
+  --chart-series-series-9: rgba(78, 160, 155, 1);
+  --chart-series-series-10: rgba(110, 122, 137, 1);
+  --chart-series-series-11: rgba(61, 117, 166, 1);
+  --chart-series-series-12: rgba(243, 169, 60, 1);
+}
+
+/* ======== Dark-mode accent + status overrides ======== */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Nyma blue: lighter end points to deeper blues so it reads as a tonal
+     background on dark surfaces; 500 stays canonical. */
+  --color-accent-100: #1e3a8a;   /* blue-900 */
+  --color-accent-200: #1e40af;   /* blue-800 */
+  --color-accent-300: #1d4ed8;   /* blue-700 */
+  --color-accent-400: #2563eb;   /* blue-600 */
+  --color-accent-500: #3b82f6;   /* blue-500 — brand primary */
+  --color-accent-600: #60a5fa;   /* blue-400 — hover (lighter on dark) */
+  --color-accent-700: #93c5fd;   /* blue-300 — pressed (lighter on dark) */
+  --color-accent-hover: #60a5fa;
+
+  --color-success-100: rgba(223, 246, 221, 1);
+  --color-success-500: rgba(76, 175, 80, 1);
+  --color-success-600: rgba(56, 142, 60, 1);
+  --color-success-700: rgba(46, 125, 50, 1);
+  --color-warning-100: rgba(255, 244, 206, 1);
+  --color-warning-500: rgba(202, 80, 16, 1);
+  --color-warning-600: rgba(207, 98, 40, 1);
+  --color-warning-700: rgba(178, 71, 14, 1);
+  --color-danger-100: rgba(254, 217, 204, 1);
+  --color-danger-500: rgba(239, 83, 80, 1);
+  --color-danger-600: rgba(229, 57, 53, 1);
+  --color-danger-700: rgba(211, 47, 47, 1);
+  --color-info-100: rgba(229, 244, 253, 1);
+  --color-info-500: rgba(3, 131, 135, 1);
+  --color-info-600: rgba(3, 118, 122, 1);
+  --color-info-700: rgba(2, 107, 110, 1);
+}

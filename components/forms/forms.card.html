@@ -1,0 +1,71 @@
+<!-- @dsCard group="Components" viewport="700x340" name="Forms" subtitle="Button, IconButton, Input, Select, Checkbox, Radio, Switch, Textarea" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+  body { margin: 0; padding: 22px; background: var(--color-background); font-family: var(--font-family-sans); color: var(--color-foreground); }
+  .group { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 16px; }
+  .lbl { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-foreground-alt3); width: 100%; margin-bottom: -2px; }
+  .col { display: flex; flex-direction: column; gap: 10px; max-width: 240px; }
+  .two { display: flex; gap: 24px; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel">
+const { TiaraButton, TiaraIconButton, TiaraInput, TiaraSelect, TiaraCheckbox, TiaraRadioGroup, TiaraToggleSwitch, TiaraTextarea } = window.TiaraDesignSystemNyma_96297e;
+function Demo() {
+  const [radio, setRadio] = React.useState('b2b');
+  return (
+    <div>
+      <div className="group">
+        <span className="lbl">Button variants</span>
+        <TiaraButton variant="primary" leftIcon={<i className="fa-solid fa-plus" />}>Nuovo ordine</TiaraButton>
+        <TiaraButton variant="secondary">Annulla</TiaraButton>
+        <TiaraButton variant="success">Conferma</TiaraButton>
+        <TiaraButton variant="danger">Elimina</TiaraButton>
+        <TiaraButton variant="outline-primary">Esporta</TiaraButton>
+        <TiaraButton variant="ghost">Dettagli</TiaraButton>
+        <TiaraButton variant="primary" loading>Salvataggio</TiaraButton>
+      </div>
+      <div className="group">
+        <span className="lbl">Sizes & icon buttons</span>
+        <TiaraButton size="xs">XS</TiaraButton>
+        <TiaraButton size="sm">SM</TiaraButton>
+        <TiaraButton size="md">MD</TiaraButton>
+        <TiaraButton size="lg">LG</TiaraButton>
+        <TiaraIconButton icon={<i className="fa-solid fa-eye" />} aria-label="Apri" />
+        <TiaraIconButton icon={<i className="fa-solid fa-pen" />} variant="secondary" aria-label="Modifica" />
+        <TiaraIconButton icon={<i className="fa-solid fa-trash" />} aria-label="Elimina" />
+      </div>
+      <div className="two">
+        <div className="col">
+          <span className="lbl">Inputs</span>
+          <TiaraInput placeholder="Cerca ordine o cliente…" leftIcon={<i className="fa-solid fa-magnifying-glass" />} />
+          <TiaraInput inputSize="md" defaultValue="ORD-1042" />
+          <TiaraInput state="error" defaultValue="email non valida" />
+          <TiaraSelect placeholder="Tutti gli stati" options={[{value:'c',label:'Confermato'},{value:'s',label:'Spedito'}]} />
+          <TiaraTextarea rows={2} placeholder="Note interne…" />
+        </div>
+        <div className="col">
+          <span className="lbl">Selection</span>
+          <TiaraCheckbox label="Solo ordini confermati" defaultChecked />
+          <TiaraCheckbox label="Includi preordini" />
+          <TiaraRadioGroup name="buyer" value={radio} onChange={setRadio} options={[{value:'b2b',label:'B2B'},{value:'b2c',label:'B2C'},{value:'agent',label:'Agente'}]} />
+          <TiaraToggleSwitch label="Spedizione express" defaultChecked />
+        </div>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body>
+</html>

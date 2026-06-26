@@ -1,0 +1,61 @@
+/* ============================================================================
+ * Tiara DS — Typography tokens
+ * Brand typeface: Roboto. Type scale, weights, line-heights, tracking.
+ * ========================================================================== */
+
+:root {
+  /* ---- Font family ---- */
+  --font-family-sans: 'Roboto', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* ---- Font sizes ---- */
+  --font-size-xxs: 10px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 30px;
+  --font-size-4xl: 36px;
+  --font-size-5xl: 48px;
+  --font-size-6xl: 60px;
+  --font-size-7xl: 72px;
+  --font-size-8xl: 96px;
+  --font-size-9xl: 128px;
+
+  /* ---- Font weights ---- */
+  --font-weight-thin: 100;
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  /* ---- Line heights ---- */
+  --line-height-xxs: 14px;
+  --line-height-xs: 16px;
+  --line-height-sm: 20px;
+  --line-height-base: 24px;
+  --line-height-lg: 28px;
+  --line-height-xl: 28px;
+  --line-height-2xl: 32px;
+  --line-height-3xl: 36px;
+  --line-height-4xl: 40px;
+  --line-height-5xl: 48px;
+  --line-height-6xl: 60px;
+  --line-height-7xl: 72px;
+  --line-height-8xl: 96px;
+  --line-height-9xl: 128px;
+
+  /* ---- Letter spacing ---- */
+  --letter-spacing-tightest: -0.5px;
+  --letter-spacing-tighter: -0.25px;
+  --letter-spacing-tight: -0.1px;
+  --letter-spacing-normal: 0px;
+  --letter-spacing-wide: 0.1px;
+  --letter-spacing-wider: 0.25px;
+  --letter-spacing-widest: 0.5px;
+}

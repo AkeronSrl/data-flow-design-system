@@ -1,0 +1,45 @@
+/* ============================================================================
+ * Tiara DS — Shadows, z-index, motion
+ * ========================================================================== */
+
+:root {
+  /* ---- Shadows ---- */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 4px 56px -40px rgb(112 114 117 / 1);
+  --shadow-panel: 0 0.8px 16px 0 rgb(0 0 0 / 0.13);
+  --shadow-inset-top: 0 -2px 6px 0 rgb(0 0 0 / 0.08);
+  --sheet-inline-shadow: -8px 0 24px rgb(0 0 0 / 0.14);
+  --tooltip-shadow: 0px 1.2px 3.6px 0px rgba(0,0,0,0.1), 0px 6.4px 14.4px 0px rgba(0,0,0,0.13);
+  --toast-shadow: 0px 1.6px 3.6px 0px rgba(0,0,0,0.13), 0px 6px 16px 0px rgba(0,0,0,0.11);
+
+  /* ---- Z-index ---- */
+  --z-dropdown: 1000; /* @kind other */
+  --z-sticky: 1020; /* @kind other */
+  --z-fixed: 1030; /* @kind other */
+  --z-modal-backdrop: 1040; /* @kind other */
+  --z-modal: 1050; /* @kind other */
+  --z-popover: 1060; /* @kind other */
+  --z-tooltip: 1070; /* @kind other */
+  --z-toast: 1100; /* @kind other */
+
+  /* ---- Motion ---- */
+  --duration-fast: 150ms; /* @kind other */
+  --duration-normal: 200ms; /* @kind other */
+  --duration-slow: 300ms; /* @kind other */
+  --easing-default: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --easing-in: cubic-bezier(0.4, 0, 1, 1); /* @kind other */
+  --easing-out: cubic-bezier(0, 0, 0.2, 1); /* @kind other */
+}
+
+[data-theme="dark"] {
+  /* Light glow visible on dark backgrounds */
+  --shadow-sm: 0 1px 2px 0 rgb(255 255 255 / 0.08);
+  --shadow-md: 0 4px 6px -1px rgb(255 255 255 / 0.12);
+  --shadow-lg: 0 4px 56px -40px rgb(255 255 255 / 0.25);
+  --shadow-panel: 0 0.8px 16px 0 rgb(255 255 255 / 0.12);
+  --shadow-inset-top: 0 -2px 8px 0 rgb(255 255 255 / 0.1);
+  --sheet-inline-shadow: -8px 0 24px rgb(255 255 255 / 0.15);
+  --tooltip-shadow: 0px 1.2px 3.6px 0px rgba(0,0,0,0.18), 0px 6.4px 14.4px 0px rgba(0,0,0,0.22);
+  --toast-shadow: 0px 1.6px 3.6px 0px rgba(0,0,0,0.26), 0px 6px 16px 0px rgba(0,0,0,0.22);
+}

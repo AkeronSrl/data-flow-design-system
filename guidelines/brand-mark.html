@@ -1,0 +1,26 @@
+<!-- @dsCard group="Brand" viewport="700x180" name="Brand Mark" subtitle="Nyma — blue circle with white N; lockup with wordmark" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--color-background); font-family: var(--font-family-sans); color: var(--color-foreground); display:flex; align-items:center; gap:40px; }
+  .lockup { display:flex; align-items:center; gap:12px; }
+  .word { font-size:28px; font-weight:700; letter-spacing:-0.3px; }
+  .onbrand { display:flex; align-items:center; gap:12px; background:#1e293b; padding:14px 20px; border-radius:var(--radius-xl); }
+  .onbrand .word { color:#f8fafc; }
+  .cap { font-size:10px; color:var(--color-foreground-alt3); margin-top:8px; }
+</style>
+</head>
+<body>
+  <div>
+    <div class="lockup"><img src="../assets/logos/nyma-mark.svg" width="44" height="44" alt="Nyma"><span class="word">Nyma</span></div>
+    <div class="cap">Primary lockup — light surface</div>
+  </div>
+  <div>
+    <div class="onbrand"><img src="../assets/logos/nyma-mark.svg" width="36" height="36" alt="Nyma"><span class="word">Nyma</span></div>
+    <div class="cap">On slate-800 sidebar</div>
+  </div>
+</body>
+</html>

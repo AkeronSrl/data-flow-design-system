@@ -1,0 +1,41 @@
+<!-- @dsCard group="Components" viewport="700x280" name="Feedback" subtitle="Alert (info / success / warning / error) and Tooltip" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+  body { margin: 0; padding: 22px; background: var(--color-background); font-family: var(--font-family-sans); color: var(--color-foreground); }
+  .col { display: flex; flex-direction: column; gap: 12px; max-width: 540px; }
+  .lbl { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-foreground-alt3); margin: 8px 0 -4px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel">
+const { TiaraAlert, TiaraTooltip, TiaraButton, TiaraIconButton } = window.TiaraDesignSystemNyma_96297e;
+function Demo() {
+  return (
+    <div className="col">
+      <TiaraAlert variant="success" title="Ordine confermato">L'ordine ORD-1042 è stato confermato e inviato al magazzino.</TiaraAlert>
+      <TiaraAlert variant="info" title="Sincronizzazione Shopify">Catalogo e stock aggiornati 4 minuti fa.</TiaraAlert>
+      <TiaraAlert variant="warning" title="Stock sotto soglia">3 varianti sono sotto la soglia minima di riordino.</TiaraAlert>
+      <TiaraAlert variant="error" title="Impossibile caricare gli ordini" action={<TiaraButton size="sm" variant="ghost">Riprova</TiaraButton>}>Si è verificato un errore durante il caricamento.</TiaraAlert>
+      <span className="lbl">Tooltip (hover)</span>
+      <div style={{ display: 'flex', gap: 12 }}>
+        <TiaraTooltip label="Apri dettaglio ordine"><TiaraIconButton icon={<i className="fa-solid fa-eye" />} aria-label="Apri" variant="secondary" /></TiaraTooltip>
+        <TiaraTooltip label="Duplica ordine"><TiaraIconButton icon={<i className="fa-solid fa-copy" />} aria-label="Duplica" variant="secondary" /></TiaraTooltip>
+        <TiaraTooltip label="Stampa proforma"><TiaraIconButton icon={<i className="fa-solid fa-print" />} aria-label="Stampa" variant="secondary" /></TiaraTooltip>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body>
+</html>

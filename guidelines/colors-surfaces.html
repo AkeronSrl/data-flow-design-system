@@ -1,0 +1,39 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Surfaces & Text" subtitle="Semantic background / foreground roles (light mode)" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--color-background); font-family: var(--font-family-sans); }
+  .wrap { display:flex; gap:20px; }
+  .col { flex:1; display:flex; flex-direction:column; gap:6px; }
+  .surf { display:flex; gap:6px; }
+  .s { flex:1; height:40px; border-radius:var(--radius-md); border:1px solid var(--color-border); }
+  .cap { font-size:10px; color:var(--color-foreground-alt3); }
+  .ttl { font-size:11px; font-weight:700; color:var(--color-foreground); margin-bottom:2px; }
+  .txt { font-size:14px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="col">
+      <span class="ttl">Surfaces</span>
+      <div class="surf">
+        <div class="s" style="background:var(--color-background)"></div>
+        <div class="s" style="background:var(--color-background-alt1)"></div>
+        <div class="s" style="background:var(--color-background-alt2)"></div>
+        <div class="s" style="background:var(--color-background-alt3)"></div>
+      </div>
+      <span class="cap">background · alt1 · alt2 · alt3</span>
+    </div>
+    <div class="col">
+      <span class="ttl">Foreground</span>
+      <div class="txt" style="color:var(--color-foreground);font-weight:600">Primary text — foreground</div>
+      <div class="txt" style="color:var(--color-foreground-alt3)">Secondary — foreground-alt3</div>
+      <div class="txt" style="color:var(--color-placeholder)">Placeholder text</div>
+      <div class="txt" style="color:var(--color-accent-500);font-weight:600">Link — accent-500</div>
+    </div>
+  </div>
+</body>
+</html>

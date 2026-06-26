@@ -8,13 +8,13 @@
   body { margin: 0; padding: 22px; background: var(--color-background); font-family: var(--font-family-sans); color: var(--color-foreground); }
   h1 { font-size:24px; font-weight:700; margin:0; }
   .sub { font-size:14px; color:var(--color-foreground-alt3); margin:4px 0 14px; }
-  p { font-size:14px; line-height:20px; color:var(--color-foreground-alt1); margin:0; max-width:60ch; }
+  p { font-size:14px; line-height:20px; color:var(--color-foreground-alt1); margin:0; max-width:62ch; }
   .num { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; font-weight:600; }
 </style>
 </head>
 <body>
-  <h1>Ordini cliente</h1>
-  <div class="sub">Gestisci ordini B2B e B2C, preordini e campionario</div>
-  <p>Le righe d'ordine mostrano importi allineati con cifre tabulari — <span class="num">€ 1.248,00</span> · <span class="num">€ 96,50</span> — così le colonne numeriche restano leggibili in tabelle dense.</p>
+  <h1>Order sync — pipeline</h1>
+  <div class="sub">Salesforce → transform → Tarko (DataLoader) · Batch</div>
+  <p>Last execution processed <span class="num">1.42M</span> rows in <span class="num">00:04:31</span> across 6 datasets — <span class="num">3</span> rows routed to the dead-letter queue. Metrics use tabular figures so monitoring columns stay aligned.</p>
 </body>
 </html>

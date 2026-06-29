@@ -10,60 +10,140 @@
 <!-- @template name="Query Analyzer" description="SQL exploration screen — schema browser rail, an expression/SQL editor with autocomplete, and a results grid." -->
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <script src="./ds-base.js"></script>
 <style>
-  html, body { margin: 0; height: 100%; }
-  body { font-family: 'Roboto', system-ui, sans-serif; }
+  html, body { margin: 0; height: 100%; background: #f8f9fa; }
+  body { font-family: 'Inter', system-ui, sans-serif; }
 </style>
 </helmet>
-<div style="display:flex; height:100vh; width:100%; background:var(--color-background-alt1); color:var(--color-foreground);">
-  <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfSideMenu" items="{{ navItems }}" active-id="query" expanded="{{ true }}" hint-size="248px,100%"></x-import>
 
-  <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
-    <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfHeader" title="Query Analyzer" subtitle="analytics_pg (prod) · public" hint-size="100%,64px"></x-import>
+<div style="display:flex; flex-direction:column; height:100vh; background:#f8f9fa; color:#111827;">
 
-    <div style="flex:1; display:flex; min-height:0; padding:20px; gap:20px;">
+  <!-- ── Page header ── -->
+  <div style="background:#fff; border-bottom:1px solid #e5e7eb; padding:14px 24px 10px; flex-shrink:0;">
+    <h1 style="margin:0 0 6px; font-size:18px; font-weight:700; color:#111827; letter-spacing:-0.3px;">AGData Environment</h1>
+    <a href="#" style="display:inline-flex; align-items:center; gap:6px; font-size:13px; color:#6b7280; text-decoration:none;" style-hover="color:#111827;">
+      <i class="fa-solid fa-arrow-left" style="font-size:11px;"></i>
+      Return to the connection list
+    </a>
+  </div>
 
-      <div style="width:300px; flex-shrink:0; display:flex; flex-direction:column; background:var(--panel-bg); border:1px solid var(--color-border-light); border-radius:12px; box-shadow:var(--shadow-panel); padding:16px; min-height:0;">
-        <div style="flex:1; min-height:0; display:flex;">
-          <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfSchemaTree" title="analytics_pg" summary="PostgreSQL · public" nodes="{{ schemaNodes }}" on-select="{{ pickColumn }}" hint-size="100%,100%"></x-import>
+  <!-- ── Main content ── -->
+  <div style="flex:1; display:flex; min-height:0; padding:20px; gap:16px;">
+
+    <!-- ── Schema Discovery panel ── -->
+    <div style="width:300px; flex-shrink:0; background:#fff; border:1px solid #e5e7eb; border-radius:10px; box-shadow:0 1px 3px rgba(0,0,0,.07); display:flex; flex-direction:column; overflow:hidden;">
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:14px 16px 10px; flex-shrink:0;">
+        <span style="font-size:15px; font-weight:700; color:#111827; white-space:nowrap;">Schema Discovery</span>
+        <button style="border:none; background:none; cursor:pointer; color:#2563eb; padding:2px 4px; border-radius:4px; display:flex; align-items:center;" title="Collapse">
+          <i class="fa-solid fa-left-to-line" style="font-size:14px;"></i>
+        </button>
+      </div>
+      <div style="flex:1; min-height:0; overflow:auto; padding:0 8px 12px;">
+        <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfSchemaTree" nodes="{{ schemaNodes }}" search-placeholder="Search entities" on-select="{{ pickColumn }}" hint-size="100%,100%"></x-import>
+      </div>
+    </div>
+
+    <!-- ── Right column ── -->
+    <div style="flex:1; min-width:0; display:flex; flex-direction:column; gap:14px;">
+
+      <!-- Editor card -->
+      <div style="background:#fff; border:1px solid #e5e7eb; border-radius:10px; box-shadow:0 1px 3px rgba(0,0,0,.07); padding:0; display:flex; flex-direction:column;">
+        <!-- Toolbar -->
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 14px; border-bottom:1px solid #f3f4f6;">
+          <button style="border:none; background:none; cursor:pointer; color:#9ca3af; font-size:18px; line-height:1; padding:0 4px;">−</button>
+          <div style="display:flex; gap:8px;">
+            <button style="display:inline-flex; align-items:center; gap:5px; border:1px solid #d1d5db; background:#fff; border-radius:6px; padding:5px 12px; font-size:13px; font-weight:500; color:#374151; cursor:pointer; font-family:inherit;" style-hover="background:#f9fafb;">
+              <i class="fa-solid fa-plus" style="font-size:11px;"></i> New query
+            </button>
+            <button style="display:inline-flex; align-items:center; gap:5px; border:1px solid #d1d5db; background:#fff; border-radius:6px; padding:5px 12px; font-size:13px; font-weight:500; color:#374151; cursor:pointer; font-family:inherit;" style-hover="background:#f9fafb;">
+              <i class="fa-regular fa-floppy-disk" style="font-size:12px;"></i> Save
+            </button>
+            <button onClick="{{ run }}" style="display:inline-flex; align-items:center; gap:5px; border:none; background:#2563eb; border-radius:6px; padding:5px 14px; font-size:13px; font-weight:500; color:#fff; cursor:pointer; font-family:inherit;" style-hover="background:#1d4ed8;">
+              <i class="fa-solid fa-play" style="font-size:10px;"></i> Execute
+            </button>
+          </div>
+        </div>
+        <!-- Editor area -->
+        <div style="padding:12px 14px;">
+          <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfExpressionEditor" value="{{ query }}" on-change="{{ setQuery }}" columns="{{ columns }}" functions="{{ sqlKeywords }}" rows="{{ 3 }}" placeholder="SELECT … FROM …" hint-size="100%,auto"></x-import>
         </div>
       </div>
 
-      <div style="flex:1; min-width:0; display:flex; flex-direction:column; gap:16px;">
-
-        <div style="background:var(--panel-bg); border:1px solid var(--color-border-light); border-radius:12px; box-shadow:var(--shadow-panel); padding:16px; display:flex; flex-direction:column; gap:12px;">
-          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
-            <span style="font-size:13px; font-weight:600; color:var(--color-foreground);">Query</span>
-            <div style="display:flex; gap:8px;">
-              <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.TiaraButton" variant="secondary" size="sm" on-click="{{ save }}" hint-size="auto,auto">Save query</x-import>
-              <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.TiaraButton" size="sm" on-click="{{ run }}" hint-size="auto,auto">Run</x-import>
-            </div>
-          </div>
-          <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfExpressionEditor" value="{{ query }}" on-change="{{ setQuery }}" columns="{{ columns }}" functions="{{ sqlKeywords }}" rows="{{ 6 }}" placeholder="SELECT … FROM …" hint-size="100%,auto"></x-import>
+      <!-- Results card -->
+      <div style="flex:1; min-height:0; background:#fff; border:1px solid #e5e7eb; border-radius:10px; box-shadow:0 1px 3px rgba(0,0,0,.07); display:flex; flex-direction:column; overflow:hidden;">
+        <!-- Results header -->
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 16px 10px; border-bottom:1px solid #f3f4f6; flex-shrink:0;">
+          <span style="font-size:13px; font-weight:600; color:#111827;">Results</span>
+          <span style="font-size:12px; color:#9ca3af; font-variant-numeric:tabular-nums;">Rows: 1825</span>
         </div>
-
-        <div style="flex:1; min-height:0; display:flex; flex-direction:column; background:var(--panel-bg); border:1px solid var(--color-border-light); border-radius:12px; box-shadow:var(--shadow-panel); padding:16px;">
-          <div style="display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:12px;">
-            <span style="font-size:13px; font-weight:600; color:var(--color-foreground);">Results</span>
-            <span style="font-size:12px; color:var(--color-foreground-alt3); font-variant-numeric:tabular-nums;">{{ resultMeta }}</span>
+        <!-- Table -->
+        <div style="flex:1; min-height:160px; overflow-x:hidden; overflow-y:auto;">
+          <table style="width:100%; border-collapse:collapse; font-size:13px; table-layout:fixed;">
+            <thead>
+              <tr style="border-bottom:2px solid #e5e7eb;">
+                <th style="text-align:left; padding:10px 14px; font-weight:600; color:#374151; width:25%;">id</th>
+                <th style="text-align:left; padding:10px 14px; font-weight:600; color:#374151; width:28%;">Name</th>
+                <th style="text-align:left; padding:10px 14px; font-weight:600; color:#374151;">Description</th>
+              </tr>
+              <tr style="border-bottom:1px solid #e5e7eb; background:#fafafa;">
+                <td style="padding:6px 14px;"><i class="fa-solid fa-magnifying-glass" style="color:#9ca3af; font-size:12px;"></i></td>
+                <td style="padding:6px 14px;"><i class="fa-solid fa-magnifying-glass" style="color:#9ca3af; font-size:12px;"></i></td>
+                <td style="padding:6px 14px;"><i class="fa-solid fa-magnifying-glass" style="color:#9ca3af; font-size:12px;"></i></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid #f3f4f6;">
+                <td style="padding:10px 14px; font-family:monospace; font-size:12px; color:#374151;">0010900000Qtmh2AAB</td>
+                <td style="padding:10px 14px; color:#111827;">Account di esempio per i diritti</td>
+                <td style="padding:10px 14px; color:#9ca3af;">—</td>
+              </tr>
+              <tr style="border-bottom:1px solid #f3f4f6;">
+                <td style="padding:10px 14px; font-family:monospace; font-size:12px; color:#374151;">0010900000SmB9oAAF</td>
+                <td style="padding:10px 14px; color:#111827;">Edge Communications</td>
+                <td style="padding:10px 14px; color:#374151;">Edge, founded in 1998, is a start-up based in Austin, TX. The company designs and manufactures a device to convert music fro…</td>
+              </tr>
+              <tr style="border-bottom:1px solid #f3f4f6;">
+                <td style="padding:10px 14px; font-family:monospace; font-size:12px; color:#374151;">0010900000SmB9pAAF</td>
+                <td style="padding:10px 14px; color:#111827;">Burlington Textiles Corp of America</td>
+                <td style="padding:10px 14px; color:#9ca3af;">—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Pagination footer -->
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 16px; border-top:1px solid #f3f4f6; flex-shrink:0;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <button style="width:30px; height:30px; border-radius:50%; background:#2563eb; color:#fff; border:none; font-size:13px; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center;">100</button>
+            <button style="padding:0 6px; height:30px; background:none; border:none; font-size:13px; color:#6b7280; cursor:pointer; font-family:inherit;" style-hover="color:#111827;">250</button>
+            <button style="padding:0 6px; height:30px; background:none; border:none; font-size:13px; color:#6b7280; cursor:pointer; font-family:inherit;" style-hover="color:#111827;">500</button>
           </div>
-          <div style="flex:1; min-height:0; overflow:auto;">
-            <x-import component-from-global-scope="TiaraDesignSystemNyma_96297e.DfPreviewGrid" columns="{{ resultCols }}" rows="{{ resultRows }}" selected-count="{{ resultColCount }}" total-count="{{ resultColCount }}" hint-size="100%,auto"></x-import>
+          <span style="font-size:12px; color:#6b7280;">Page 1 of 19 (1825 items)</span>
+          <div style="display:flex; align-items:center; gap:2px;">
+            <button style="width:28px; height:28px; border:1px solid #e5e7eb; border-radius:6px; background:#fff; color:#6b7280; cursor:pointer; font-size:12px; display:flex; align-items:center; justify-content:center;" style-hover="background:#f3f4f6;"><i class="fa-solid fa-chevron-left"></i></button>
+            <button style="min-width:28px; height:28px; border:none; border-radius:6px; background:#2563eb; color:#fff; font-size:12px; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0 8px;">1</button>
+            <button style="min-width:28px; height:28px; border:1px solid #e5e7eb; border-radius:6px; background:#fff; color:#374151; font-size:12px; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0 8px;" style-hover="background:#f3f4f6;">2</button>
+            <button style="min-width:28px; height:28px; border:1px solid #e5e7eb; border-radius:6px; background:#fff; color:#374151; font-size:12px; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0 8px;" style-hover="background:#f3f4f6;">3</button>
+            <button style="min-width:28px; height:28px; border:1px solid #e5e7eb; border-radius:6px; background:#fff; color:#374151; font-size:12px; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0 8px;" style-hover="background:#f3f4f6;">4</button>
+            <button style="min-width:28px; height:28px; border:1px solid #e5e7eb; border-radius:6px; background:#fff; color:#374151; font-size:12px; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0 8px;" style-hover="background:#f3f4f6;">5</button>
+            <span style="font-size:12px; color:#9ca3af; padding:0 4px;">…</span>
+            <button style="min-width:28px; height:28px; border:1px solid #e5e7eb; border-radius:6px; background:#fff; color:#374151; font-size:12px; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0 8px;" style-hover="background:#f3f4f6;">19</button>
+            <button style="width:28px; height:28px; border:1px solid #e5e7eb; border-radius:6px; background:#fff; color:#6b7280; cursor:pointer; font-size:12px; display:flex; align-items:center; justify-content:center;" style-hover="background:#f3f4f6;"><i class="fa-solid fa-chevron-right"></i></button>
           </div>
         </div>
-
       </div>
+
     </div>
   </div>
 </div>
+
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   state = {
-    query: 'SELECT order_id, customer_id, total_amount, created_at\nFROM orders\nWHERE total_amount > 1000\nORDER BY created_at DESC',
+    query: 'select id, Name, Description from Account',
   };
 
   setQuery = (v) => this.setState({ query: v });
@@ -73,55 +153,61 @@ class Component extends DCLogic {
     }
   };
   run = () => {};
-  save = () => {};
 
   renderVals() {
-    const columns = ['order_id', 'customer_id', 'total_amount', 'created_at', 'is_paid', 'region'];
+    const columns = ['id', 'Name', 'Description', 'IsDeleted', 'MasterRecordId', 'Type', 'ParentId', 'BillingStreet'];
     const sqlKeywords = ['SELECT', 'FROM', 'WHERE', 'GROUP BY', 'ORDER BY', 'JOIN', 'LEFT JOIN', 'INNER JOIN', 'LIMIT', 'COUNT', 'SUM', 'AVG', 'MIN', 'MAX'];
 
     const schemaNodes = [
       {
-        id: 'public', label: 'public', icon: 'fa-solid fa-folder', defaultExpanded: true,
+        id: 'objects', label: 'Objects', icon: 'fa-solid fa-folder', defaultExpanded: true,
+        badge: { text: '942', tone: 'info' },
         items: [
           {
-            id: 'orders', label: 'orders', description: 'table · 1.4M rows', icon: 'fa-solid fa-table', defaultExpanded: true, badge: { text: '6', tone: 'info' },
+            id: 'acceptedEventRelation',
+            label: 'AcceptedEventRelation',
+            description: 'Accepted Event Relation',
+            icon: 'fa-solid fa-table-cells-large',
+          },
+          {
+            id: 'account',
+            label: 'Account',
+            description: 'Account',
+            icon: 'fa-solid fa-table-cells-large',
+            defaultExpanded: true,
             items: [
-              { id: 'c-oid', label: 'order_id', column: 'order_id', selectable: true, leadingBadge: { text: 'PK', tone: 'success' }, description: 'bigint' },
-              { id: 'c-cid', label: 'customer_id', column: 'customer_id', selectable: true, leadingBadge: { text: 'INT', tone: 'neutral' }, description: 'bigint' },
-              { id: 'c-tot', label: 'total_amount', column: 'total_amount', selectable: true, leadingBadge: { text: 'NUM', tone: 'neutral' }, description: 'numeric(12,2)' },
-              { id: 'c-at', label: 'created_at', column: 'created_at', selectable: true, leadingBadge: { text: 'TS', tone: 'warning' }, description: 'timestamptz' },
+              { id: 'f-id',              label: 'Id',              column: 'Id',              selectable: true, description: 'id',        icon: 'fa-solid fa-table-cells' },
+              { id: 'f-isDeleted',       label: 'IsDeleted',       column: 'IsDeleted',       selectable: true, description: 'boolean',   icon: 'fa-solid fa-table-cells' },
+              { id: 'f-masterRecordId',  label: 'MasterRecordId',  column: 'MasterRecordId',  selectable: true, description: 'reference', icon: 'fa-solid fa-table-cells' },
+              { id: 'f-name',            label: 'Name',            column: 'Name',            selectable: true, description: 'string',    icon: 'fa-solid fa-table-cells' },
+              { id: 'f-type',            label: 'Type',            column: 'Type',            selectable: true, description: 'picklist',  icon: 'fa-solid fa-table-cells' },
+              { id: 'f-parentId',        label: 'ParentId',        column: 'ParentId',        selectable: true, description: 'reference', icon: 'fa-solid fa-table-cells' },
+              { id: 'f-billingStreet',   label: 'BillingStreet',   column: 'BillingStreet',   selectable: true, description: 'textarea',  icon: 'fa-solid fa-table-cells' },
             ],
           },
-          { id: 'customers', label: 'customers', description: 'table · 92K rows', icon: 'fa-solid fa-table', selectable: true, badge: { text: '12', tone: 'info' }, hasItems: true, items: [] },
-          { id: 'products', label: 'products', description: 'table · 3.1K rows', icon: 'fa-solid fa-table', selectable: true, badge: { text: '6', tone: 'info' }, hasItems: true, items: [] },
         ],
+      },
+      {
+        id: 'dataFlowQueries',
+        label: 'Data Flow Queries',
+        icon: 'fa-solid fa-folder',
+        description: '',
       },
     ];
 
     const resultCols = [
-      { field: 'order_id', caption: 'order_id', type: 'number' },
-      { field: 'customer_id', caption: 'customer_id', type: 'number' },
-      { field: 'total_amount', caption: 'total_amount', type: 'number' },
-      { field: 'created_at', caption: 'created_at', type: 'datetime' },
+      { field: 'id',          caption: 'id',          type: 'string' },
+      { field: 'Name',        caption: 'Name',        type: 'string' },
+      { field: 'Description', caption: 'Description', type: 'string' },
     ];
+
     const resultRows = [
-      { order_id: 100434, customer_id: 5521, total_amount: '4019.90', created_at: '2026-06-25 14:41' },
-      { order_id: 100432, customer_id: 3310, total_amount: '1240.00', created_at: '2026-06-25 14:32' },
-      { order_id: 100201, customer_id: 8842, total_amount: '2870.10', created_at: '2026-06-25 11:09' },
-      { order_id: 100118, customer_id: 1207, total_amount: '1502.55', created_at: '2026-06-25 09:54' },
+      { id: '0010900000Qtmh2AAB', Name: 'Account di esempio per i diritti', Description: '' },
+      { id: '0010900000SmB9oAAF', Name: 'Edge Communications',               Description: 'Edge, founded in 1998, is a start-up based in Austin, TX. The company designs and manufactures a device to convert music fro…' },
+      { id: '0010900000SmB9pAAF', Name: 'Burlington Textiles Corp of America', Description: '' },
     ];
 
     return {
-      navItems: [
-        { section: 'Workspace' },
-        { id: 'pipelines', label: 'Pipelines', icon: 'fa-solid fa-diagram-project', children: true },
-        { id: 'datasources', label: 'Data sources', icon: 'fa-solid fa-plug' },
-        { id: 'datasets', label: 'Datasets', icon: 'fa-solid fa-table' },
-        { section: 'Operate' },
-        { id: 'executions', label: 'Executions', icon: 'fa-solid fa-play' },
-        { id: 'logs', label: 'Logs & metrics', icon: 'fa-solid fa-clock-rotate-left' },
-        { id: 'query', label: 'Query Analyzer', icon: 'fa-solid fa-magnifying-glass-chart' },
-      ],
       query: this.state.query,
       setQuery: this.setQuery,
       columns,
@@ -129,14 +215,13 @@ class Component extends DCLogic {
       schemaNodes,
       pickColumn: this.pickColumn,
       run: this.run,
-      save: this.save,
       resultCols,
       resultRows,
       resultColCount: resultCols.length,
-      resultMeta: '128 rows · 0.42s',
     };
   }
 }
+
 </script>
 </body>
 </html>

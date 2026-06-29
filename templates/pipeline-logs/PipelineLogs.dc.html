@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Pipeline Logs" description="Pipeline execution log — search + date/outcome filters, expandable run accordion with sub-phase details." -->
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<script src="./ds-base.js"></script>
+<style>
+  html, body { margin: 0; height: 100%; }
+  body { font-family: 'Roboto', system-ui, sans-serif; }
+  input[type="date"]::-webkit-calendar-picker-indicator { opacity: 0.4; cursor: pointer; filter: var(--date-picker-filter, none); }
+  input[type="checkbox"] { accent-color: #0099F7; cursor: pointer; width: 14px; height: 14px; flex-shrink: 0; }
+  [data-outcome-color="success"] { color: #22c55e; }
+  [data-outcome-color="error"]   { color: #ef4444; }
+  [data-outcome-color="warning"] { color: #f59e0b; }
+  [data-outcome-color="running"] { color: #3b82f6; }
+</style>
+</helmet>
+
+<div style="display:flex; height:100vh; width:100%; background:var(--color-background-alt1); color:var(--color-foreground);">
+
+  <!-- ── Sidebar ── -->
+  <div style="width:220px; flex-shrink:0; background:#0f172a; display:flex; flex-direction:column; overflow:hidden;">
+    <div style="padding:22px 20px 16px; flex-shrink:0;">
+      <span style="font-size:22px; font-weight:900; color:#fff; letter-spacing:-0.5px; line-height:1; user-select:none; font-family:inherit;">Vul<span style="color:#38bdf8; font-style:italic;">K</span>i</span>
+    </div>
+    <div style="padding:0 12px 12px; flex-shrink:0;">
+      <div style="display:flex; align-items:center; gap:8px; height:34px; padding:0 10px; background:#1e293b; border-radius:6px; border:1px solid #334155;">
+        <i class="fa-solid fa-magnifying-glass" style="color:#475569; font-size:12px;"></i>
+        <input placeholder="Search…" style="flex:1; min-width:0; border:0; outline:0; background:transparent; font-family:inherit; font-size:13px; color:#94a3b8;" />
+      </div>
+    </div>
+    <nav style="flex:1; min-height:0; overflow:auto; padding:0 8px; display:flex; flex-direction:column; gap:2px;">
+      <div style="display:flex; align-items:center; gap:10px; padding:8px 12px; border-radius:6px; cursor:pointer; color:#94a3b8;" style-hover="background:#1e293b; color:#e2e8f0;">
+        <i class="fa-solid fa-house" style="width:16px; text-align:center; font-size:14px; flex-shrink:0;"></i>
+        <span style="font-size:14px; font-weight:500;">Home</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; padding:8px 12px; border-radius:6px; cursor:pointer; color:#94a3b8;" style-hover="background:#1e293b; color:#e2e8f0;">
+        <i class="fa-solid fa-globe" style="width:16px; text-align:center; font-size:14px; flex-shrink:0;"></i>
+        <span style="font-size:14px; font-weight:500;">Connections</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; padding:8px 12px; border-radius:6px; cursor:pointer; color:#94a3b8;" style-hover="background:#1e293b; color:#e2e8f0;">
+        <i class="fa-solid fa-table-cells" style="width:16px; text-align:center; font-size:14px; flex-shrink:0;"></i>
+        <span style="font-size:14px; font-weight:500;">Workspaces</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; padding:8px 12px; border-radius:6px; cursor:pointer; background:#0099F7; color:#fff;">
+        <i class="fa-solid fa-clock-rotate-left" style="width:16px; text-align:center; font-size:14px; flex-shrink:0;"></i>
+        <span style="font-size:14px; font-weight:500;">Log Pipeline</span>
+      </div>
+    </nav>
+  </div>
+
+  <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+    <div style="padding:20px 24px 16px; flex-shrink:0;">
+      <h1 style="margin:0; font-size:24px; font-weight:700; color:var(--color-foreground); letter-spacing:-0.3px;">Logs</h1>
+    </div>
+    <div style="height:1px; background:var(--color-border); flex-shrink:0;"></div>
+    <div style="flex:1; overflow:auto; min-height:0; padding:20px; display:flex; flex-direction:column;">
+
+      <!-- ── Filter bar ── -->
+      <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:8px; position:relative; z-index:30;">
+
+        <!-- Search -->
+        <div style="display:inline-flex; align-items:center; gap:8px; height:36px; padding:0 12px; background:var(--color-background); border:1.5px solid var(--color-border); border-radius:8px; min-width:160px;">
+          <i class="fa-solid fa-magnifying-glass" style="color:var(--color-foreground-alt3); font-size:12px;" aria-hidden="true"></i>
+          <input value="{{ query }}" onChange="{{ setQuery }}" placeholder="Search…" style="flex:1; min-width:0; border:0; outline:0; background:transparent; font-family:inherit; font-size:13px; color:var(--color-foreground);" />
+        </div>
+
+        <!-- Outcome multi-select dropdown -->
+        <div style="position:relative;">
+          <button type="button" onClick="{{ toggleOutcomeDropdown }}" style="display:inline-flex; align-items:center; gap:6px; height:36px; padding:0 12px; background:var(--color-background); border:1.5px solid #0099F7; border-radius:8px; cursor:pointer; font-family:inherit; font-size:13px; color:var(--color-foreground); font-weight:500;">
+            Outcome
+            <span style="display:inline-flex; align-items:center; justify-content:center; background:#0099F7; color:#fff; border-radius:10px; font-size:10px; font-weight:700; min-width:17px; height:17px; padding:0 4px; line-height:1;">{{ outcomeCount }}</span>
+            <i class="fa-solid fa-chevron-down" style="font-size:9px; color:var(--color-foreground-alt3);"></i>
+          </button>
+          <sc-if value="{{ outcomeOpen }}" hint-placeholder-val="{{ false }}">
+            <div onClick="{{ closeOutcomeDropdown }}" style="position:fixed; inset:0; z-index:20;"></div>
+            <div style="position:absolute; top:40px; left:0; background:var(--color-background); border:1px solid var(--color-border); border-radius:8px; padding:6px; z-index:40; min-width:150px; box-shadow:0 4px 20px rgba(0,0,0,0.13);">
+              <sc-for list="{{ outcomeOptions }}" as="opt" hint-placeholder-count="4">
+                <label style="display:flex; align-items:center; gap:8px; padding:6px 8px; cursor:pointer; border-radius:6px; font-size:13px; user-select:none;" style-hover="background:var(--color-background-alt1)">
+                  <input type="checkbox" checked="{{ opt.checked }}" onChange="{{ opt.toggle }}" />
+                  <i class="{{ opt.iconClass }}" data-outcome-color="{{ opt.key }}" style="font-size:12px;"></i>
+                  {{ opt.label }}
+                </label>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+
+        <!-- Date range -->
+        <div style="display:inline-flex; align-items:center; gap:6px; height:36px; padding:0 12px; background:var(--color-background); border:1.5px solid var(--color-border); border-radius:8px;">
+          <input type="date" value="{{ startDate }}" onChange="{{ setStartDate }}" style="border:0; outline:0; background:transparent; font-family:inherit; font-size:13px; color:var(--color-foreground); width:120px; color-scheme:light dark;" />
+          <span style="color:var(--color-foreground-alt3); font-size:12px; flex-shrink:0;">→</span>
+          <input type="date" value="{{ endDate }}" onChange="{{ setEndDate }}" style="border:0; outline:0; background:transparent; font-family:inherit; font-size:13px; color:var(--color-foreground); width:120px; color-scheme:light dark;" />
+          <i class="fa-regular fa-calendar" style="color:var(--color-foreground-alt3); font-size:13px; flex-shrink:0; margin-left:2px;"></i>
+        </div>
+
+        <!-- Refresh (right) -->
+        <button type="button" onClick="{{ refresh }}" title="Reset filters" style="margin-left:auto; display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; background:var(--color-background); border:1.5px solid var(--color-border); border-radius:8px; cursor:pointer; color:var(--color-foreground-alt3);" style-hover="color:var(--color-foreground)">
+          <i class="fa-solid fa-rotate" style="font-size:14px;"></i>
+        </button>
+      </div>
+
+      <!-- Row count -->
+      <div style="text-align:right; font-size:12px; color:var(--color-foreground-alt3); margin-bottom:12px;">
+        Rows: 1-{{ rowCount }}
+      </div>
+
+      <!-- ── Log rows ── -->
+      <div style="display:flex; flex-direction:column; gap:6px; flex:1;">
+
+        <sc-for list="{{ logRows }}" as="run" hint-placeholder-count="4">
+
+          <div style="background:var(--color-background); border:1px solid var(--color-border); border-radius:8px; overflow:hidden;">
+
+            <!-- Run header -->
+            <div onClick="{{ run.toggle }}" style="display:flex; align-items:center; gap:10px; padding:12px 16px; cursor:pointer; border-left:3px solid #0099F7; user-select:none;" style-hover="background:var(--color-background-alt1)">
+              <i class="{{ run.chevronClass }}" style="color:var(--color-foreground-alt3); font-size:11px; width:14px; text-align:center; flex-shrink:0;"></i>
+              <i class="{{ run.statusIconClass }}" data-outcome-color="{{ run.outcome }}" style="font-size:16px; width:18px; text-align:center; flex-shrink:0;"></i>
+
+              <div style="flex:0 0 180px; min-width:0; padding-right:16px;">
+                <div style="font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.07em; color:var(--color-foreground-alt3); margin-bottom:2px;">Pipeline</div>
+                <div style="font-size:13px; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ run.pipeline }}</div>
+              </div>
+
+              <div style="flex:0 0 120px; min-width:0; padding-right:16px;">
+                <div style="font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.07em; color:var(--color-foreground-alt3); margin-bottom:2px;">Status</div>
+                <div style="font-size:13px;">{{ run.statusText }}</div>
+              </div>
+
+              <div style="flex:1;"></div>
+
+              <div style="flex:0 0 90px; min-width:0; padding-right:16px;">
+                <div style="font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.07em; color:var(--color-foreground-alt3); margin-bottom:2px;">Workspace</div>
+                <div style="font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ run.workspace }}</div>
+              </div>
+
+              <div style="flex:0 0 160px; min-width:0; padding-right:16px;">
+                <div style="font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.07em; color:var(--color-foreground-alt3); margin-bottom:2px;">Start Time</div>
+                <div style="font-size:13px;">{{ run.startTime }}</div>
+              </div>
+
+              <div style="flex:0 0 90px; min-width:0; padding-right:16px;">
+                <div style="font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.07em; color:var(--color-foreground-alt3); margin-bottom:2px;">Duration</div>
+                <div style="font-size:13px;">{{ run.duration }}</div>
+              </div>
+
+              <div style="flex:0 0 170px; min-width:0; padding-right:16px;">
+                <div style="font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.07em; color:var(--color-foreground-alt3); margin-bottom:2px;">User</div>
+                <div style="font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ run.user }}</div>
+              </div>
+
+              <button type="button" onClick="{{ run.openAudit }}" style="flex-shrink:0; background:none; border:0; cursor:pointer; font-family:inherit; font-size:13px; color:var(--color-foreground-alt3); padding:4px 0; white-space:nowrap;" style-hover="color:var(--color-foreground)">
+                Open Data Audit
+              </button>
+            </div>
+
+            <!-- ── Expanded: event details ── -->
+            <sc-if value="{{ run.isOpen }}" hint-placeholder-val="{{ false }}">
+              <div style="border-top:1px solid var(--color-border);">
+
+                <!-- Event details header row -->
+                <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 16px; background:var(--color-background-alt1);">
+                  <span style="font-size:12px; font-weight:600; color:var(--color-foreground-alt3); letter-spacing:0.02em;">Event details</span>
+                  <div style="display:flex; align-items:center; gap:16px;">
+                    <span style="font-size:12px; color:var(--color-foreground-alt3);">Filter details</span>
+                    <sc-for list="{{ run.detailFiltersUi }}" as="df" hint-placeholder-count="3">
+                      <label style="display:inline-flex; align-items:center; gap:5px; cursor:pointer; font-size:12px; user-select:none;">
+                        <input type="checkbox" checked="{{ df.checked }}" onChange="{{ df.toggle }}" />
+                        <i class="{{ df.iconClass }}" data-outcome-color="{{ df.key }}" style="font-size:11px;"></i>
+                        {{ df.label }}
+                      </label>
+                    </sc-for>
+                  </div>
+                </div>
+
+                <!-- Phase rows -->
+                <div style="display:flex; flex-direction:column; gap:4px; padding:8px 12px 12px; background:var(--color-background-alt1);">
+                  <sc-for list="{{ run.filteredPhases }}" as="phase" hint-placeholder-count="3">
+
+                    <div style="background:var(--color-background); border:1px solid var(--color-border); border-radius:6px; overflow:hidden;">
+
+                      <!-- Phase header -->
+                      <div onClick="{{ phase.toggle }}" style="display:flex; align-items:center; gap:10px; padding:10px 12px; cursor:pointer; border-left:3px solid #0099F7; user-select:none;" style-hover="background:var(--color-background-alt1)">
+                        <i class="{{ phase.chevronClass }}" style="color:var(--color-foreground-alt3); font-size:10px; width:12px; text-align:center; flex-shrink:0;"></i>
+                        <i class="{{ phase.statusIconClass }}" data-outcome-color="{{ phase.outcome }}" style="font-size:14px; width:16px; text-align:center; flex-shrink:0;"></i>
+
+                        <div style="flex:1; min-width:0; padding-right:16px;">
+                          <div style="font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.07em; color:var(--color-foreground-alt3); margin-bottom:2px;">Description</div>
+                          <div style="font-size:13px; font-weight:500;">{{ phase.description }}</div>
+                        </div>
+
+                        <div style="flex:0 0 140px; min-width:0; padding-right:16px;">
+                          <div style="font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.07em; color:var(--color-foreground-alt3); margin-bottom:2px;">Start Time</div>
+                          <div style="font-size:13px;">{{ phase.startTime }}</div>
+                        </div>
+
+                        <div style="flex:0 0 90px; min-width:0; padding-right:16px;">
+                          <div style="font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.07em; color:var(--color-foreground-alt3); margin-bottom:2px;">Duration</div>
+                          <div style="font-size:13px;">{{ phase.duration }}</div>
+                        </div>
+
+                        <div style="flex:0 0 200px; min-width:0; padding-right:16px;">
+                          <div style="font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.07em; color:var(--color-foreground-alt3); margin-bottom:2px;">User</div>
+                          <div style="font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ phase.user }}</div>
+                        </div>
+
+                        <div style="flex:0 0 90px; min-width:0;">
+                          <div style="font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.07em; color:var(--color-foreground-alt3); margin-bottom:2px;">Memory</div>
+                          <div style="font-size:13px;">{{ phase.memory }}</div>
+                        </div>
+                      </div>
+
+                      <!-- Phase sub-detail -->
+                      <sc-if value="{{ phase.isOpen }}" hint-placeholder-val="{{ false }}">
+                        <div style="border-top:1px solid var(--color-border); padding:14px 16px; background:var(--color-background-alt1);">
+                          <sc-if value="{{ phase.hasDetail }}" hint-placeholder-val="{{ true }}">
+
+                            <div style="margin-bottom:12px;">
+                              <div style="font-size:12px; font-weight:600; color:var(--color-foreground); margin-bottom:6px;">Dataset</div>
+                              <div style="display:flex; flex-wrap:wrap; gap:20px; font-size:13px; align-items:center;">
+                                <span><span style="color:var(--color-foreground-alt3); margin-right:3px;">Description</span><strong>{{ phase.detail.dsDescription }}</strong></span>
+                                <span><span style="color:var(--color-foreground-alt3); margin-right:3px;">Target</span><strong>{{ phase.detail.dsTarget }}</strong></span>
+                                <span><span style="color:var(--color-foreground-alt3); margin-right:3px;">Mode</span><strong>{{ phase.detail.dsMode }}</strong></span>
+                                <span style="display:inline-flex; align-items:center; gap:5px;"><span style="color:var(--color-foreground-alt3);">Outcome</span><span style="color:#16a34a; font-weight:700; font-size:11px; letter-spacing:0.06em; background:rgba(34,197,94,0.12); padding:2px 7px; border-radius:4px;">{{ phase.detail.dsOutcome }}</span></span>
+                              </div>
+                            </div>
+
+                            <div style="margin-bottom:12px;">
+                              <div style="font-size:12px; font-weight:600; color:var(--color-foreground); margin-bottom:6px;">Rows</div>
+                              <div style="font-size:13px;"><span style="color:var(--color-foreground-alt3); margin-right:3px;">Total</span><strong>{{ phase.detail.rowsTotal }}</strong></div>
+                            </div>
+
+                            <div>
+                              <div style="font-size:12px; font-weight:600; color:var(--color-foreground); margin-bottom:6px;">Details</div>
+                              <div style="display:flex; flex-wrap:wrap; gap:20px; font-size:13px;">
+                                <span><span style="color:var(--color-foreground-alt3); margin-right:3px;">DBMS</span><strong>{{ phase.detail.dbms }}</strong></span>
+                                <span><span style="color:var(--color-foreground-alt3); margin-right:3px;">Table</span><strong>{{ phase.detail.table }}</strong></span>
+                                <span><span style="color:var(--color-foreground-alt3); margin-right:3px;">Schema</span><strong>{{ phase.detail.schema }}</strong></span>
+                              </div>
+                            </div>
+
+                          </sc-if>
+                          <sc-if value="{{ phase.noDetail }}" hint-placeholder-val="{{ false }}">
+                            <div style="font-size:12px; color:var(--color-foreground-alt3); font-style:italic;">No additional details available for this phase.</div>
+                          </sc-if>
+                        </div>
+                      </sc-if>
+
+                    </div>
+
+                  </sc-for>
+                </div>
+
+              </div>
+            </sc-if>
+
+          </div>
+
+        </sc-for>
+
+        <!-- Empty state -->
+        <sc-if value="{{ noRows }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; padding:48px; color:var(--color-foreground-alt3); text-align:center;">
+            <i class="fa-solid fa-list-check" style="font-size:28px;" aria-hidden="true"></i>
+            <span style="font-size:14px;">No executions match these filters.</span>
+          </div>
+        </sc-if>
+
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    query: '',
+    outcomes: ['success', 'error', 'warning'],
+    outcomeOpen: false,
+    startDate: '',
+    endDate: '',
+    expandedRuns: { r1: true },
+    expandedPhases: { 'p1-3': true },
+    detailFilters: { success: true, error: true, warning: true },
+  };
+
+  toggleRun = (id) => {
+    this.setState({ expandedRuns: { ...this.state.expandedRuns, [id]: !this.state.expandedRuns[id] } });
+  };
+
+  togglePhase = (id) => {
+    this.setState({ expandedPhases: { ...this.state.expandedPhases, [id]: !this.state.expandedPhases[id] } });
+  };
+
+  toggleOutcome = (key) => {
+    const outcomes = this.state.outcomes.includes(key)
+      ? this.state.outcomes.filter(o => o !== key)
+      : [...this.state.outcomes, key];
+    this.setState({ outcomes });
+  };
+
+  toggleDetailFilter = (key) => {
+    this.setState({ detailFilters: { ...this.state.detailFilters, [key]: !this.state.detailFilters[key] } });
+  };
+
+  refresh = () => {
+    this.setState({ query: '', outcomes: ['success', 'error', 'warning'], startDate: '', endDate: '', outcomeOpen: false });
+  };
+
+  ALL_LOGS = [
+    {
+      id: 'r1', pipeline: 'CommonDataImport', statusText: 'Completed', outcome: 'success',
+      workspace: 'Vulki', startTime: '6/12/26, 11:42 PM', startTimeRaw: '2026-06-12', duration: '1 minute',
+      user: 'c2f4add9-48f9-4424-...',
+      phases: [
+        {
+          id: 'p1-1', outcome: 'success', description: 'Estrazione pipeline completata',
+          startTime: '6/12/26, 11:43 PM', duration: '2 seconds',
+          user: 'c2f4add9-48f9-4424-a115-42...', memory: '13.754 MB', subDetail: null,
+        },
+        {
+          id: 'p1-2', outcome: 'success', description: 'Trasformazione pipeline completata',
+          startTime: '6/12/26, 11:43 PM', duration: '0 ms',
+          user: 'c2f4add9-48f9-4424-a115-42...', memory: '0 MB', subDetail: null,
+        },
+        {
+          id: 'p1-3', outcome: 'success', description: 'Export dataset completato',
+          startTime: '6/12/26, 11:43 PM', duration: '4 seconds',
+          user: 'c2f4add9-48f9-4424-a115-42...', memory: '8.965 MB',
+          subDetail: {
+            dataset: { description: 'Squid', target: 'SquidTableCopy', mode: 'DROP', outcome: 'SUCCESS' },
+            rows: { total: '2,000' },
+            details: { dbms: 'postgres', table: 'SquidTableCopy', schema: 'public' },
+          },
+        },
+      ],
+    },
+    {
+      id: 'r2', pipeline: 'CommonDataImport', statusText: 'Completed', outcome: 'success',
+      workspace: 'Vulki', startTime: '6/12/26, 11:15 PM', startTimeRaw: '2026-06-12', duration: '22 seconds',
+      user: 'c2f4add9-48f9-4424-...', phases: [],
+    },
+    {
+      id: 'r3', pipeline: 'CommonDataImport', statusText: 'Completed', outcome: 'success',
+      workspace: 'Vulki', startTime: '6/12/26, 10:14 PM', startTimeRaw: '2026-06-12', duration: '19 seconds',
+      user: 'c2f4add9-48f9-4424-...', phases: [],
+    },
+    {
+      id: 'r4', pipeline: '44bdc635-5908-4eef-...', statusText: 'Completed', outcome: 'success',
+      workspace: '6ec58312-bead-4c14-...', startTime: '6/4/26, 1:28 PM', startTimeRaw: '2026-06-04', duration: '11 seconds',
+      user: '5d3cad10-0b4a-457e-...', phases: [],
+    },
+    {
+      id: 'r5', pipeline: 'HubspotContactsSync', statusText: 'Partially failed', outcome: 'warning',
+      workspace: 'Staging', startTime: '6/11/26, 9:00 AM', startTimeRaw: '2026-06-11', duration: '1 minute 58 seconds',
+      user: 'scheduler',
+      phases: [
+        {
+          id: 'p5-1', outcome: 'success', description: 'Fetch contacts',
+          startTime: '6/11/26, 9:00 AM', duration: '44 seconds',
+          user: 'scheduler', memory: '4.2 MB', subDetail: null,
+        },
+        {
+          id: 'p5-2', outcome: 'warning', description: 'Export — 12 rows rejected',
+          startTime: '6/11/26, 9:01 AM', duration: '1 minute 14 seconds',
+          user: 'scheduler', memory: '1.1 MB', subDetail: null,
+        },
+      ],
+    },
+    {
+      id: 'r6', pipeline: 'SQSOrdersStream', statusText: 'Failed', outcome: 'error',
+      workspace: 'Staging', startTime: '6/10/26, 9:48 AM', startTimeRaw: '2026-06-10', duration: '12 seconds',
+      user: 'svc-account',
+      phases: [
+        {
+          id: 'p6-1', outcome: 'error', description: 'Connection refused (timeout)',
+          startTime: '6/10/26, 9:48 AM', duration: '12 seconds',
+          user: 'svc-account', memory: '0 MB', subDetail: null,
+        },
+      ],
+    },
+  ];
+
+  renderVals() {
+    const { query, outcomes, outcomeOpen, startDate, endDate, expandedRuns, expandedPhases, detailFilters } = this.state;
+    const q = query.trim().toLowerCase();
+
+    const OUTCOME_OPTS = [
+      { key: 'success', label: 'Success', iconClass: 'fa-solid fa-circle-check', color: '#22c55e' },
+      { key: 'error', label: 'Error', iconClass: 'fa-solid fa-circle-xmark', color: '#ef4444' },
+      { key: 'warning', label: 'Warning', iconClass: 'fa-solid fa-triangle-exclamation', color: '#f59e0b' },
+      { key: 'running', label: 'Running', iconClass: 'fa-solid fa-spinner', color: '#3b82f6' },
+    ];
+
+    const STATUS_MAP = {
+      success: { iconClass: 'fa-solid fa-circle-check', color: '#22c55e' },
+      error: { iconClass: 'fa-solid fa-circle-xmark', color: '#ef4444' },
+      warning: { iconClass: 'fa-solid fa-triangle-exclamation', color: '#f59e0b' },
+      running: { iconClass: 'fa-solid fa-spinner fa-spin', color: '#3b82f6' },
+    };
+
+    const DETAIL_FILTER_DEFS = [
+      { key: 'success', label: 'Success', iconClass: 'fa-solid fa-circle-check', color: '#22c55e' },
+      { key: 'error', label: 'Error', iconClass: 'fa-solid fa-circle-xmark', color: '#ef4444' },
+      { key: 'warning', label: 'Warning', iconClass: 'fa-solid fa-triangle-exclamation', color: '#f59e0b' },
+    ];
+
+    const filtered = this.ALL_LOGS.filter(r => {
+      if (!outcomes.includes(r.outcome)) return false;
+      if (q && !r.pipeline.toLowerCase().includes(q)) return false;
+      if (startDate && r.startTimeRaw < startDate) return false;
+      if (endDate && r.startTimeRaw > endDate) return false;
+      return true;
+    });
+
+    const logRows = filtered.map(r => {
+      const isOpen = !!expandedRuns[r.id];
+      const s = STATUS_MAP[r.outcome] || STATUS_MAP.success;
+
+      const detailFiltersUi = DETAIL_FILTER_DEFS.map(df => ({
+        key: df.key,
+        label: df.label,
+        iconClass: df.iconClass,
+        color: df.color,
+        checked: !!detailFilters[df.key],
+        toggle: () => this.toggleDetailFilter(df.key),
+      }));
+
+      const filteredPhases = (r.phases || [])
+        .filter(p => {
+          if (p.outcome === 'success' && !detailFilters.success) return false;
+          if (p.outcome === 'error' && !detailFilters.error) return false;
+          if (p.outcome === 'warning' && !detailFilters.warning) return false;
+          return true;
+        })
+        .map(p => {
+          const phaseIsOpen = !!expandedPhases[p.id];
+          const ps = STATUS_MAP[p.outcome] || STATUS_MAP.success;
+          const hasDetail = !!p.subDetail;
+          return {
+            id: p.id,
+            description: p.description,
+            startTime: p.startTime,
+            duration: p.duration,
+            user: p.user,
+            memory: p.memory,
+            isOpen: phaseIsOpen,
+            toggle: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.togglePhase(p.id); },
+            chevronClass: phaseIsOpen ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down',
+            outcome: p.outcome,
+            statusIconClass: ps.iconClass,
+            statusColor: ps.color,
+            hasDetail,
+            noDetail: !hasDetail,
+            detail: hasDetail ? {
+              dsDescription: p.subDetail.dataset.description,
+              dsTarget: p.subDetail.dataset.target,
+              dsMode: p.subDetail.dataset.mode,
+              dsOutcome: p.subDetail.dataset.outcome,
+              rowsTotal: p.subDetail.rows.total,
+              dbms: p.subDetail.details.dbms,
+              table: p.subDetail.details.table,
+              schema: p.subDetail.details.schema,
+            } : { dsDescription: '', dsTarget: '', dsMode: '', dsOutcome: '', rowsTotal: '', dbms: '', table: '', schema: '' },
+          };
+        });
+
+      return {
+        id: r.id,
+        pipeline: r.pipeline,
+        statusText: r.statusText,
+        workspace: r.workspace,
+        startTime: r.startTime,
+        duration: r.duration,
+        user: r.user,
+        isOpen,
+        toggle: () => this.toggleRun(r.id),
+        chevronClass: isOpen ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down',
+        outcome: r.outcome,
+        statusIconClass: s.iconClass,
+        statusColor: s.color,
+        detailFiltersUi,
+        filteredPhases,
+        openAudit: (e) => { if (e && e.stopPropagation) e.stopPropagation(); },
+      };
+    });
+
+    const outcomeOptions = OUTCOME_OPTS.map(o => ({
+      key: o.key,
+      label: o.label,
+      iconClass: o.iconClass,
+      color: o.color,
+      checked: outcomes.includes(o.key),
+      toggle: () => this.toggleOutcome(o.key),
+    }));
+
+    return {
+
+      query,
+      setQuery: (e) => this.setState({ query: e.target.value }),
+      startDate,
+      setStartDate: (e) => this.setState({ startDate: e.target.value }),
+      endDate,
+      setEndDate: (e) => this.setState({ endDate: e.target.value }),
+      outcomeOpen,
+      toggleOutcomeDropdown: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ outcomeOpen: !this.state.outcomeOpen }); },
+      closeOutcomeDropdown: () => this.setState({ outcomeOpen: false }),
+      outcomeOptions,
+      outcomeCount: String(outcomes.length),
+      logRows,
+      rowCount: String(filtered.length),
+      hasRows: filtered.length > 0,
+      noRows: filtered.length === 0,
+      refresh: this.refresh,
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Pipeline List View" description="Pipeline detail in list-view mode — collapsible dataset list sidebar + tabular data preview with column types and toolbar actions." -->
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script src="./ds-base.js"></script>
+  <style>
+    html, body { margin: 0; height: 100%; }
+    body { font-family: 'Roboto', system-ui, sans-serif; }
+  </style>
+</helmet>
+
+<div style="display:flex; flex-direction:column; height:100vh; background:var(--color-background-alt1); font-family:'Roboto',system-ui,sans-serif;">
+
+  <!-- ── Page header ── -->
+  <div style="background:var(--color-background); border-bottom:1px solid var(--color-border-light); padding:0 24px; flex-shrink:0;">
+    <div style="padding:14px 0 0; display:flex; align-items:flex-start; justify-content:space-between; gap:16px;">
+      <h1 style="margin:0; font-size:18px; font-weight:700; color:var(--color-foreground); letter-spacing:-0.2px;">{{ title }}</h1>
+      <div style="display:flex; align-items:center; gap:14px; padding-top:2px; flex-shrink:0;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--color-foreground-alt3);">DATA AUDIT</span>
+          <span style="font-size:12px; padding:2px 8px; border:1px solid var(--color-border); border-radius:4px; color:var(--color-foreground-alt3);">Disabled</span>
+        </div>
+        <div style="display:flex; align-items:center; border:1px solid var(--color-border); border-radius:6px; overflow:hidden;">
+          <button style="padding:5px 14px; background:#0f4c38; border:0; font-family:inherit; font-size:13px; font-weight:500; color:#fff; cursor:pointer;">List view</button>
+          <button style="padding:5px 14px; background:transparent; border:0; font-family:inherit; font-size:13px; font-weight:500; color:var(--color-foreground-alt2); cursor:pointer;">Flow view</button>
+        </div>
+      </div>
+    </div>
+    <div style="padding:8px 0 12px;">
+      <a href="#" style="display:inline-flex; align-items:center; gap:7px; font-size:13px; color:var(--color-foreground-alt3); text-decoration:none;">
+        <i class="fa-solid fa-arrow-left" style="font-size:11px;"></i>
+        Return to the pipeline list
+      </a>
+    </div>
+  </div>
+
+  <!-- ── Body: two-column ── -->
+  <div style="flex:1; min-height:0; display:flex; gap:14px; padding:14px; overflow:hidden;">
+
+    <!-- ── Left: Dataset List panel ── -->
+    <div style="width:298px; flex-shrink:0; background:var(--color-background); border:1px solid var(--color-border-light); border-radius:12px; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+
+      <!-- Panel header -->
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 14px 10px; border-bottom:1px solid var(--color-border-light); flex-shrink:0;">
+        <span style="font-size:14px; font-weight:700; color:var(--color-foreground);">Dataset List</span>
+        <button style="width:26px; height:26px; border:0; background:transparent; cursor:pointer; border-radius:5px; display:flex; align-items:center; justify-content:center; color:var(--color-icon);" title="Collapse sidebar">
+          <i class="fa-solid fa-angles-left" style="font-size:12px;"></i>
+        </button>
+      </div>
+
+      <!-- Scrollable cards -->
+      <div style="flex:1; min-height:0; overflow-y:auto; padding:10px 10px 0; display:flex; flex-direction:column; gap:6px;">
+        <sc-for list="{{ datasets }}" as="ds" hint-placeholder-count="4">
+
+          <div onClick="{{ ds.onClick }}" style="position:relative; border-radius:8px; border:1px solid var(--color-border-light); cursor:pointer; overflow:hidden;">
+
+            <!-- Selected state overlay -->
+            <sc-if value="{{ ds.selected }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute; inset:0; background:rgba(15,76,56,0.05); border-radius:8px; border:1.5px solid #0f4c38; pointer-events:none; z-index:1;"></div>
+              <div style="position:absolute; left:0; top:0; bottom:0; width:3px; background:#0f4c38; z-index:2;"></div>
+            </sc-if>
+
+            <!-- Card body -->
+            <div style="padding:10px 10px 8px 14px; position:relative; z-index:0;">
+              <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:6px;">
+                <div style="min-width:0;">
+                  <div style="font-size:13px; font-weight:700; color:var(--color-foreground); margin-bottom:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ ds.name }}</div>
+                  <div style="font-size:12px; color:var(--color-foreground-alt3); margin-bottom:6px;">{{ ds.desc }}</div>
+                  <!-- Source badge -->
+                  <sc-if value="{{ ds.isSource }}" hint-placeholder-val="{{ true }}">
+                    <span style="display:inline-block; font-size:11px; font-weight:600; padding:1px 9px; border-radius:20px; background:#d8f0e6; color:#0f4c38; letter-spacing:0.01em;">Source</span>
+                  </sc-if>
+                  <!-- Join badge -->
+                  <sc-if value="{{ ds.isJoin }}" hint-placeholder-val="{{ false }}">
+                    <span style="display:inline-block; font-size:11px; font-weight:600; padding:1px 9px; border-radius:20px; background:#dbeafe; color:#1d4ed8; letter-spacing:0.01em;">Join</span>
+                  </sc-if>
+                </div>
+                <button onClick="{{ ds.onMenu }}" style="width:24px; height:24px; flex-shrink:0; border:0; background:transparent; cursor:pointer; border-radius:4px; display:flex; align-items:center; justify-content:center; color:var(--color-icon); position:relative; z-index:3; margin-top:-2px;">
+                  <i class="fa-solid fa-ellipsis" style="font-size:12px;"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Transformations toggle row -->
+            <sc-if value="{{ ds.hasTransformations }}" hint-placeholder-val="{{ true }}">
+              <div style="padding:6px 10px 8px 14px; border-top:1px solid var(--color-border-light); position:relative; z-index:3;">
+                <button onClick="{{ ds.onToggle }}" style="display:inline-flex; align-items:center; gap:6px; border:0; background:transparent; cursor:pointer; padding:0; font-family:inherit;">
+                  <sc-if value="{{ ds.expanded }}" hint-placeholder-val="{{ false }}">
+                    <i class="fa-solid fa-chevron-up" style="font-size:10px; color:#2d7a5f;"></i>
+                  </sc-if>
+                  <sc-if value="{{ ds.notExpanded }}" hint-placeholder-val="{{ true }}">
+                    <i class="fa-solid fa-chevron-down" style="font-size:10px; color:#2d7a5f;"></i>
+                  </sc-if>
+                  <span style="font-size:12px; font-weight:600; color:#2d7a5f;">Transformations ({{ ds.transformationCount }})</span>
+                </button>
+              </div>
+            </sc-if>
+
+          </div>
+
+        </sc-for>
+        <!-- bottom spacer -->
+        <div style="height:8px; flex-shrink:0;"></div>
+      </div>
+
+      <!-- Footer actions -->
+      <div style="padding:10px 10px 12px; flex-shrink:0; border-top:1px solid var(--color-border-light); display:flex; gap:8px;">
+        <button style="display:inline-flex; align-items:center; gap:7px; padding:0 14px; height:32px; background:#0f4c38; border:0; border-radius:6px; cursor:pointer; font-family:inherit; font-size:13px; font-weight:500; color:#fff; flex-shrink:0;">
+          <i class="fa-solid fa-circle-play" style="font-size:13px;"></i>
+          Execute
+        </button>
+        <button style="display:inline-flex; align-items:center; gap:6px; padding:0 12px; height:32px; background:transparent; border:1.5px solid var(--color-border); border-radius:6px; cursor:pointer; font-family:inherit; font-size:13px; font-weight:500; color:var(--color-foreground);">
+          <i class="fa-solid fa-plus" style="font-size:11px;"></i>
+          Add dataset
+        </button>
+      </div>
+    </div>
+
+    <!-- ── Right: Preview panel ── -->
+    <div style="flex:1; min-width:0; background:var(--color-background); border:1px solid var(--color-border-light); border-radius:12px; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+
+      <!-- Toolbar -->
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 16px; flex-shrink:0; border-bottom:1px solid var(--color-border-light); gap:10px;">
+        <div style="display:flex; align-items:center; gap:10px; flex-shrink:0;">
+          <span style="font-size:12px; font-weight:500; color:var(--color-foreground-alt3);">Source actions:</span>
+          <button style="display:inline-flex; align-items:center; gap:6px; height:28px; padding:0 11px; border:1.5px solid #0f4c38; border-radius:6px; background:transparent; color:#0f4c38; font-family:inherit; font-size:12px; font-weight:500; cursor:pointer;">
+            <i class="fa-solid fa-table-columns" style="font-size:11px;"></i>
+            Add Source Columns
+          </button>
+        </div>
+        <div style="display:flex; align-items:center; gap:5px;">
+          <button style="height:28px; padding:0 11px; border:1px solid var(--color-border); border-radius:5px; background:transparent; color:var(--color-foreground); font-family:inherit; font-size:12px; font-weight:500; cursor:pointer;">Group by</button>
+          <button style="height:28px; padding:0 11px; border:1px solid var(--color-border); border-radius:5px; background:transparent; color:var(--color-foreground); font-family:inherit; font-size:12px; font-weight:500; cursor:pointer;">Join</button>
+          <button style="height:28px; padding:0 11px; border:1px solid var(--color-border); border-radius:5px; background:transparent; color:var(--color-foreground); font-family:inherit; font-size:12px; font-weight:500; cursor:pointer;">Union</button>
+          <button style="height:28px; padding:0 11px; border:1px solid var(--color-border); border-radius:5px; background:transparent; color:var(--color-foreground); font-family:inherit; font-size:12px; font-weight:500; cursor:pointer;">Subset</button>
+          <div style="width:1px; height:18px; background:var(--color-border-light); margin:0 2px;"></div>
+          <button style="display:inline-flex; align-items:center; gap:4px; height:28px; padding:0 11px; border:1px solid var(--color-border); border-radius:5px; background:transparent; color:var(--color-foreground); font-family:inherit; font-size:12px; font-weight:500; cursor:pointer;">
+            <i class="fa-solid fa-plus" style="font-size:10px;"></i> Add column
+          </button>
+          <button style="display:inline-flex; align-items:center; gap:4px; height:28px; padding:0 11px; border:1px solid var(--color-border); border-radius:5px; background:transparent; color:var(--color-foreground); font-family:inherit; font-size:12px; font-weight:500; cursor:pointer;">
+            <i class="fa-solid fa-file-export" style="font-size:10px;"></i> Export
+          </button>
+        </div>
+      </div>
+
+      <!-- Data preview grid -->
+      <div style="flex:1; min-height:0; overflow:auto;">
+        <x-import
+          component-from-global-scope="TiaraDesignSystemNyma_96297e.DfPreviewGrid"
+          columns="{{ previewColumns }}"
+          rows="{{ previewRows }}"
+          column-menu="{{ true }}"
+          empty-text="No data"
+          hint-size="100%,100%"
+        ></x-import>
+      </div>
+
+      <!-- Pagination footer -->
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 16px; flex-shrink:0; border-top:1px solid var(--color-border-light);">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; background:#0f4c38; color:#fff; font-size:12px; font-weight:700; flex-shrink:0;">50</span>
+          <span style="font-size:13px; color:var(--color-foreground-alt3);">100</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span style="font-size:12px; color:var(--color-foreground-alt3);">{{ paginationLabel }}</span>
+          <div style="display:flex; align-items:center; gap:3px;">
+            <button style="width:26px; height:26px; border:1px solid var(--color-border); border-radius:4px; background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; color:var(--color-foreground-alt3);">
+              <i class="fa-solid fa-chevron-left" style="font-size:10px;"></i>
+            </button>
+            <button style="width:26px; height:26px; border:0; border-radius:4px; background:#0f4c38; cursor:pointer; font-size:12px; font-weight:700; color:#fff; font-family:inherit;">1</button>
+            <button style="width:26px; height:26px; border:1px solid var(--color-border); border-radius:4px; background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; color:var(--color-foreground-alt3);">
+              <i class="fa-solid fa-chevron-right" style="font-size:10px;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1280, &quot;height&quot;: 720}}">
+class Component extends DCLogic {
+  state = {
+    selectedId: 'sales',
+    expandedIds: ['sales'],
+  };
+
+  toggleExpanded(id) {
+    const list = [...this.state.expandedIds];
+    const idx = list.indexOf(id);
+    if (idx >= 0) list.splice(idx, 1);
+    else list.push(id);
+    this.setState({ expandedIds: list });
+  }
+
+  get dataList() {
+    return [
+      { id: 'sales',     name: 'Sales',                          desc: 'Sales Transactions',              type: 'source', transformationCount: 7 },
+      { id: 'clients',   name: 'Clients',                        desc: 'Client Masterdata',               type: 'source', transformationCount: 3 },
+      { id: 'products',  name: 'Products',                       desc: 'Product Masterdata',              type: 'source', transformationCount: 3 },
+      { id: 'join-sc',   name: 'Join - Sales + Clients',         desc: 'Sales with Clients',              type: 'join',   transformationCount: 0 },
+      { id: 'join-scp',  name: 'Join - Sales + Clients + Products', desc: 'Sales with Clients and Products', type: 'join', transformationCount: 0 },
+    ];
+  }
+
+  get columnMap() {
+    return {
+      sales: [
+        { field: 'SalesID',     type: 'string' },
+        { field: 'SalesDate',   type: 'date'   },
+        { field: 'PayeeCode',   type: 'string' },
+        { field: 'ClientCode',  type: 'string' },
+        { field: 'ProductCode', type: 'string' },
+        { field: 'Value',       type: 'string' },
+        { field: 'Units',       type: 'number' },
+      ],
+      clients: [
+        { field: 'ClientCode', type: 'string' },
+        { field: 'ClientName', type: 'string' },
+        { field: 'Country',    type: 'string' },
+        { field: 'Segment',    type: 'string' },
+        { field: 'CreatedAt',  type: 'date'   },
+      ],
+      products: [
+        { field: 'ProductCode', type: 'string' },
+        { field: 'ProductName', type: 'string' },
+        { field: 'Category',    type: 'string' },
+        { field: 'UnitPrice',   type: 'number' },
+      ],
+      'join-sc': [
+        { field: 'SalesID',    type: 'string' },
+        { field: 'SalesDate',  type: 'date'   },
+        { field: 'ClientCode', type: 'string' },
+        { field: 'ClientName', type: 'string' },
+        { field: 'Value',      type: 'number' },
+        { field: 'Units',      type: 'number' },
+      ],
+      'join-scp': [
+        { field: 'SalesID',     type: 'string' },
+        { field: 'SalesDate',   type: 'date'   },
+        { field: 'ClientName',  type: 'string' },
+        { field: 'ProductName', type: 'string' },
+        { field: 'Category',    type: 'string' },
+        { field: 'Value',       type: 'number' },
+        { field: 'Units',       type: 'number' },
+      ],
+    };
+  }
+
+  renderVals() {
+    const { selectedId, expandedIds } = this.state;
+
+    const datasets = this.dataList.map((ds) => {
+      const sel = ds.id === selectedId;
+      const exp = expandedIds.includes(ds.id);
+      return {
+        ...ds,
+        selected:           sel,
+        notSelected:        !sel,
+        expanded:           exp,
+        notExpanded:        !exp,
+        isSource:           ds.type === 'source',
+        isJoin:             ds.type === 'join',
+        hasTransformations: ds.transformationCount > 0,
+        onClick:  ()  => this.setState({ selectedId: ds.id }),
+        onMenu:   (e) => e.stopPropagation(),
+        onToggle: (e) => { e.stopPropagation(); this.toggleExpanded(ds.id); },
+      };
+    });
+
+    const previewColumns = this.columnMap[selectedId] || this.columnMap['sales'];
+    const previewRows    = [];
+    const rowCount       = previewRows.length;
+    const paginationLabel = `Page 1 of 1 (${rowCount} item${rowCount === 1 ? '' : 's'})`;
+
+    return {
+      title: 'Sales data transformation for KPI Definition',
+      datasets,
+      previewColumns,
+      previewRows,
+      paginationLabel,
+    };
+  }
+}
+</script>
+</body>
+</html>
